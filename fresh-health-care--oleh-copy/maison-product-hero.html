@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moringa Oleifera Product Page</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Cabin", sans-serif;
+            background-color: #fcfdfa;
+            color: #1d211e;
+        }
+
+        .maison_commerce_container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 32px 80px;
+            border-bottom: 1px solid #d4eac1;
+        }
+
+        .maison_commerce_product_grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .maison_commerce_images_section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .maison_commerce_main_image_row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .maison_commerce_main_image {
+            width: 432px;
+            width: 100%;
+            height: 444px;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+        }
+
+        .maison_commerce_features_column {
+            display: grid;
+            /* flex-direction: column; */
+            grid-template-columns: 1fr;
+            gap: 8px;
+            height: 100%;
+        }
+
+        .maison_commerce_feature_badge {
+            /* flex: 1; */
+            background: #e1f0d3;
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 100px;
+            height: 100%;
+        }
+
+        .maison_commerce_feature_icon {
+            width: 48px;
+            height: 48px;
+            /* background: #34630C; */
+            border-radius: 50%;
+            border: 2px solid #34630c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        .maison_commerce_feature_text {
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            color: #1d211e;
+        }
+
+        .maison_commerce_thumbnails {
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 12px;
+            padding: 8px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+
+        .maison_commerce_thumbnail {
+            width: 110px;
+            height: 110px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+
+
+        .maison_commerce_thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .maison_commerce_mobile_controls {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .maison_commerce_slider_btn {
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #475467;
+        }
+
+        .maison_commerce_slider_btn:hover {
+            background: #f9fafb;
+            border-color: #5eb116;
+            color: #5eb116;
+        }
+
+        .maison_commerce_slider_dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .maison_commerce_slider_dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d0d5dd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_slider_dot.active {
+            background: #5eb116;
+            transform: scale(1.25);
+        }
+
+        .maison_commerce_testimonial {
+            background: linear-gradient(135deg, #eef7e6 0%, #e1f0d3 100%);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            position: relative;
+            overflow: hidden;
+            min-height: 164px;
+            padding-right: 30%;
+        }
+
+        .maison_commerce_stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_star {
+            width: 20px;
+            height: 20px;
+            color: #fdac31;
+        }
+
+        .maison_commerce_testimonial_text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: rgba(18, 18, 18, 0.75);
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_testimonial_author {
+            background: #d4eac1;
+            border-radius: 56px;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .maison_commerce_testimonial_author_img {
+            width: 160px;
+            height: 174px;
+            flex-shrink: 0;
+            position: absolute;
+            bottom: -8px;
+            right: -4px;
+            object-fit: cover;
+        }
+
+        .maison_commerce_product_info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 40vw;
+            width: 100%;
+        }
+
+        .maison_commerce_rating_badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_rating_stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .maison_commerce_rating_star {
+            width: 16px;
+            height: 16px;
+            color: #fdac31;
+        }
+
+        .maison_commerce_rating_text {
+            font-size: 12px;
+            color: #1d211e;
+        }
+
+        .maison_commerce_trust_text {
+            font-size: 12px;
+            color: #1d211e;
+        }
+
+        .maison_commerce_product_title {
+            font-family: "Familjen Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.3;
+            color: #1d211e;
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_price_section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .maison_commerce_current_price {
+            font-family: "Familjen Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #5eb116;
+        }
+
+        .maison_commerce_original_price {
+            font-weight: 600;
+            font-size: 16px;
+            color: #98a2b3;
+            text-decoration: line-through;
+        }
+
+        .maison_commerce_savings_badge {
+            background: #5eb116;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .maison_commerce_features_list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .maison_commerce_feature_item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .maison_commerce_check_icon {
+            width: 24px;
+            height: 24px;
+            color: #a5d37d;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .maison_commerce_feature_description {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .maison_commerce_bundle_section {
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+        }
+
+        .maison_commerce_bundle_title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_bundle_options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .maison_commerce_bundle_option {
+            flex: 1;
+            border: 2px solid #eaecf0;
+            border-radius: 8px;
+            /* padding: 16px 12px 12px; */
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            width: max-content;
+            position: relative;
+        }
+
+        .maison_commerce_bundle_option.active {
+            border-color: #5eb116;
+            background: rgba(94, 177, 22, 0.05);
+        }
+
+        .maison_commerce_bundle_option.popular::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fec84b;
+            color: #7a2e0e;
+            padding: 4px 8px;
+            border-radius: 56px;
+            font-size: 12px;
+            font-weight: 600;
+            width: max-content;
+        }
+
+        .maison_commerce_bundle_option.best-value::before {
+            content: "BEST VALUE";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fec84b;
+            color: #7a2e0e;
+            padding: 4px 8px;
+            border-radius: 56px;
+            font-size: 12px;
+            font-weight: 600;
+            width: max-content;
+            overflow: hidden;
+        }
+
+        .maison_commerce_bundle_image {
+            width: 96px;
+            height: 96px;
+            background: url("./images/product-image.png") center/cover;
+            border-radius: 4px;
+            margin: 0 auto 8px;
+        }
+
+        .maison_commerce_bundle_bottles {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_bundle_option_footer {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .maison_commerce_supply_badge {
+            background: #5eb116;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 56px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            min-height: 18px;
+            width: fit-content;
+            margin-inline: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            z-index: 2;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .maison_commerce_bundle_pricing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .maison_commerce_bundle_pricing_row {
+            display: flex;
+            flex-direction: row;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .maison_commerce_bundle_price {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .maison_commerce_bundle_original {
+            font-weight: 600;
+            font-size: 12px;
+            color: #98a2b3;
+            text-decoration: line-through;
+        }
+
+        .maison_commerce_bundle_savings {
+            background: rgba(94, 177, 22, 0.1);
+            color: #5eb116;
+            padding: 0 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .maison_commerce_free_shipping {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #5eb116;
+            font-size: 14px;
+            font-weight: 600;
+            width: fit-content;
+            margin-inline: auto;
+            margin-top: 8px;
+        }
+
+        .maison_commerce_subscription_section {
+            margin-bottom: 24px;
+        }
+
+        .maison_commerce_subscription_title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_subscription_options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .maison_commerce_subscription_option {
+            border: 2px solid #eaecf0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_subscription_option.active {
+            border-color: #5eb116;
+            background: rgba(94, 177, 22, 0.05);
+        }
+
+        .maison_commerce_subscription_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* margin-bottom: 12px; */
+        }
+
+        .maison_commerce_subscription_label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .maison_commerce_radio_icon {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #5eb116;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .maison_commerce_radio_icon.active::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: #5eb116;
+            border-radius: 50%;
+        }
+
+        .maison_commerce_subscription_text {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .maison_commerce_subscription_pricing {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .maison_commerce_subscription_price {
+            font-weight: 600;
+            font-size: 16px;
+            color: #5eb116;
+        }
+
+        .maison_commerce_subscription_original {
+            font-weight: 600;
+            font-size: 12px;
+            color: #98a2b3;
+            text-decoration: line-through;
+        }
+
+        .maison_commerce_subscription_benefits {
+            display: flex;
+            justify-content: space-between;
+            gap: 4px;
+            position: relative;
+            margin-top: 12px;
+        }
+
+        .maison_commerce_subscription_benefits_list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+        }
+
+        .maison_commerce_benefit_item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: rgba(18, 18, 18, 0.75);
+        }
+
+        .maison_commerce_benefit_check {
+            width: 16px;
+            height: 16px;
+            color: rgba(18, 18, 18, 0.75);
+        }
+
+        .maison_commerce_dropdown {
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+            position: relative;
+            z-index: 2;
+            height: fit-content;
+        }
+
+        .maison_commerce_dropdown_text {
+            font-size: 14px;
+            color: rgba(18, 18, 18, 0.75);
+        }
+
+        .maison_commerce_chevron {
+            width: 24px;
+            height: 24px;
+            color: #475467;
+            transition: transform 0.3s ease;
+        }
+
+        .maison_commerce_chevron.open {
+            transform: rotate(180deg);
+        }
+
+        .maison_commerce_dropdown_menu {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .maison_commerce_dropdown_menu.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .maison_commerce_dropdown_option {
+            padding: 10px 12px;
+            font-size: 14px;
+            color: rgba(18, 18, 18, 0.75);
+            transition: background 0.2s ease;
+        }
+
+        .maison_commerce_dropdown_option:hover {
+            background: rgba(94, 177, 22, 0.05);
+        }
+
+        .maison_commerce_cta_section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .maison_commerce_stock_status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+        }
+
+        .maison_commerce_stock_indicator {
+            width: 8px;
+            height: 8px;
+            background: #5eb116;
+            border-radius: 50%;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(94, 177, 22, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(94, 177, 22, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(94, 177, 22, 0);
+            }
+        }
+
+        /* width: 8px;
+        height: 8px;
+        background: #5eb116;
+        border-radius: 50%;
+        border: 4px solid rgba(94, 177, 22, 0.2);
+        } */
+
+        .maison_commerce_stock_text {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        .maison_commerce_add_to_cart {
+            background: #5eb116;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 32px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .maison_commerce_add_to_cart:hover {
+            background: #4a9614;
+        }
+
+        .maison_commerce_cart_icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .maison_commerce_price_dot {
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .maison_commerce_strikethrough_price {
+            position: relative;
+            color: #dceecd;
+        }
+
+        .maison_commerce_strikethrough_price::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: #dceecd;
+        }
+
+        .maison_commerce_guarantees {
+            background: rgba(25, 47, 6, 0.05);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .maison_commerce_guarantee_item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .maison_commerce_guarantee_icon {
+            width: 24px;
+            height: 24px;
+            color: #a5d37d;
+        }
+
+        .maison_commerce_guarantee_text {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .maison_commerce_guarantee_divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(25, 47, 6, 0.2);
+        }
+
+        .maison_commerce_payment_methods {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .maison_commerce_payment_icon {
+            width: 35px;
+            height: 24px;
+            background: white;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maison_commerce_payment_icon:last-child {
+            padding-bottom: 0;
+            padding-right: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .maison_commerce_social_proof {
+            margin-top: 24px;
+        }
+
+        .maison_commerce_social_title {
+            font-family: "Familjen Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.4;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_video_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .maison_commerce_video_thumbnail {
+            flex: 1;
+            height: 280px;
+            border-radius: 8px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                url("https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=280&fit=crop") center/cover;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .maison_commerce_video_thumbnail:hover {
+            transform: scale(1.02);
+        }
+
+        .maison_commerce_play_button {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 56px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maison_commerce_play_icon {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .maison_commerce_reviews_section {
+            margin-top: 32px;
+        }
+
+        .maison_commerce_reviews_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_reviews_title {
+            font-family: "Familjen Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .maison_commerce_reviews_nav {
+            display: flex;
+            gap: 4px;
+        }
+
+        .maison_commerce_nav_button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_nav_button:hover {
+            background: #f5f5f5;
+        }
+
+        .maison_commerce_nav_icon {
+            width: 20px;
+            height: 20px;
+            color: #192f06;
+        }
+
+        .maison_commerce_reviews_grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            /* Firefox */
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_reviews_grid::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Edge */
+        }
+
+        .maison_commerce_review_card {
+            background: white;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            padding: 16px;
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .maison_commerce_review_stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_review_star {
+            width: 16px;
+            height: 16px;
+            color: #fdac31;
+        }
+
+        .maison_commerce_review_text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(18, 18, 18, 0.75);
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_review_author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .maison_commerce_review_dot {
+            width: 4px;
+            height: 4px;
+            background: #192f06;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .maison_commerce_verified_badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .maison_commerce_verified_icon {
+            width: 16px;
+            height: 16px;
+            color: #a5d37d;
+        }
+
+        .maison_commerce_pagination {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .maison_commerce_page_dot {
+            width: 16px;
+            height: 4px;
+            background: #192f06;
+            border-radius: 1px;
+            opacity: 0.1;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .maison_commerce_page_dot.active {
+            opacity: 1;
+        }
+
+        .maison_commerce_faq_section {
+            margin-top: 32px;
+        }
+
+        .maison_commerce_faq_item {
+            border-top: 1px dashed #d0d5dd;
+            padding: 16px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .maison_commerce_faq_item:hover {
+            background: rgba(25, 47, 6, 0.02);
+        }
+
+        .maison_commerce_faq_icon {
+            width: 24px;
+            height: 24px;
+            color: #a5d37d;
+            flex-shrink: 0;
+        }
+
+        .maison_commerce_faq_question {
+            flex: 1;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .maison_commerce_faq_toggle {
+            width: 24px;
+            height: 24px;
+            color: #1d211e;
+            transition: transform 0.3s ease;
+        }
+
+        .maison_commerce_faq_toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .maison_commerce_faq_answer {
+            flex-basis: 100%;
+            padding-left: 36px;
+            padding-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(18, 18, 18, 0.75);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding-bottom 0.3s ease;
+        }
+
+        .maison_commerce_faq_answer.open {
+            max-height: 500px;
+            padding-bottom: 16px;
+        }
+
+        /* Button hover effect */
+        /* .maison_commerce_button_text {
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .maison_commerce_add_to_cart:hover .maison_commerce_button_text {
+            transform: translateY(-2px);
+        }
+
+        .maison_commerce_add_to_cart::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_add_to_cart:hover::after {
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        } */
+
+        /* Responsive Design */
+        @media (max-width: 1439px) {
+            .maison_commerce_container {
+                max-width: 1200px;
+                padding: 24px 60px;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .maison_commerce_container {
+                padding: 32px 40px;
+                max-width: 90vw;
+                overflow: clip;
+            }
+
+            .maison_commerce_product_grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .maison_commerce_main_image_row {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .maison_commerce_main_image {
+                width: 100%;
+                max-width: 500px;
+                height: 350px;
+                margin: 0 auto;
+            }
+
+            .maison_commerce_features_column {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .maison_commerce_feature_badge {
+                flex: 1;
+                min-height: 120px;
+            }
+
+            .maison_commerce_thumbnails {
+                max-width: 500px;
+                margin: 0 auto;
+                justify-content: center;
+            }
+
+            .maison_commerce_thumbnail {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 768px) {
+
+
+            .maison_commerce_container {
+                padding: 24px 32px;
+            }
+
+            .maison_commerce_main_image {
+                max-width: 400px;
+                height: 320px;
+            }
+
+            .maison_commerce_features_column {
+                max-width: 400px;
+                gap: 12px;
+            }
+
+            .maison_commerce_feature_badge {
+                min-height: 100px;
+                padding: 12px 8px;
+            }
+
+            .maison_commerce_feature_text {
+                font-size: 13px;
+            }
+
+            .maison_commerce_thumbnails {
+                max-width: 400px;
+            }
+
+            .maison_commerce_thumbnail {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .maison_commerce_container {
+                padding: 20px 16px;
+                max-width: 100%;
+            }
+
+            .maison_commerce_subscription_benefits {
+                flex-direction: column-reverse;
+            }
+
+            .maison_commerce_product_grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .maison_commerce_images_section {
+                order: 1;
+                max-width: 90vw;
+            }
+
+            .maison_commerce_product_info {
+                order: 2;
+            }
+
+            .maison_commerce_main_image {
+                width: 100%;
+                height: 280px;
+                position: relative;
+            }
+
+            .maison_commerce_main_image_row {
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                max-width: 90vw;
+            }
+
+            .maison_commerce_main_image_row .maison_commerce_main_image {
+                width: 100%;
+                height: 50vh;
+            }
+
+
+
+            .maison_commerce_features_column {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                order: 99;
+            }
+
+            .maison_commerce_feature_badge {
+                display: flex;
+                justify-content: space-around;
+                padding: 8px;
+                gap: 6px;
+            }
+
+            .maison_commerce_feature_icon {
+                width: 40px;
+                height: 40px;
+                padding: 6px;
+            }
+
+            .maison_commerce_feature_text {
+                font-size: 12px;
+                line-height: 1.3;
+                text-align: center;
+            }
+
+            .maison_commerce_thumbnails {
+                display: grid;
+                /* flex-direction: row; */
+                grid-template-columns: repeat(5, 1fr);
+                gap: 8px;
+                justify-content: center;
+                order: 3;
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                width: 100%;
+            }
+
+            .maison_commerce_thumbnail {
+                width: 100%;
+                /* height: 60px; */
+                flex-shrink: 0;
+                aspect-ratio: 1 x 1;
+                object-fit: cover;
+            }
+
+            .maison_commerce_mobile_controls {
+                display: none;
+            }
+
+            .maison_commerce_testimonial {
+                padding: 12px;
+                margin-top: 12px;
+                position: relative;
+                display: none;
+            }
+
+            .maison_commerce_product_info {
+                max-width: 90vw;
+                margin: 0;
+                padding: 0 4px;
+            }
+
+            .maison_commerce_product_title {
+                font-size: 22px;
+                line-height: 1.4;
+                margin-bottom: 8px;
+            }
+
+            .maison_commerce_price_section {
+                margin-bottom: 16px;
+            }
+
+            .maison_commerce_current_price {
+                font-size: 18px;
+            }
+
+            .maison_commerce_features_list {
+                margin-bottom: 16px;
+            }
+
+            .maison_commerce_bundle_section {
+                padding: 20px 16px;
+                margin-bottom: 16px;
+            }
+
+            .maison_commerce_bundle_options {
+                flex-direction: row;
+                gap: 8px;
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .maison_commerce_bundle_options::-webkit-scrollbar {
+            display: none;
+        }
+
+        .maison_commerce_bundle_option {
+            /* flex: 0 0 102px; */
+            padding: 8px 4px;
+            min-width: 102px;
+            width: 100%;
+        }
+
+        .maison_commerce_bundle_image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 4px;
+        }
+
+        .maison_commerce_bundle_bottles {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .maison_commerce_bundle_price {
+            font-size: 14px;
+        }
+
+        .maison_commerce_bundle_original {
+            font-size: 10px;
+        }
+
+        .maison_commerce_bundle_savings {
+            font-size: 10px;
+            padding: 4px 8px;
+        }
+
+        .maison_commerce_free_shipping {
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .maison_commerce_subscription_section {
+            margin-bottom: 16px;
+        }
+
+        .maison_commerce_subscription_option {
+            padding: 12px 16px;
+        }
+
+        .maison_commerce_subscription_header {
+            /* margin-bottom: 8px; */
+        }
+
+        .maison_commerce_dropdown {
+            padding: 8px 12px;
+        }
+
+        .maison_commerce_dropdown_text {
+            font-size: 12px;
+        }
+
+        .maison_commerce_cta_section {
+            gap: 8px;
+        }
+
+        .maison_commerce_add_to_cart {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
+
+        .maison_commerce_guarantees {
+            flex-direction: column;
+            gap: 8px;
+            padding: 8px 12px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .maison_commerce_guarantee_divider {
+            display: none;
+        }
+
+        .maison_commerce_guarantee_text {
+            font-size: 12px;
+        }
+
+        .maison_commerce_payment_methods {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .maison_commerce_payment_icon {
+            width: 23px;
+            height: 16px;
+        }
+
+        .maison_commerce_social_proof {
+            margin-top: 16px;
+        }
+
+        .maison_commerce_social_title {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .maison_commerce_video_grid {
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .maison_commerce_video_grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .maison_commerce_video_thumbnail {
+            flex: 0 0 auto;
+            width: 100%;
+            height: 160px;
+            min-width: 200px;
+        }
+
+        .maison_commerce_reviews_section {
+            margin-top: 16px;
+        }
+
+        .maison_commerce_reviews_title {
+            font-size: 18px;
+        }
+
+        .maison_commerce_reviews_grid {
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce_reviews_grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .maison_commerce_review_card {
+            flex: 0 0 280px;
+            width: 280px;
+            min-width: 280px;
+        }
+
+        .maison_commerce_faq_section {
+            margin-top: 16px;
+        }
+
+        .maison_commerce_faq_item {
+            padding: 8px 0;
+        }
+
+        .maison_commerce_faq_question {
+            font-size: 14px;
+        }
+
+        .maison_commerce_faq_answer {
+            padding-left: 32px;
+            font-size: 12px;
+        }
+
+        .maison_commerce_faq_answer.open {
+            padding-bottom: 8px;
+        }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .maison_commerce_container {
+                padding: 16px 12px;
+            }
+
+            .maison_commerce_main_image {
+                height: 250px;
+            }
+
+            /* .maison_commerce_features_column {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            } */
+
+            .maison_commerce_feature_badge {
+                min-height: 70px;
+                padding: 6px;
+            }
+
+            .maison_commerce_feature_icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .maison_commerce_feature_text {
+                font-size: 10px;
+            }
+
+            .maison_commerce_thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+
+            .maison_commerce_thumbnails {
+                gap: 6px;
+                padding: 6px;
+
+            }
+        }
+
+        @media (max-width: 374px) {
+            .maison_commerce_container {
+                padding: 16px 8px;
+            }
+
+            .maison_commerce_bundle_option {
+                flex: 0 0 90px;
+                min-width: 90px;
+            }
+
+            .maison_commerce_bundle_image {
+                width: 70px;
+                height: 70px;
+            }
+
+            .maison_commerce_video_thumbnail {
+                min-width: 180px;
+            }
+
+            .maison_commerce_review_card {
+                flex: 0 0 260px;
+                width: 260px;
+                min-width: 260px;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .maison_commerce_main_image {
+                height: 180px;
+            }
+
+            .maison_commerce_video_thumbnail {
+                height: 140px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .maison_commerce_thumbnail:hover {
+                transform: none;
+            }
+
+            .maison_commerce_video_thumbnail:hover {
+                transform: none;
+            }
+
+            .maison_commerce_nav_button:hover {
+                background: white;
+            }
+
+            .maison_commerce_add_to_cart:hover {
+                background: #5eb116;
+            }
+
+            .maison_commerce_add_to_cart:hover .maison_commerce_button_text {
+                transform: none;
+            }
+
+            .maison_commerce_add_to_cart:hover::after {
+                opacity: 0;
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+
+            .maison_commerce_main_image,
+            .maison_commerce_thumbnail,
+            .maison_commerce_bundle_image {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+
+            .maison_commerce_thumbnail,
+            .maison_commerce_video_thumbnail,
+            .maison_commerce_add_to_cart,
+            .maison_commerce_button_text,
+            .maison_commerce_chevron,
+            .maison_commerce_faq_toggle,
+            .maison_commerce_faq_answer {
+                transition: none;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .maison_commerce_container {
+                border-bottom-color: #333;
+            }
+
+            .maison_commerce_bundle_section,
+            .maison_commerce_testimonial,
+            .maison_commerce_review_card,
+            .maison_commerce_dropdown,
+            .maison_commerce_dropdown_menu {
+                background: #2a2a2a;
+                border-color: #444;
+            }
+
+            .maison_commerce_guarantees {
+                background: rgba(255, 255, 255, 0.05);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="maison_commerce_container" x-data="productPage()">
+        <div class="maison_commerce_product_grid">
+            <!-- Images Section -->
+            <div class="maison_commerce_images_section">
+                <div class="maison_commerce_main_image_row">
+                    <div class="maison_commerce_main_image"
+                        :style="`background: url('${images[currentImageIndex]}') center/cover`"></div>
+                    <div class="maison_commerce_features_column">
+                        <div class="maison_commerce_feature_badge">
+                            <div class="maison_commerce_feature_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 33"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4278_2500)">
+                                        <path
+                                            d="M30.7733 1.15338C30.7599 0.985966 30.6837 0.829795 30.5601 0.716085C30.4365 0.602375 30.2746 0.539504 30.1066 0.540042C29.7066 0.540042 20.0933 0.540042 16.7733 4.64671C15.4554 6.05735 14.6169 7.84831 14.3774 9.76389C14.138 11.6795 14.5098 13.6217 15.44 15.3134C16.9513 12.0868 19.0803 9.18773 21.7066 6.78004C21.972 6.54697 22.319 6.42871 22.6714 6.4512C23.0239 6.4737 23.3531 6.63512 23.5866 6.90004C23.7282 7.07043 23.8286 7.27119 23.88 7.48671C23.6085 7.51579 23.3525 7.62748 23.1466 7.80671C17.68 12.5 14.7866 20.3 13.3333 25.58C13.16 24.4867 12.9466 23.2867 12.68 22.0467C11.1733 14.5 8.06663 4.88671 2.13329 2.20671C2.02128 2.15615 1.89766 2.13689 1.77558 2.15097C1.65349 2.16506 1.53751 2.21197 1.43996 2.28671C1.34476 2.36083 1.27195 2.45986 1.22959 2.57282C1.18722 2.68578 1.17697 2.80827 1.19996 2.92671C3.34671 12.8172 7.06978 22.2982 12.2266 31.0067C12.232 31.2434 12.3003 31.4743 12.4245 31.6758C12.5487 31.8774 12.7243 32.0422 12.9333 32.1534C12.9935 32.2473 13.0764 32.3245 13.1742 32.3781C13.272 32.4317 13.3817 32.4599 13.4933 32.46C13.5594 32.4727 13.6272 32.4727 13.6933 32.46C13.8033 32.4351 13.9019 32.3741 13.9733 32.2867C14.2067 32.2115 14.4148 32.0734 14.5747 31.8875C14.7347 31.7017 14.8403 31.4753 14.88 31.2334C15.6434 26.6196 17.0387 22.133 19.0266 17.9C19.4662 17.9827 19.9127 18.0229 20.36 18.02C23.1733 18.02 26.0133 16.34 28.12 13.2334C31.32 8.39338 30.8 1.44671 30.7733 1.15338Z"
+                                            fill="#34630C" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4278_2500">
+                                            <rect width="32" height="32" fill="white" transform="translate(0 0.5)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_feature_text">100% Vegan</div>
+                        </div>
+                        <div class="maison_commerce_feature_badge">
+                            <div class="maison_commerce_feature_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 33"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4278_2500)">
+                                        <path
+                                            d="M30.7733 1.15338C30.7599 0.985966 30.6837 0.829795 30.5601 0.716085C30.4365 0.602375 30.2746 0.539504 30.1066 0.540042C29.7066 0.540042 20.0933 0.540042 16.7733 4.64671C15.4554 6.05735 14.6169 7.84831 14.3774 9.76389C14.138 11.6795 14.5098 13.6217 15.44 15.3134C16.9513 12.0868 19.0803 9.18773 21.7066 6.78004C21.972 6.54697 22.319 6.42871 22.6714 6.4512C23.0239 6.4737 23.3531 6.63512 23.5866 6.90004C23.7282 7.07043 23.8286 7.27119 23.88 7.48671C23.6085 7.51579 23.3525 7.62748 23.1466 7.80671C17.68 12.5 14.7866 20.3 13.3333 25.58C13.16 24.4867 12.9466 23.2867 12.68 22.0467C11.1733 14.5 8.06663 4.88671 2.13329 2.20671C2.02128 2.15615 1.89766 2.13689 1.77558 2.15097C1.65349 2.16506 1.53751 2.21197 1.43996 2.28671C1.34476 2.36083 1.27195 2.45986 1.22959 2.57282C1.18722 2.68578 1.17697 2.80827 1.19996 2.92671C3.34671 12.8172 7.06978 22.2982 12.2266 31.0067C12.232 31.2434 12.3003 31.4743 12.4245 31.6758C12.5487 31.8774 12.7243 32.0422 12.9333 32.1534C12.9935 32.2473 13.0764 32.3245 13.1742 32.3781C13.272 32.4317 13.3817 32.4599 13.4933 32.46C13.5594 32.4727 13.6272 32.4727 13.6933 32.46C13.8033 32.4351 13.9019 32.3741 13.9733 32.2867C14.2067 32.2115 14.4148 32.0734 14.5747 31.8875C14.7347 31.7017 14.8403 31.4753 14.88 31.2334C15.6434 26.6196 17.0387 22.133 19.0266 17.9C19.4662 17.9827 19.9127 18.0229 20.36 18.02C23.1733 18.02 26.0133 16.34 28.12 13.2334C31.32 8.39338 30.8 1.44671 30.7733 1.15338Z"
+                                            fill="#34630C" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4278_2500">
+                                            <rect width="32" height="32" fill="white" transform="translate(0 0.5)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_feature_text">Gluten Free</div>
+                        </div>
+                        <div class="maison_commerce_feature_badge">
+                            <div class="maison_commerce_feature_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 33"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4278_2500)">
+                                        <path
+                                            d="M30.7733 1.15338C30.7599 0.985966 30.6837 0.829795 30.5601 0.716085C30.4365 0.602375 30.2746 0.539504 30.1066 0.540042C29.7066 0.540042 20.0933 0.540042 16.7733 4.64671C15.4554 6.05735 14.6169 7.84831 14.3774 9.76389C14.138 11.6795 14.5098 13.6217 15.44 15.3134C16.9513 12.0868 19.0803 9.18773 21.7066 6.78004C21.972 6.54697 22.319 6.42871 22.6714 6.4512C23.0239 6.4737 23.3531 6.63512 23.5866 6.90004C23.7282 7.07043 23.8286 7.27119 23.88 7.48671C23.6085 7.51579 23.3525 7.62748 23.1466 7.80671C17.68 12.5 14.7866 20.3 13.3333 25.58C13.16 24.4867 12.9466 23.2867 12.68 22.0467C11.1733 14.5 8.06663 4.88671 2.13329 2.20671C2.02128 2.15615 1.89766 2.13689 1.77558 2.15097C1.65349 2.16506 1.53751 2.21197 1.43996 2.28671C1.34476 2.36083 1.27195 2.45986 1.22959 2.57282C1.18722 2.68578 1.17697 2.80827 1.19996 2.92671C3.34671 12.8172 7.06978 22.2982 12.2266 31.0067C12.232 31.2434 12.3003 31.4743 12.4245 31.6758C12.5487 31.8774 12.7243 32.0422 12.9333 32.1534C12.9935 32.2473 13.0764 32.3245 13.1742 32.3781C13.272 32.4317 13.3817 32.4599 13.4933 32.46C13.5594 32.4727 13.6272 32.4727 13.6933 32.46C13.8033 32.4351 13.9019 32.3741 13.9733 32.2867C14.2067 32.2115 14.4148 32.0734 14.5747 31.8875C14.7347 31.7017 14.8403 31.4753 14.88 31.2334C15.6434 26.6196 17.0387 22.133 19.0266 17.9C19.4662 17.9827 19.9127 18.0229 20.36 18.02C23.1733 18.02 26.0133 16.34 28.12 13.2334C31.32 8.39338 30.8 1.44671 30.7733 1.15338Z"
+                                            fill="#34630C" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4278_2500">
+                                            <rect width="32" height="32" fill="white" transform="translate(0 0.5)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_feature_text">Non-GMO</div>
+                        </div>
+                        <div class="maison_commerce_feature_badge">
+                            <div class="maison_commerce_feature_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 33"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4278_2500)">
+                                        <path
+                                            d="M30.7733 1.15338C30.7599 0.985966 30.6837 0.829795 30.5601 0.716085C30.4365 0.602375 30.2746 0.539504 30.1066 0.540042C29.7066 0.540042 20.0933 0.540042 16.7733 4.64671C15.4554 6.05735 14.6169 7.84831 14.3774 9.76389C14.138 11.6795 14.5098 13.6217 15.44 15.3134C16.9513 12.0868 19.0803 9.18773 21.7066 6.78004C21.972 6.54697 22.319 6.42871 22.6714 6.4512C23.0239 6.4737 23.3531 6.63512 23.5866 6.90004C23.7282 7.07043 23.8286 7.27119 23.88 7.48671C23.6085 7.51579 23.3525 7.62748 23.1466 7.80671C17.68 12.5 14.7866 20.3 13.3333 25.58C13.16 24.4867 12.9466 23.2867 12.68 22.0467C11.1733 14.5 8.06663 4.88671 2.13329 2.20671C2.02128 2.15615 1.89766 2.13689 1.77558 2.15097C1.65349 2.16506 1.53751 2.21197 1.43996 2.28671C1.34476 2.36083 1.27195 2.45986 1.22959 2.57282C1.18722 2.68578 1.17697 2.80827 1.19996 2.92671C3.34671 12.8172 7.06978 22.2982 12.2266 31.0067C12.232 31.2434 12.3003 31.4743 12.4245 31.6758C12.5487 31.8774 12.7243 32.0422 12.9333 32.1534C12.9935 32.2473 13.0764 32.3245 13.1742 32.3781C13.272 32.4317 13.3817 32.4599 13.4933 32.46C13.5594 32.4727 13.6272 32.4727 13.6933 32.46C13.8033 32.4351 13.9019 32.3741 13.9733 32.2867C14.2067 32.2115 14.4148 32.0734 14.5747 31.8875C14.7347 31.7017 14.8403 31.4753 14.88 31.2334C15.6434 26.6196 17.0387 22.133 19.0266 17.9C19.4662 17.9827 19.9127 18.0229 20.36 18.02C23.1733 18.02 26.0133 16.34 28.12 13.2334C31.32 8.39338 30.8 1.44671 30.7733 1.15338Z"
+                                            fill="#34630C" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4278_2500">
+                                            <rect width="32" height="32" fill="white" transform="translate(0 0.5)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_feature_text">
+                                100 Day Money Back Guarantee
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="maison_commerce_thumbnails"
+                    x-bind:class="{ 'maison_commerce_mobile_thumbnails': window.innerWidth <= 767 }"
+                    x-init="$el.parentElement.classList.contains('maison_commerce_main_image_row') || (window.innerWidth <= 767 && document.querySelector('.maison_commerce_main_image_row').appendChild($el))">
+                    <template x-for="(image, index) in images" :key="index">
+                        <div class="maison_commerce_thumbnail" @click="changeMainImage(index)"
+                            :style="`background: url('${image}') center/cover; ${index === currentImageIndex ? 'border: 2px solid #5eb116;' : ''}`">
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Mobile Slider Controls -->
+                <div class="maison_commerce_mobile_controls">
+                    <button class="maison_commerce_slider_btn maison_commerce_prev_btn" @click="prevImage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="maison_commerce_slider_dots">
+                        <template x-for="(image, index) in images" :key="index">
+                            <button class="maison_commerce_slider_dot" @click="changeMainImage(index)"
+                                :class="{ 'active': index === currentImageIndex }">
+                            </button>
+                        </template>
+                    </div>
+                    <button class="maison_commerce_slider_btn maison_commerce_next_btn" @click="nextImage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="maison_commerce_testimonial">
+                    <div class="maison_commerce_stars">
+                        <svg class="maison_commerce_star" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg class="maison_commerce_star" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg class="maison_commerce_star" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg class="maison_commerce_star" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                        <svg class="maison_commerce_star" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <div class="maison_commerce_testimonial_text">
+                        "After 2 weeks with Moringa, my energy completely transformed. No
+                        more afternoon slumps and I wake up feeling refreshed!"
+                    </div>
+                    <div class="maison_commerce_testimonial_author">
+                        Sarah Mitchell, 42
+                        <div class="maison_commerce_review_dot"></div>
+                        <div class="maison_commerce_verified_badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <g clip-path="url(#clip0_4278_2545)">
+                                    <path
+                                        d="M1.30295 8.70872C0.946695 8.29423 0.946498 7.68253 1.30263 7.26793C1.55756 6.97116 1.81292 6.67961 2.06938 6.39267C1.99184 6.02073 1.91737 5.64526 1.84572 5.26532C1.74444 4.72824 2.05012 4.19839 2.56584 4.0174C2.93499 3.88785 3.30191 3.76305 3.66747 3.64278C3.78628 3.28191 3.90953 2.91949 4.03746 2.55462C4.21829 2.03884 4.74793 1.73283 5.28505 1.83394C5.66302 1.9051 6.03681 1.97916 6.40726 2.05634C6.6895 1.80427 6.97618 1.55323 7.26793 1.30263C7.68253 0.946498 8.29423 0.946695 8.70872 1.30295C9.00195 1.55497 9.28989 1.80721 9.57323 2.06034C9.94995 1.98172 10.3301 1.90633 10.7146 1.83394C11.2517 1.73283 11.7813 2.03884 11.9622 2.55462C12.0901 2.91949 12.2133 3.28191 12.3321 3.64278C12.6977 3.76305 13.0647 3.88785 13.4338 4.0174C13.9496 4.19839 14.2553 4.72823 14.1539 5.26532C14.081 5.65179 14.0053 6.03362 13.9263 6.41181C14.1839 6.69992 14.4405 6.9928 14.6969 7.29114C15.0531 7.70563 15.0534 8.31733 14.6972 8.73193C14.4422 9.02875 14.1869 9.32033 13.9304 9.60732C14.0079 9.97923 14.0824 10.3547 14.154 10.7346C14.2553 11.2718 13.9496 11.8016 13.4339 11.9825C13.0647 12.1122 12.6977 12.237 12.332 12.3572C12.2132 12.7181 12.09 13.0805 11.9621 13.4454C11.7812 13.9611 11.2516 14.2671 10.7145 14.166C10.3366 14.0949 9.96286 14.0208 9.59246 13.9437C9.31027 14.1957 9.02363 14.4467 8.73192 14.6972C8.31732 15.0534 7.70563 15.0531 7.29114 14.6969C6.99793 14.4449 6.71001 14.1927 6.4267 13.9396C6.04991 14.0183 5.66969 14.0936 5.28514 14.166C4.74803 14.2671 4.21838 13.9611 4.03754 13.4454C3.90962 13.0805 3.78639 12.7181 3.66759 12.3572C3.30195 12.2369 2.93497 12.1122 2.56574 11.9825C2.05002 11.8016 1.74434 11.2718 1.84562 10.7346C1.91852 10.3481 1.99435 9.9661 2.07336 9.58779C1.81586 9.29977 1.55929 9.00698 1.30295 8.70872Z"
+                                        fill="#A5D37D" stroke="#192F06" stroke-width="1.25" stroke-linejoin="round" />
+                                    <path
+                                        d="M5.65332 8.58661L7.35997 10.3466C8.16305 8.03967 8.83186 7.02738 10.3466 5.65332"
+                                        stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_4278_2545">
+                                        <rect width="16" height="16" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            Verified Buyer
+                        </div>
+                    </div>
+                    <img src="./images/hero_review_sarah.png" alt="" class="maison_commerce_testimonial_author_img">
+                </div>
+            </div>
+
+            <!-- Product Info Section -->
+            <div class="maison_commerce_product_info">
+                <!-- Rating and Trust -->
+                <div>
+                    <div class="maison_commerce_rating_badge">
+                        <div class="maison_commerce_rating_stars">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M7.68323 1.53009C7.71245 1.47107 7.75758 1.42138 7.81353 1.38664C7.86949 1.3519 7.93404 1.3335 7.9999 1.3335C8.06576 1.3335 8.13031 1.3519 8.18626 1.38664C8.24222 1.42138 8.28735 1.47107 8.31656 1.53009L9.85656 4.64943C9.95802 4.85474 10.1078 5.03236 10.293 5.16706C10.4782 5.30176 10.6933 5.3895 10.9199 5.42276L14.3639 5.92676C14.4292 5.93621 14.4905 5.96374 14.5409 6.00622C14.5913 6.04871 14.6289 6.10446 14.6492 6.16716C14.6696 6.22987 14.6721 6.29703 14.6563 6.36105C14.6405 6.42507 14.6071 6.48339 14.5599 6.52942L12.0692 8.95476C11.905 9.11483 11.7821 9.31241 11.7111 9.53051C11.6402 9.74861 11.6233 9.98068 11.6619 10.2068L12.2499 13.6334C12.2614 13.6987 12.2544 13.7658 12.2296 13.8272C12.2048 13.8886 12.1632 13.9418 12.1096 13.9808C12.056 14.0197 11.9926 14.0428 11.9265 14.0474C11.8604 14.052 11.7944 14.0379 11.7359 14.0068L8.65723 12.3881C8.45438 12.2816 8.22868 12.2259 7.99956 12.2259C7.77044 12.2259 7.54475 12.2816 7.3419 12.3881L4.2639 14.0068C4.20545 14.0377 4.1395 14.0516 4.07353 14.0469C4.00757 14.0422 3.94424 14.0191 3.89076 13.9802C3.83728 13.9413 3.79579 13.8882 3.771 13.8269C3.74622 13.7656 3.73914 13.6986 3.75056 13.6334L4.3379 10.2074C4.3767 9.98125 4.35989 9.74902 4.28892 9.53079C4.21796 9.31255 4.09497 9.11486 3.93056 8.95476L1.4399 6.53009C1.39229 6.48411 1.35856 6.42569 1.34254 6.36147C1.32652 6.29726 1.32886 6.22984 1.34928 6.16689C1.36971 6.10393 1.40741 6.04799 1.45808 6.00541C1.50876 5.96284 1.57037 5.93536 1.6359 5.92609L5.07923 5.42276C5.30607 5.38976 5.52149 5.30213 5.70695 5.16742C5.89242 5.0327 6.04237 4.85494 6.1439 4.64943L7.68323 1.53009Z"
+                                    fill="#FDAC31" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M7.68323 1.53009C7.71245 1.47107 7.75758 1.42138 7.81353 1.38664C7.86949 1.3519 7.93404 1.3335 7.9999 1.3335C8.06576 1.3335 8.13031 1.3519 8.18626 1.38664C8.24222 1.42138 8.28735 1.47107 8.31656 1.53009L9.85656 4.64943C9.95802 4.85474 10.1078 5.03236 10.293 5.16706C10.4782 5.30176 10.6933 5.3895 10.9199 5.42276L14.3639 5.92676C14.4292 5.93621 14.4905 5.96374 14.5409 6.00622C14.5913 6.04871 14.6289 6.10446 14.6492 6.16716C14.6696 6.22987 14.6721 6.29703 14.6563 6.36105C14.6405 6.42507 14.6071 6.48339 14.5599 6.52942L12.0692 8.95476C11.905 9.11483 11.7821 9.31241 11.7111 9.53051C11.6402 9.74861 11.6233 9.98068 11.6619 10.2068L12.2499 13.6334C12.2614 13.6987 12.2544 13.7658 12.2296 13.8272C12.2048 13.8886 12.1632 13.9418 12.1096 13.9808C12.056 14.0197 11.9926 14.0428 11.9265 14.0474C11.8604 14.052 11.7944 14.0379 11.7359 14.0068L8.65723 12.3881C8.45438 12.2816 8.22868 12.2259 7.99956 12.2259C7.77044 12.2259 7.54475 12.2816 7.3419 12.3881L4.2639 14.0068C4.20545 14.0377 4.1395 14.0516 4.07353 14.0469C4.00757 14.0422 3.94424 14.0191 3.89076 13.9802C3.83728 13.9413 3.79579 13.8882 3.771 13.8269C3.74622 13.7656 3.73914 13.6986 3.75056 13.6334L4.3379 10.2074C4.3767 9.98125 4.35989 9.74902 4.28892 9.53079C4.21796 9.31255 4.09497 9.11486 3.93056 8.95476L1.4399 6.53009C1.39229 6.48411 1.35856 6.42569 1.34254 6.36147C1.32652 6.29726 1.32886 6.22984 1.34928 6.16689C1.36971 6.10393 1.40741 6.04799 1.45808 6.00541C1.50876 5.96284 1.57037 5.93536 1.6359 5.92609L5.07923 5.42276C5.30607 5.38976 5.52149 5.30213 5.70695 5.16742C5.89242 5.0327 6.04237 4.85494 6.1439 4.64943L7.68323 1.53009Z"
+                                    fill="#FDAC31" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M7.68323 1.53009C7.71245 1.47107 7.75758 1.42138 7.81353 1.38664C7.86949 1.3519 7.93404 1.3335 7.9999 1.3335C8.06576 1.3335 8.13031 1.3519 8.18626 1.38664C8.24222 1.42138 8.28735 1.47107 8.31656 1.53009L9.85656 4.64943C9.95802 4.85474 10.1078 5.03236 10.293 5.16706C10.4782 5.30176 10.6933 5.3895 10.9199 5.42276L14.3639 5.92676C14.4292 5.93621 14.4905 5.96374 14.5409 6.00622C14.5913 6.04871 14.6289 6.10446 14.6492 6.16716C14.6696 6.22987 14.6721 6.29703 14.6563 6.36105C14.6405 6.42507 14.6071 6.48339 14.5599 6.52942L12.0692 8.95476C11.905 9.11483 11.7821 9.31241 11.7111 9.53051C11.6402 9.74861 11.6233 9.98068 11.6619 10.2068L12.2499 13.6334C12.2614 13.6987 12.2544 13.7658 12.2296 13.8272C12.2048 13.8886 12.1632 13.9418 12.1096 13.9808C12.056 14.0197 11.9926 14.0428 11.9265 14.0474C11.8604 14.052 11.7944 14.0379 11.7359 14.0068L8.65723 12.3881C8.45438 12.2816 8.22868 12.2259 7.99956 12.2259C7.77044 12.2259 7.54475 12.2816 7.3419 12.3881L4.2639 14.0068C4.20545 14.0377 4.1395 14.0516 4.07353 14.0469C4.00757 14.0422 3.94424 14.0191 3.89076 13.9802C3.83728 13.9413 3.79579 13.8882 3.771 13.8269C3.74622 13.7656 3.73914 13.6986 3.75056 13.6334L4.3379 10.2074C4.3767 9.98125 4.35989 9.74902 4.28892 9.53079C4.21796 9.31255 4.09497 9.11486 3.93056 8.95476L1.4399 6.53009C1.39229 6.48411 1.35856 6.42569 1.34254 6.36147C1.32652 6.29726 1.32886 6.22984 1.34928 6.16689C1.36971 6.10393 1.40741 6.04799 1.45808 6.00541C1.50876 5.96284 1.57037 5.93536 1.6359 5.92609L5.07923 5.42276C5.30607 5.38976 5.52149 5.30213 5.70695 5.16742C5.89242 5.0327 6.04237 4.85494 6.1439 4.64943L7.68323 1.53009Z"
+                                    fill="#FDAC31" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M7.68323 1.53009C7.71245 1.47107 7.75758 1.42138 7.81353 1.38664C7.86949 1.3519 7.93404 1.3335 7.9999 1.3335C8.06576 1.3335 8.13031 1.3519 8.18626 1.38664C8.24222 1.42138 8.28735 1.47107 8.31656 1.53009L9.85656 4.64943C9.95802 4.85474 10.1078 5.03236 10.293 5.16706C10.4782 5.30176 10.6933 5.3895 10.9199 5.42276L14.3639 5.92676C14.4292 5.93621 14.4905 5.96374 14.5409 6.00622C14.5913 6.04871 14.6289 6.10446 14.6492 6.16716C14.6696 6.22987 14.6721 6.29703 14.6563 6.36105C14.6405 6.42507 14.6071 6.48339 14.5599 6.52942L12.0692 8.95476C11.905 9.11483 11.7821 9.31241 11.7111 9.53051C11.6402 9.74861 11.6233 9.98068 11.6619 10.2068L12.2499 13.6334C12.2614 13.6987 12.2544 13.7658 12.2296 13.8272C12.2048 13.8886 12.1632 13.9418 12.1096 13.9808C12.056 14.0197 11.9926 14.0428 11.9265 14.0474C11.8604 14.052 11.7944 14.0379 11.7359 14.0068L8.65723 12.3881C8.45438 12.2816 8.22868 12.2259 7.99956 12.2259C7.77044 12.2259 7.54475 12.2816 7.3419 12.3881L4.2639 14.0068C4.20545 14.0377 4.1395 14.0516 4.07353 14.0469C4.00757 14.0422 3.94424 14.0191 3.89076 13.9802C3.83728 13.9413 3.79579 13.8882 3.771 13.8269C3.74622 13.7656 3.73914 13.6986 3.75056 13.6334L4.3379 10.2074C4.3767 9.98125 4.35989 9.74902 4.28892 9.53079C4.21796 9.31255 4.09497 9.11486 3.93056 8.95476L1.4399 6.53009C1.39229 6.48411 1.35856 6.42569 1.34254 6.36147C1.32652 6.29726 1.32886 6.22984 1.34928 6.16689C1.36971 6.10393 1.40741 6.04799 1.45808 6.00541C1.50876 5.96284 1.57037 5.93536 1.6359 5.92609L5.07923 5.42276C5.30607 5.38976 5.52149 5.30213 5.70695 5.16742C5.89242 5.0327 6.04237 4.85494 6.1439 4.64943L7.68323 1.53009Z"
+                                    fill="#FDAC31" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M7.68323 1.53009C7.71245 1.47107 7.75758 1.42138 7.81353 1.38664C7.86949 1.3519 7.93404 1.3335 7.9999 1.3335C8.06576 1.3335 8.13031 1.3519 8.18626 1.38664C8.24222 1.42138 8.28735 1.47107 8.31656 1.53009L9.85656 4.64943C9.95802 4.85474 10.1078 5.03236 10.293 5.16706C10.4782 5.30176 10.6933 5.3895 10.9199 5.42276L14.3639 5.92676C14.4292 5.93621 14.4905 5.96374 14.5409 6.00622C14.5913 6.04871 14.6289 6.10446 14.6492 6.16716C14.6696 6.22987 14.6721 6.29703 14.6563 6.36105C14.6405 6.42507 14.6071 6.48339 14.5599 6.52942L12.0692 8.95476C11.905 9.11483 11.7821 9.31241 11.7111 9.53051C11.6402 9.74861 11.6233 9.98068 11.6619 10.2068L12.2499 13.6334C12.2614 13.6987 12.2544 13.7658 12.2296 13.8272C12.2048 13.8886 12.1632 13.9418 12.1096 13.9808C12.056 14.0197 11.9926 14.0428 11.9265 14.0474C11.8604 14.052 11.7944 14.0379 11.7359 14.0068L8.65723 12.3881C8.45438 12.2816 8.22868 12.2259 7.99956 12.2259C7.77044 12.2259 7.54475 12.2816 7.3419 12.3881L4.2639 14.0068C4.20545 14.0377 4.1395 14.0516 4.07353 14.0469C4.00757 14.0422 3.94424 14.0191 3.89076 13.9802C3.83728 13.9413 3.79579 13.8882 3.771 13.8269C3.74622 13.7656 3.73914 13.6986 3.75056 13.6334L4.3379 10.2074C4.3767 9.98125 4.35989 9.74902 4.28892 9.53079C4.21796 9.31255 4.09497 9.11486 3.93056 8.95476L1.4399 6.53009C1.39229 6.48411 1.35856 6.42569 1.34254 6.36147C1.32652 6.29726 1.32886 6.22984 1.34928 6.16689C1.36971 6.10393 1.40741 6.04799 1.45808 6.00541C1.50876 5.96284 1.57037 5.93536 1.6359 5.92609L5.07923 5.42276C5.30607 5.38976 5.52149 5.30213 5.70695 5.16742C5.89242 5.0327 6.04237 4.85494 6.1439 4.64943L7.68323 1.53009Z"
+                                    fill="#FDAC31" />
+                            </svg>
+                        </div>
+                        <span class="maison_commerce_rating_text">4.5/5 Rating</span>
+                    </div>
+                    <div class="maison_commerce_trust_text">
+                        Trusted by over <strong>100,000+</strong> customers to support
+                        their health.
+                    </div>
+                </div>
+
+                <!-- Product Title -->
+                <h1 class="maison_commerce_product_title">
+                    Moringa Oleifera Complete Green Superfood - 180 Vegan Capsules
+                </h1>
+
+                <!-- Pricing -->
+                <div class="maison_commerce_price_section">
+                    <span class="maison_commerce_current_price" x-text="selectedBundle.price">$35.90</span>
+                    <span class="maison_commerce_original_price" x-text="selectedBundle.originalPrice">$79.90</span>
+                    <div class="maison_commerce_savings_badge" x-text="'You Save ' + selectedBundle.savings">
+                        You Save $44
+                    </div>
+                </div>
+
+                <!-- Features List -->
+                <div class="maison_commerce_features_list">
+                    <div class="maison_commerce_feature_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_4278_2583)">
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    fill="#A5D37D" />
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.98193 13.0043L10.904 16.0176C12.279 12.0678 13.4242 10.3346 16.0176 7.98193"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4278_2583">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <span class="maison_commerce_feature_description">Natural Energy Boost - The nutrients your body
+                            needs</span>
+                    </div>
+                    <div class="maison_commerce_feature_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_4278_2583)">
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    fill="#A5D37D" />
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.98193 13.0043L10.904 16.0176C12.279 12.0678 13.4242 10.3346 16.0176 7.98193"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4278_2583">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <span class="maison_commerce_feature_description">Enhanced Mental Clarity - Take control of your
+                            health</span>
+                    </div>
+                    <div class="maison_commerce_feature_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_4278_2583)">
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    fill="#A5D37D" />
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.98193 13.0043L10.904 16.0176C12.279 12.0678 13.4242 10.3346 16.0176 7.98193"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4278_2583">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <span class="maison_commerce_feature_description">Digestion & Immune Support - The foundation
+                            for a great
+                            life</span>
+                    </div>
+                    <div class="maison_commerce_feature_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_4278_2583)">
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    fill="#A5D37D" />
+                                <path
+                                    d="M11.9999 22.4463C18.6856 22.4463 22.4463 18.6856 22.4463 11.9999C22.4463 5.31418 18.6856 1.55347 11.9999 1.55347C5.31418 1.55347 1.55347 5.31418 1.55347 11.9999C1.55347 18.6856 5.31418 22.4463 11.9999 22.4463Z"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.98193 13.0043L10.904 16.0176C12.279 12.0678 13.4242 10.3346 16.0176 7.98193"
+                                    stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4278_2583">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span class="maison_commerce_feature_description">Joint & Skin Support - The power of nature for
+                            vitality</span>
+                    </div>
+                </div>
+
+                <!-- Bundle Section -->
+                <div class="maison_commerce_bundle_section">
+                    <div class="maison_commerce_bundle_title">BUNDLE AND SAVE</div>
+                    <div class="maison_commerce_bundle_options">
+                        <template x-for="(bundle, index) in bundles" :key="index">
+                            <div class="maison_commerce_bundle_option" :class="{ 
+                                     'active': selectedBundleIndex === index,
+                                     'popular': bundle.popular,
+                                     'best-value': bundle.bestValue
+                                 }" @click="selectBundle(index)">
+                                <div class="maison_commerce_bundle_image"></div>
+                                <div class="maison_commerce_bundle_bottles" x-text="bundle.bottles"></div>
+                                <div class="maison_commerce_bundle_option_footer" style="">
+
+                                    <div class="maison_commerce_supply_badge" x-text="bundle.supply"></div>
+                                    <div class="maison_commerce_bundle_pricing">
+                                        <div class="maison_commerce_bundle_pricing_row">
+                                            <div class="maison_commerce_bundle_price" x-text="bundle.price"></div>
+                                            <div class="maison_commerce_bundle_original" x-text="bundle.originalPrice">
+                                            </div>
+                                        </div>
+                                        <div class="maison_commerce_bundle_savings" x-text="bundle.savingsText"></div>
+                                    </div>
+                                    <div class="maison_commerce_free_shipping" x-show="bundle.freeShipping">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                                            viewBox="0 0 17 17" fill="none">
+                                            <g clip-path="url(#clip0_4278_2644)">
+                                                <path
+                                                    d="M14.1674 13.1667H15.334C15.5108 13.1667 15.6804 13.0964 15.8054 12.9714C15.9304 12.8464 16.0007 12.6768 16.0007 12.5V3.16667C16.0007 2.98985 15.9304 2.82029 15.8054 2.69526C15.6804 2.57024 15.5108 2.5 15.334 2.5H3.00068C2.82386 2.5 2.6543 2.57024 2.52927 2.69526C2.40424 2.82029 2.33401 2.98985 2.33401 3.16667V8.39133L1.23401 9.3C1.16104 9.3626 1.10247 9.4402 1.06231 9.52753C1.02215 9.61487 1.00135 9.70987 1.00134 9.806V12.5C1.00134 12.6768 1.07158 12.8464 1.1966 12.9714C1.32163 13.0964 1.4912 13.1667 1.66801 13.1667H3.00134"
+                                                    fill="#A5D37D" />
+                                                <path
+                                                    d="M14.1674 13.1667H15.334C15.5108 13.1667 15.6804 13.0964 15.8054 12.9714C15.9304 12.8464 16.0007 12.6768 16.0007 12.5V3.16667C16.0007 2.98985 15.9304 2.82029 15.8054 2.69526C15.6804 2.57024 15.5108 2.5 15.334 2.5H3.00068C2.82386 2.5 2.6543 2.57024 2.52927 2.69526C2.40424 2.82029 2.33401 2.98985 2.33401 3.16667V8.39133L1.23401 9.3C1.16104 9.3626 1.10247 9.4402 1.06231 9.52753C1.02215 9.61487 1.00135 9.70987 1.00134 9.806V12.5C1.00134 12.6768 1.07158 12.8464 1.1966 12.9714C1.32163 13.0964 1.4912 13.1667 1.66801 13.1667H3.00134"
+                                                    stroke="#192F06" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M4.33337 9.8335V5.8335H5.50004" stroke="#192F06"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M5.50004 7.8335H4.33337" stroke="#192F06"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M11.7083 5.8335H10.5416V9.8335H11.7083" stroke="#192F06"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M11.7083 7.8335H10.5416" stroke="#192F06"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M14.5 5.8335H13.3334V9.8335H14.5" stroke="#192F06"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M14.5 7.8335H13.3334" stroke="#192F06" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7.25 9.8335V5.8335H8.08333C8.30433 5.8335 8.51633 5.9213 8.6726 6.07758C8.82887 6.23386 8.91667 6.44582 8.91667 6.66683C8.91667 6.88784 8.82887 7.0998 8.6726 7.2561C8.51633 7.41236 8.30433 7.50016 8.08333 7.50016H7.25"
+                                                    stroke="#192F06" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M7.25 7.5H7.58333C7.93693 7.5 8.27607 7.64047 8.52613 7.89053C8.7762 8.1406 8.91667 8.47973 8.91667 8.83333V9.83333"
+                                                    stroke="#192F06" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M3 13.1668C3 13.5204 3.14047 13.8596 3.39053 14.1096C3.64057 14.3597 3.97971 14.5002 4.33333 14.5002C4.68695 14.5002 5.02609 14.3597 5.27614 14.1096C5.52619 13.8596 5.66667 13.5204 5.66667 13.1668C5.66667 12.8132 5.52619 12.4741 5.27614 12.224C5.02609 11.974 4.68695 11.8335 4.33333 11.8335C3.97971 11.8335 3.64057 11.974 3.39053 12.224C3.14047 12.4741 3 12.8132 3 13.1668Z"
+                                                    fill="#EEF7E6" stroke="#192F06" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M11.5 13.1668C11.5 13.5204 11.6405 13.8596 11.8905 14.1096C12.1406 14.3597 12.4797 14.5002 12.8333 14.5002C13.1869 14.5002 13.5261 14.3597 13.7761 14.1096C14.0262 13.8596 14.1667 13.5204 14.1667 13.1668C14.1667 12.8132 14.0262 12.4741 13.7761 12.224C13.5261 11.974 13.1869 11.8335 12.8333 11.8335C12.4797 11.8335 12.1406 11.974 11.8905 12.224C11.6405 12.4741 11.5 12.8132 11.5 13.1668Z"
+                                                    fill="#EEF7E6" stroke="#192F06" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M5.66663 13.1665H11.5" stroke="#192F06" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4278_2644">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0.5 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        Free shipping
+                                    </div>
+                                </div>
+
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Subscription Section -->
+                    <div class="maison_commerce_subscription_section">
+                        <div class="maison_commerce_subscription_title">
+                            SUBSCRIBE AND SAVE 5%
+                        </div>
+                        <div class="maison_commerce_subscription_options">
+                            <div class="maison_commerce_subscription_option"
+                                :class="{ 'active': subscriptionType === 'subscribe' }"
+                                @click="subscriptionType = 'subscribe'">
+                                <div class="maison_commerce_subscription_header">
+                                    <div class="maison_commerce_subscription_label">
+                                        <div class="maison_commerce_radio_icon"
+                                            :class="{ 'active': subscriptionType === 'subscribe' }"></div>
+                                        <span class="maison_commerce_subscription_text">Subscribe & Save</span>
+                                    </div>
+                                    <div class="maison_commerce_subscription_pricing">
+                                        <span class="maison_commerce_subscription_price">$35.90</span>
+                                        <span class="maison_commerce_subscription_original">$79.90</span>
+                                    </div>
+                                </div>
+                                <div class="maison_commerce_subscription_benefits"
+                                    x-show="subscriptionType === 'subscribe'">
+                                    <div class="maison_commerce_subscription_benefits_list">
+                                        <div class="maison_commerce_benefit_item">
+                                            <svg class="maison_commerce_benefit_check" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                            </svg>
+                                            Save on Every Order
+                                        </div>
+                                        <div class="maison_commerce_benefit_item">
+                                            <svg class="maison_commerce_benefit_check" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                            </svg>
+                                            Easily Edit, Delay, Pause, and Cancel Anytime
+                                        </div>
+                                        <div class="maison_commerce_benefit_item">
+                                            <svg class="maison_commerce_benefit_check" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                            </svg>
+                                            Only Pay When Your Subscription Ships
+                                        </div>
+                                    </div>
+                                    <div class="maison_commerce_dropdown" @click="toggleDropdown()">
+                                        <span class="maison_commerce_dropdown_text" x-text="selectedFrequency">6 Months
+                                            (Most Popular)</span>
+                                        <svg class="maison_commerce_chevron" :class="{ 'open': dropdownOpen }"
+                                            viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M7 10l5 5 5-5z" />
+                                        </svg>
+                                    </div>
+                                    <div class="maison_commerce_dropdown_menu" :class="{ 'open': dropdownOpen }">
+                                        <div class="maison_commerce_dropdown_option"
+                                            @click="selectFrequency('1 Month')">
+                                            1 Month
+                                        </div>
+                                        <div class="maison_commerce_dropdown_option"
+                                            @click="selectFrequency('3 Months')">
+                                            3 Months
+                                        </div>
+                                        <div class="maison_commerce_dropdown_option"
+                                            @click="selectFrequency('6 Months (Most Popular)')">
+                                            6 Months (Most Popular)
+                                        </div>
+                                        <div class="maison_commerce_dropdown_option"
+                                            @click="selectFrequency('12 Months')">
+                                            12 Months
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="maison_commerce_subscription_option"
+                                :class="{ 'active': subscriptionType === 'onetime' }"
+                                @click="subscriptionType = 'onetime'">
+                                <div class="maison_commerce_subscription_header">
+                                    <div class="maison_commerce_subscription_label">
+                                        <div class="maison_commerce_radio_icon"
+                                            :class="{ 'active': subscriptionType === 'onetime' }"></div>
+                                        <span class="maison_commerce_subscription_text">One-time purchase</span>
+                                    </div>
+                                    <div class="maison_commerce_subscription_pricing">
+                                        <span class="maison_commerce_subscription_price">$39.90</span>
+                                        <span class="maison_commerce_subscription_original">$79.90</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="maison_commerce_cta_section">
+                        <div class="maison_commerce_stock_status">
+                            <div class="maison_commerce_stock_indicator"></div>
+                            <span class="maison_commerce_stock_text"><span style="color: #5EB116;">In Stock</span> -
+                                Expected
+                                delivery in 3 to 5 business days</span>
+                        </div>
+
+                        <button class="maison_commerce_add_to_cart" @click="addToCart()" data-text="Add To Cart">
+                            <svg class="maison_commerce_cart_icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                            </svg>
+                            <span class="maison_commerce_button_text">Add To Cart</span>
+                            <div class="maison_commerce_price_dot"></div>
+                            <span x-text="selectedBundle.price">$35.90</span>
+                            <div class="maison_commerce_strikethrough_price" x-text="selectedBundle.originalPrice">
+                                $79.90
+                            </div>
+                        </button>
+
+                        <div class="maison_commerce_guarantees">
+                            <div class="maison_commerce_guarantee_item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.4998 1.95557C14.5367 1.95557 15.9539 2.05898 17.6571 2.20917C19.4513 2.3674 21.7319 7.22473 21.7319 7.22473H21.7237C21.4468 6.78765 20.9805 6.48882 20.4463 6.44694C19.9687 6.40947 19.4869 6.36938 19.0009 6.32892C16.9013 6.15418 14.727 5.97323 12.4999 5.97323C10.2728 5.97323 8.09861 6.15418 5.99899 6.32892C5.51308 6.36938 5.03118 6.40947 4.55355 6.44694C4.01796 6.48893 3.55062 6.78929 3.27391 7.2283H3.26538C3.26538 7.2283 5.48854 2.37307 7.29553 2.21332C9.01977 2.06089 10.4442 1.95557 12.4998 1.95557Z"
+                                        fill="#EEF7E6" />
+                                    <path
+                                        d="M3.02861 20.1321C3.14848 20.9103 3.77978 21.5102 4.55354 21.5708C7.0951 21.7701 9.75742 22.0446 12.4999 22.0446C15.2424 22.0446 17.9048 21.7701 20.4463 21.5708C21.22 21.5102 21.8514 20.9103 21.9712 20.1321C22.2333 18.4311 22.5446 15.8322 22.5446 14.0089C22.5446 12.1856 22.2333 9.58655 21.9712 7.88558C21.8514 7.1074 21.22 6.50752 20.4463 6.44685C17.9048 6.24755 15.2424 5.97314 12.4999 5.97314C9.75742 5.97314 7.0951 6.24755 4.55354 6.44685C3.77978 6.50752 3.14848 7.1074 3.02861 7.88558C2.76659 9.58655 2.45532 12.1856 2.45532 14.0089C2.45532 15.8322 2.76659 18.4311 3.02861 20.1321Z"
+                                        fill="#A5D37D" />
+                                    <path
+                                        d="M3.26538 7.2283C3.26538 7.2283 5.48854 2.37307 7.29553 2.21332C9.01977 2.06089 10.4442 1.95557 12.4998 1.95557C14.5367 1.95557 15.9539 2.05898 17.6571 2.20917C19.4513 2.3674 21.7319 7.22473 21.7319 7.22473"
+                                        stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.4998 5.97345V1.95605" stroke="#192F06" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M3.02861 20.1321C3.14848 20.9103 3.77978 21.5102 4.55354 21.5708C7.0951 21.7701 9.75742 22.0446 12.4999 22.0446C15.2424 22.0446 17.9048 21.7701 20.4463 21.5708C21.22 21.5102 21.8514 20.9103 21.9712 20.1321C22.2333 18.4311 22.5446 15.8322 22.5446 14.0089C22.5446 12.1856 22.2333 9.58655 21.9712 7.88558C21.8514 7.1074 21.22 6.50752 20.4463 6.44685C17.9048 6.24755 15.2424 5.97314 12.4999 5.97314C9.75742 5.97314 7.0951 6.24755 4.55354 6.44685C3.77978 6.50752 3.14848 7.1074 3.02861 7.88558C2.76659 9.58655 2.45532 12.1856 2.45532 14.0089C2.45532 15.8322 2.76659 18.4311 3.02861 20.1321Z"
+                                        stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M8.08032 12H13.7053C15.4805 12 16.9196 13.4391 16.9196 15.2143C16.9196 16.9895 15.4805 18.4286 13.7053 18.4286H10.8928"
+                                        stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M10.491 14.4108C9.28568 14.009 8.48211 13.2054 8.08032 12.0001C8.48211 10.7947 9.28568 9.99114 10.491 9.58936"
+                                        stroke="#192F06" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <span class="maison_commerce_guarantee_text">100-Day Money-Back Guarantee</span>
+                            </div>
+                            <div class="maison_commerce_guarantee_divider"></div>
+                            <div class="maison_commerce_guarantee_item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4278_2754)">
+                                        <path
+                                            d="M21.001 19H22.751C23.0162 19 23.2705 18.8946 23.4581 18.7071C23.6456 18.5196 23.751 18.2652 23.751 18V4C23.751 3.73478 23.6456 3.48043 23.4581 3.29289C23.2705 3.10536 23.0162 3 22.751 3H4.25096C3.98574 3 3.73139 3.10536 3.54385 3.29289C3.35631 3.48043 3.25096 3.73478 3.25096 4V11.837L1.60096 13.2C1.4915 13.2939 1.40364 13.4103 1.3434 13.5413C1.28316 13.6723 1.25196 13.8148 1.25195 13.959V18C1.25195 18.2652 1.35731 18.5196 1.54485 18.7071C1.73239 18.8946 1.98674 19 2.25196 19H4.25196"
+                                            fill="#A5D37D" />
+                                        <path
+                                            d="M21.001 19H22.751C23.0162 19 23.2705 18.8946 23.4581 18.7071C23.6456 18.5196 23.751 18.2652 23.751 18V4C23.751 3.73478 23.6456 3.48043 23.4581 3.29289C23.2705 3.10536 23.0162 3 22.751 3H4.25096C3.98574 3 3.73139 3.10536 3.54385 3.29289C3.35631 3.48043 3.25096 3.73478 3.25096 4V11.837L1.60096 13.2C1.4915 13.2939 1.40364 13.4103 1.3434 13.5413C1.28316 13.6723 1.25196 13.8148 1.25195 13.959V18C1.25195 18.2652 1.35731 18.5196 1.54485 18.7071C1.73239 18.8946 1.98674 19 2.25196 19H4.25196"
+                                            stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M6.25 14V8H8" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8 11H6.25" stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M17.3125 8H15.5625V14H17.3125" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.3125 11H15.5625" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M21.5 8H19.75V14H21.5" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M21.5 11H19.75" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M10.625 14V8H11.875C12.2065 8 12.5245 8.1317 12.7589 8.36612C12.9933 8.60054 13.125 8.91848 13.125 9.25C13.125 9.58152 12.9933 9.89946 12.7589 10.1339C12.5245 10.3683 12.2065 10.5 11.875 10.5H10.625"
+                                            stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M10.625 10.5H11.125C11.6554 10.5 12.1641 10.7107 12.5392 11.0858C12.9143 11.4609 13.125 11.9696 13.125 12.5V14"
+                                            stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M4.25 19C4.25 19.5304 4.46071 20.0391 4.83579 20.4142C5.21086 20.7893 5.71957 21 6.25 21C6.78043 21 7.28914 20.7893 7.66421 20.4142C8.03929 20.0391 8.25 19.5304 8.25 19C8.25 18.4696 8.03929 17.9609 7.66421 17.5858C7.28914 17.2107 6.78043 17 6.25 17C5.71957 17 5.21086 17.2107 4.83579 17.5858C4.46071 17.9609 4.25 18.4696 4.25 19Z"
+                                            fill="#EEF7E6" stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M17 19C17 19.5304 17.2107 20.0391 17.5858 20.4142C17.9609 20.7893 18.4696 21 19 21C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19C21 18.4696 20.7893 17.9609 20.4142 17.5858C20.0391 17.2107 19.5304 17 19 17C18.4696 17 17.9609 17.2107 17.5858 17.5858C17.2107 17.9609 17 18.4696 17 19Z"
+                                            fill="#EEF7E6" stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M8.25 19H17" stroke="#192F06" stroke-width="1.25"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4278_2754">
+                                            <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="maison_commerce_guarantee_text">Free Shipping Over $40</span>
+                            </div>
+                        </div>
+
+                        <div class="maison_commerce_payment_methods">
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="11" viewBox="0 0 26 11"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.8462 1.93296C4.31624 1.97261 4.78628 1.69506 5.08006 1.34316C5.36894 0.981348 5.55989 0.49563 5.51093 0C5.09475 0.0198252 4.58064 0.277553 4.28686 0.639363C4.01757 0.95161 3.78745 1.45715 3.8462 1.93296ZM9.43774 8.31668V0.589812H12.3021C13.7807 0.589812 14.8138 1.62072 14.8138 3.12744C14.8138 4.63415 13.7611 5.67497 12.2629 5.67497H10.6226V8.31668H9.43774ZM5.506 2.02714C5.0919 2.00301 4.71406 2.1532 4.40886 2.27451C4.21246 2.35257 4.04614 2.41868 3.91961 2.41868C3.77762 2.41868 3.60444 2.34904 3.40999 2.27085C3.15521 2.16839 2.86392 2.05125 2.55845 2.05687C1.85829 2.06679 1.20709 2.46825 0.849659 3.10761C0.11522 4.38633 0.658705 6.27964 1.36866 7.32046C1.7163 7.83592 2.13248 8.40094 2.68086 8.38111C2.92211 8.37189 3.09566 8.29735 3.27526 8.22021C3.48203 8.13139 3.69683 8.03913 4.03223 8.03913C4.35599 8.03913 4.5614 8.12899 4.75858 8.21525C4.94606 8.29726 5.12611 8.37603 5.39339 8.3712C5.96135 8.36128 6.31878 7.85574 6.66642 7.34029C7.04157 6.78706 7.20643 6.24715 7.23145 6.16521L7.23438 6.15573C7.23378 6.15513 7.22915 6.15298 7.22097 6.14919C7.09556 6.09107 6.13702 5.64687 6.12783 4.45572C6.1186 3.45593 6.88811 2.94937 7.00925 2.86963L7.00926 2.86962C7.01663 2.86477 7.0216 2.8615 7.02384 2.85979C6.53422 2.12626 5.7704 2.04696 5.506 2.02714ZM16.978 8.37612C17.7223 8.37612 18.4126 7.99448 18.726 7.38981H18.7505V8.31664H19.8472V4.47055C19.8472 3.35539 18.9659 2.63672 17.6096 2.63672C16.3513 2.63672 15.421 3.3653 15.3867 4.36647H16.4541C16.5423 3.89067 16.978 3.57842 17.5754 3.57842C18.3 3.57842 18.7064 3.9204 18.7064 4.54985V4.9761L17.2277 5.06531C15.8519 5.14957 15.1077 5.71954 15.1077 6.7108C15.1077 7.71197 15.8764 8.37612 16.978 8.37612ZM17.2962 7.45924C16.6646 7.45924 16.2631 7.15195 16.2631 6.6811C16.2631 6.19538 16.6499 5.91288 17.3893 5.86827L18.7063 5.78401V6.22017C18.7063 6.94378 18.0992 7.45924 17.2962 7.45924ZM23.4851 8.61899C23.0102 9.97206 22.4667 10.4181 21.3112 10.4181C21.2231 10.4181 20.9293 10.4082 20.8607 10.3884V9.46156C20.9342 9.47147 21.1153 9.48138 21.2084 9.48138C21.7323 9.48138 22.026 9.25835 22.2072 8.67846L22.3149 8.33648L20.3075 2.71108H21.5462L22.9416 7.27583H22.9661L24.3616 2.71108H25.566L23.4851 8.61899ZM10.6225 1.60087H11.9886C13.0168 1.60087 13.6044 2.15598 13.6044 3.13237C13.6044 4.10876 13.0168 4.66882 11.9837 4.66882H10.6225V1.60087Z"
+                                        fill="black" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="9" viewBox="0 0 25 9"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.12526 8.25825H4.00494L2.41495 2.19237C2.33949 1.91334 2.17925 1.66667 1.94354 1.5504C1.35531 1.25823 0.707118 1.0257 0 0.908431V0.674895H3.41567C3.88708 0.674895 4.24064 1.0257 4.29957 1.43313L5.12454 5.80865L7.24383 0.674895H9.30522L6.12526 8.25825ZM10.4838 8.25825H8.48129L10.1302 0.674895H12.1327L10.4838 8.25825ZM14.7234 2.77571C14.7823 2.36728 15.1359 2.13374 15.5483 2.13374C16.1965 2.07511 16.9026 2.19238 17.4919 2.48354L17.8454 0.85081C17.2562 0.617274 16.608 0.5 16.0198 0.5C14.0762 0.5 12.662 1.55041 12.662 3.00824C12.662 4.11728 13.6637 4.69961 14.3708 5.05042C15.1359 5.40021 15.4305 5.63375 15.3716 5.98355C15.3716 6.50825 14.7823 6.74178 14.1941 6.74178C13.4869 6.74178 12.7798 6.56688 12.1327 6.27471L11.7791 7.90845C12.4862 8.19962 13.2512 8.31689 13.9584 8.31689C16.1376 8.37451 17.4919 7.32512 17.4919 5.75001C17.4919 3.76647 14.7234 3.65021 14.7234 2.77571ZM24.5 8.25825L22.91 0.674895H21.2022C20.8486 0.674895 20.4951 0.908431 20.3772 1.25823L17.4329 8.25825H19.4943L19.9058 7.15021H22.4386L22.6743 8.25825H24.5ZM21.4968 2.71708L22.085 5.57512H20.4361L21.4968 2.71708Z"
+                                        fill="#172B85" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="14" viewBox="0 0 23 14"
+                                    fill="none">
+                                    <path
+                                        d="M15.6758 0C19.4444 0 22.5 3.09091 22.5 6.90332C22.4998 10.7156 19.4443 13.8057 15.6758 13.8057C13.9864 13.8056 12.4416 13.1832 11.25 12.1543C10.0584 13.1832 8.51365 13.8056 6.82422 13.8057C3.05566 13.8057 0.000178828 10.7156 0 6.90332C0 3.09091 3.05555 0 6.82422 0C8.51335 0.000109834 10.0584 0.621855 11.25 1.65039C12.4416 0.621855 13.9866 0.000111238 15.6758 0Z"
+                                        fill="#ED0006" />
+                                    <path
+                                        d="M15.6758 0C19.4444 0 22.5 3.09091 22.5 6.90332C22.4998 10.7156 19.4443 13.8057 15.6758 13.8057C13.9863 13.8056 12.4416 13.1832 11.25 12.1543C12.7164 10.8882 13.6474 9.00638 13.6475 6.90332C13.6475 4.79982 12.7168 2.91652 11.25 1.65039C12.4416 0.621855 13.9866 0.000111238 15.6758 0Z"
+                                        fill="#F9A000" />
+                                    <path
+                                        d="M11.25 1.65088C12.7166 2.917 13.6475 4.79949 13.6475 6.90283C13.6475 9.00594 12.7163 10.8877 11.25 12.1538C9.78369 10.8877 8.85254 9.00592 8.85254 6.90283C8.85255 4.79951 9.7834 2.917 11.25 1.65088Z"
+                                        fill="#FF5E00" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="11" viewBox="0 0 26 11"
+                                    fill="none">
+                                    <path
+                                        d="M22.9976 7.31928H23.0151L24.4741 3.6562H25.5005L22.3462 10.9999H21.3735L22.5454 8.43159L20.4771 3.6562H21.5024L22.9976 7.31928ZM18.062 3.4892C18.7594 3.48926 19.31 3.68008 19.7144 4.05463C20.1188 4.42924 20.3188 4.95226 20.3188 5.61225V8.75874H19.4155V8.05073H19.3745C18.9819 8.6333 18.4663 8.92463 17.8159 8.92475C17.265 8.92475 16.7955 8.75864 16.4263 8.42573C16.0629 8.11655 15.858 7.65831 15.8696 7.1767C15.8696 6.64751 16.0688 6.23113 16.4614 5.91596C16.8542 5.60078 17.3821 5.44624 18.0386 5.44624C18.601 5.44627 19.0581 5.55279 19.4214 5.75483V5.5351C19.4214 5.20805 19.2808 4.89859 19.0347 4.68452C18.7827 4.45869 18.4604 4.334 18.1265 4.33393C17.5989 4.33393 17.1822 4.55972 16.8774 5.01166L16.0454 4.48237C16.4909 3.8224 17.1653 3.4892 18.062 3.4892ZM13.5894 1.30073C14.1931 1.28885 14.7796 1.52101 15.2075 1.94916C16.0631 2.7579 16.1158 4.11997 15.313 4.99409L15.2075 5.10151C14.7679 5.52371 14.2282 5.73724 13.5894 5.73725H12.0298V8.75874H11.0864V1.30073H13.5894ZM18.1851 6.2187C17.8041 6.21871 17.482 6.31466 17.2241 6.49897C16.972 6.68332 16.8423 6.91478 16.8423 7.19428C16.8423 7.44405 16.9603 7.67558 17.1538 7.81831C17.3648 7.98476 17.6225 8.07425 17.8862 8.06831C18.2849 8.06829 18.6664 7.90744 18.9478 7.62202C19.2581 7.32487 19.4164 6.97427 19.4165 6.57026C19.1234 6.33239 18.7127 6.21275 18.1851 6.2187ZM12.0298 4.82124H13.6128C13.9645 4.83313 14.3051 4.69109 14.5454 4.43549C15.0378 3.91821 15.0259 3.08544 14.5161 2.58588C14.2758 2.34801 13.9528 2.21674 13.6128 2.21674H12.0298V4.82124Z"
+                                        fill="#3C4043" />
+                                    <path
+                                        d="M8.77214 5.08307C8.77214 4.79168 8.74869 4.50029 8.7018 4.21484H4.7218V5.8621H7.00195C6.90816 6.39136 6.60336 6.8671 6.15788 7.16444V8.23485H7.51776C8.31494 7.49151 8.77214 6.39136 8.77214 5.08307Z"
+                                        fill="#4285F4" />
+                                    <path
+                                        d="M4.72198 9.26961C5.85913 9.26961 6.82042 8.88902 7.51795 8.23487L6.15807 7.16446C5.77707 7.42611 5.29056 7.57478 4.72198 7.57478C3.62001 7.57478 2.68802 6.81954 2.35392 5.80859H0.953003V6.91469C1.66811 8.35975 3.12764 9.26961 4.72198 9.26961Z"
+                                        fill="#34A853" />
+                                    <path
+                                        d="M2.35401 5.80884C2.17814 5.27958 2.17814 4.70274 2.35401 4.16753V3.06738H0.952877C0.349041 4.27458 0.349041 5.7018 0.952877 6.90899L2.35401 5.80884Z"
+                                        fill="#FBBC04" />
+                                    <path
+                                        d="M4.72198 2.40114C5.32573 2.38925 5.90602 2.62117 6.33978 3.04339L7.54726 1.81836C6.77939 1.09285 5.7712 0.69442 4.72198 0.706313C3.12764 0.706313 1.66811 1.62211 0.953003 3.06718L2.35392 4.17328C2.68802 3.15638 3.62001 2.40114 4.72198 2.40114Z"
+                                        fill="#EA4335" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.40001 12.2412H0.844392C0.737939 12.2412 0.647402 12.3186 0.630802 12.4236L0.00163188 16.4127C-0.0108734 16.4914 0.0500852 16.5624 0.129927 16.5624H0.872593C0.979045 16.5624 1.06958 16.485 1.08618 16.3797L1.25588 15.3038C1.27225 15.1985 1.363 15.1212 1.46924 15.1212H1.96169C2.98643 15.1212 3.5778 14.6253 3.73233 13.6427C3.8019 13.2128 3.73527 12.875 3.5339 12.6384C3.31285 12.3787 2.92064 12.2412 2.40001 12.2412ZM2.57948 13.6982C2.49443 14.2564 2.06792 14.2564 1.65553 14.2564H1.42078L1.58547 13.2138C1.59525 13.1509 1.64984 13.1045 1.71353 13.1045H1.82112C2.10204 13.1045 2.36706 13.1045 2.50401 13.2646C2.58559 13.3602 2.61064 13.5021 2.57948 13.6982ZM7.05012 13.6803H6.30517C6.2417 13.6803 6.18686 13.7267 6.17707 13.7897L6.14412 13.9981L6.09202 13.9226C5.93075 13.6885 5.57117 13.6103 5.21222 13.6103C4.38896 13.6103 3.6859 14.2337 3.54896 15.1084C3.4778 15.5446 3.57896 15.9617 3.82643 16.2527C4.05348 16.5202 4.37833 16.6316 4.76475 16.6316C5.42801 16.6316 5.79591 16.2051 5.79591 16.2051L5.76265 16.4122C5.75012 16.4913 5.81107 16.5623 5.89044 16.5623H6.56149C6.66823 16.5623 6.75823 16.4849 6.77507 16.3796L7.1777 13.83C7.19044 13.7515 7.1297 13.6803 7.05012 13.6803ZM6.0117 15.1302C5.9398 15.5557 5.60201 15.8414 5.17128 15.8414C4.95496 15.8414 4.78201 15.7721 4.67106 15.6406C4.56096 15.5101 4.51906 15.3242 4.55412 15.1172C4.62127 14.6952 4.96475 14.4003 5.38896 14.4003C5.60044 14.4003 5.77244 14.4705 5.8857 14.6031C5.99917 14.7371 6.04423 14.9241 6.0117 15.1302ZM10.269 13.6802H11.0176C11.1224 13.6802 11.1836 13.7977 11.124 13.8837L8.63423 17.4776C8.59392 17.5359 8.5275 17.5705 8.45655 17.5705H7.70886C7.6036 17.5705 7.54212 17.452 7.60307 17.3657L8.37834 16.2714L7.55381 13.8516C7.52528 13.7675 7.58739 13.6802 7.67686 13.6802H8.41244C8.50802 13.6802 8.59234 13.7429 8.61992 13.8344L9.0575 15.2958L10.09 13.775C10.1304 13.7156 10.1976 13.6802 10.269 13.6802Z"
+                                        fill="#253B80" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M18.3854 16.4124L19.0238 12.3504C19.0336 12.2874 19.0882 12.2409 19.1517 12.2407H19.8705C19.9498 12.2407 20.0108 12.3119 19.9982 12.3906L19.3687 16.3795C19.3522 16.4847 19.2617 16.5621 19.1551 16.5621H18.5132C18.4338 16.5621 18.3729 16.4912 18.3854 16.4124ZM13.496 12.2409H11.9401C11.8339 12.2409 11.7434 12.3183 11.7267 12.4234L11.0976 16.4124C11.0851 16.4912 11.146 16.5621 11.2255 16.5621H12.0238C12.098 16.5621 12.1615 16.508 12.1731 16.4343L12.3516 15.3036C12.368 15.1982 12.4587 15.1209 12.565 15.1209H13.0572C14.0821 15.1209 14.6734 14.625 14.828 13.6424C14.8978 13.2125 14.8308 12.8747 14.6295 12.6381C14.4085 12.3784 14.0166 12.2409 13.496 12.2409ZM13.6755 13.6979C13.5906 14.2561 13.1641 14.2561 12.7515 14.2561H12.517L12.6819 13.2136C12.6917 13.1506 12.7458 13.1042 12.8097 13.1042H12.9173C13.198 13.1042 13.4633 13.1042 13.6001 13.2643C13.6818 13.3599 13.7066 13.5018 13.6755 13.6979ZM18.1457 13.68H17.4013C17.3373 13.68 17.283 13.7264 17.2734 13.7895L17.2404 13.9978L17.1881 13.9223C17.0269 13.6882 16.6675 13.61 16.3085 13.61C15.4853 13.61 14.7824 14.2335 14.6455 15.1081C14.5745 15.5443 14.6753 15.9615 14.9228 16.2524C15.1502 16.5199 15.4746 16.6314 15.8611 16.6314C16.5243 16.6314 16.8921 16.2048 16.8921 16.2048L16.859 16.4119C16.8464 16.491 16.9074 16.562 16.9873 16.562H17.658C17.7642 16.562 17.8548 16.4846 17.8714 16.3794L18.2742 13.8297C18.2865 13.7513 18.2256 13.68 18.1457 13.68ZM17.1074 15.1299C17.0359 15.5555 16.6977 15.8412 16.2669 15.8412C16.051 15.8412 15.8777 15.7718 15.7666 15.6403C15.6565 15.5098 15.6152 15.3239 15.6498 15.1169C15.7173 14.6949 16.0603 14.4 16.4845 14.4C16.6961 14.4 16.868 14.4702 16.9814 14.6028C17.0953 14.7368 17.1403 14.9238 17.1074 15.1299Z"
+                                        fill="#179BD7" />
+                                    <path
+                                        d="M8.15701 10.8138L8.34828 9.59907L7.92228 9.58918H5.88806L7.30175 0.625344C7.30607 0.598281 7.32038 0.573049 7.34122 0.555133C7.36206 0.537218 7.3888 0.527344 7.41659 0.527344H10.8466C11.9853 0.527344 12.7711 0.764302 13.1814 1.232C13.3738 1.45141 13.4963 1.68068 13.5556 1.933C13.6177 2.19776 13.6188 2.51406 13.5581 2.89985L13.5537 2.92801V3.1752L13.7461 3.28418C13.9081 3.37011 14.0367 3.46848 14.1354 3.58111C14.3001 3.7687 14.4065 4.00712 14.4515 4.28978C14.4979 4.5805 14.4825 4.92643 14.4065 5.31807C14.3187 5.76859 14.1768 6.16096 13.9852 6.48202C13.8089 6.77785 13.5844 7.02317 13.3179 7.21338C13.0633 7.39401 12.7609 7.53117 12.419 7.61896C12.0877 7.70517 11.71 7.74875 11.2957 7.74875H11.0287C10.8379 7.74875 10.6524 7.81749 10.5069 7.94075C10.361 8.06654 10.2644 8.23833 10.2348 8.42633L10.2147 8.5357L9.87681 10.6767L9.86144 10.7553C9.85744 10.7802 9.85049 10.7927 9.84028 10.8011C9.83112 10.8087 9.81796 10.8138 9.80512 10.8138H8.15701Z"
+                                        fill="#253B80" />
+                                    <path
+                                        d="M13.9281 2.95703C13.9179 3.02248 13.9062 3.0894 13.8931 3.15815C13.4407 5.48056 11.8932 6.28286 9.91665 6.28286H8.91033C8.66864 6.28286 8.46496 6.45838 8.42727 6.6968L7.91201 9.96452L7.76611 10.8907C7.74159 11.0473 7.86233 11.1884 8.02022 11.1884H9.80517C10.0165 11.1884 10.196 11.0348 10.2293 10.8264L10.2469 10.7357L10.583 8.60304L10.6045 8.4861C10.6374 8.27694 10.8173 8.12336 11.0286 8.12336H11.2956C13.0249 8.12336 14.3787 7.42125 14.7743 5.38951C14.9396 4.54077 14.854 3.8321 14.4167 3.33367C14.2843 3.18338 14.1201 3.05868 13.9281 2.95703Z"
+                                        fill="#179BD7" />
+                                    <path
+                                        d="M13.4548 2.76832C13.3858 2.7482 13.3144 2.72992 13.2412 2.71346C13.1678 2.69738 13.0924 2.68312 13.0149 2.67068C12.7436 2.6268 12.4463 2.60596 12.1278 2.60596H9.43934C9.37313 2.60596 9.31028 2.62095 9.25397 2.64801C9.12997 2.70761 9.03786 2.825 9.01555 2.96871L8.44355 6.5911L8.42712 6.69678C8.46481 6.45836 8.66849 6.28283 8.91018 6.28283H9.9165C11.893 6.28283 13.4406 5.48017 13.8929 3.15813C13.9064 3.08938 13.9178 3.02246 13.928 2.95701C13.8136 2.8963 13.6896 2.84438 13.5561 2.80013C13.5232 2.78916 13.4892 2.77856 13.4548 2.76832Z"
+                                        fill="#222D65" />
+                                    <path
+                                        d="M9.01557 2.96866C9.03788 2.82495 9.13009 2.70757 9.25399 2.64833C9.31073 2.62126 9.37325 2.60627 9.43936 2.60627H12.1279C12.4464 2.60627 12.7437 2.62712 13.0149 2.671C13.0925 2.68343 13.1679 2.6977 13.2414 2.71378C13.3145 2.73024 13.3858 2.74853 13.4549 2.76863C13.4893 2.77887 13.5233 2.78947 13.5565 2.80008C13.69 2.84433 13.814 2.89662 13.9284 2.95696C14.0631 2.09871 13.9274 1.51437 13.4634 0.985228C12.9518 0.40271 12.0284 0.15332 10.8469 0.15332H7.41683C7.17546 0.15332 6.96967 0.328837 6.9323 0.567627L5.50367 9.62361C5.47546 9.80277 5.61367 9.96445 5.7943 9.96445H7.91199L8.44367 6.59105L9.01557 2.96866Z"
+                                        fill="#253B80" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" viewBox="0 0 18 15"
+                                    fill="none">
+                                    <path
+                                        d="M10.545 14.4998C14.4425 14.5187 18 11.292 18 7.36689C18 3.07486 14.4425 0.107774 10.545 0.109376H7.19063C3.24666 0.107774 0 3.07566 0 7.36689C0 11.2928 3.24666 14.5187 7.19063 14.4998H10.545Z"
+                                        fill="#0079BE" />
+                                    <path
+                                        d="M7.20666 0.704102C3.60234 0.705303 0.68211 3.65317 0.680908 7.29154C0.68211 10.9295 3.60234 13.8774 7.20666 13.8786C10.8114 13.8774 13.7328 10.9295 13.7332 7.29154C13.7328 3.65317 10.8118 0.705303 7.20666 0.704102ZM3.07044 7.29154C3.06968 6.45031 3.32272 5.62843 3.79648 4.9333C4.27024 4.23817 4.94268 3.70213 5.72592 3.39523V11.1874C4.94262 10.8808 4.27009 10.3448 3.79631 9.64973C3.32253 8.95464 3.06954 8.13274 3.07044 7.29154ZM8.68701 11.189V3.39483C9.47083 3.70129 10.1439 4.23728 10.618 4.93265C11.0921 5.62801 11.3452 6.45033 11.3441 7.29194C11.345 8.13351 11.0918 8.95575 10.6178 9.65108C10.1437 10.3464 9.47074 10.8824 8.68701 11.189Z"
+                                        fill="white" />
+                                    <path
+                                        d="M10.545 14.4998C14.4425 14.5187 18 11.292 18 7.36689C18 3.07486 14.4425 0.107774 10.545 0.109376H7.19063C3.24666 0.107774 0 3.07566 0 7.36689C0 11.2928 3.24666 14.5187 7.19063 14.4998H10.545Z"
+                                        fill="#0079BE" />
+                                    <path
+                                        d="M7.20666 0.704102C3.60234 0.705303 0.68211 3.65317 0.680908 7.29154C0.68211 10.9295 3.60234 13.8774 7.20666 13.8786C10.8114 13.8774 13.7328 10.9295 13.7332 7.29154C13.7328 3.65317 10.8118 0.705303 7.20666 0.704102ZM3.07044 7.29154C3.06968 6.45031 3.32272 5.62843 3.79648 4.9333C4.27024 4.23817 4.94268 3.70213 5.72592 3.39523V11.1874C4.94262 10.8808 4.27009 10.3448 3.79631 9.64973C3.32253 8.95464 3.06954 8.13274 3.07044 7.29154ZM8.68701 11.189V3.39483C9.47083 3.70129 10.1439 4.23728 10.618 4.93265C11.0921 5.62801 11.3452 6.45033 11.3441 7.29194C11.345 8.13351 11.0918 8.95575 10.6178 9.65108C10.1437 10.3464 9.47074 10.8824 8.68701 11.189Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div class="maison_commerce_payment_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="14" viewBox="0 0 31 14"
+                                    fill="none">
+                                    <path d="M11.5 14L30.5 8.25V11C30.5 12.6569 29.1569 14 27.5 14H11.5Z"
+                                        fill="#FD6020" />
+                                    <path
+                                        d="M11.6846 0.110324C12.0504 0.110324 12.4686 0.164948 12.7822 0.379856V1.45407C12.5209 1.13171 12.1027 0.916965 11.6846 0.916965C10.8484 0.970743 10.1695 1.72248 10.2217 2.582V2.68943C10.2217 3.54906 10.9011 4.19431 11.7373 4.19431C12.1551 4.19418 12.521 3.97931 12.7822 3.6572V4.73142C12.4165 4.89254 12.0507 4.9999 11.6328 4.99997C10.3262 4.99997 9.28027 3.87147 9.28027 2.52829C9.28037 1.13152 10.3258 0.00295002 11.6846 0.110324ZM19.8906 3.33396L21.1445 0.110324H22.085L20.1514 4.99997H19.6807L17.7471 0.110324H18.6885L19.8906 3.33396ZM7.50391 0.00290239C7.97414 0.00303516 8.44481 0.218726 8.81055 0.540988L8.33984 1.18552C8.13089 0.970721 7.86959 0.809707 7.6084 0.809543C7.29481 0.755816 7.03273 1.02429 6.98047 1.34665C6.98053 1.61515 7.13769 1.72263 7.66016 1.93747C8.70524 2.3672 8.96719 2.6895 9.01953 3.33396V3.49509C8.96727 4.35472 8.28741 4.99999 7.45117 4.94626C6.82403 4.94625 6.19641 4.62411 5.88281 4.03318L6.45801 3.44138C6.6148 3.81747 6.9813 4.08689 7.39941 4.08689H7.45117C7.76476 4.08689 8.07812 3.76376 8.07812 3.38767C8.07798 3.17302 7.97402 3.01165 7.81738 2.90427C7.60832 2.79682 7.39851 2.68944 7.18945 2.63571C6.35365 2.36711 6.09282 1.99116 6.09277 1.34665V1.29294C6.14504 0.540764 6.7722 -0.0508246 7.50391 0.00290239ZM2.06836 0.110324C3.32237 0.164265 4.3147 1.23919 4.2627 2.52829C4.26262 3.2265 3.94914 3.87102 3.42676 4.35446C2.95638 4.73055 2.38155 4.9453 1.80664 4.89157H0.5V0.110324H2.06836ZM5.51758 4.89255H4.62891V0.110324H5.51758V4.89255ZM25.0117 0.916965H23.3916V1.99118H24.96V2.79685H23.3916V4.08689H25.0117V4.89255H22.5039V0.110324H25.0117V0.916965ZM26.8936 0.110324C27.9385 0.110331 28.5133 0.594009 28.5137 1.50681C28.5659 2.20516 28.0958 2.79669 27.4688 2.90427L28.8799 4.89157H27.7822L26.5801 2.95798H26.4756V4.89157H25.5869V0.110324H26.8936ZM1.64941 0.915988H1.38867V4.08591H1.64941C2.06746 4.13963 2.53797 3.97848 2.85156 3.70993C3.16494 3.38766 3.3222 2.95789 3.32227 2.47458C3.32216 2.04492 3.16504 1.61421 2.85156 1.29196C2.53799 1.02365 2.06725 0.862317 1.64941 0.915988ZM26.4756 2.31345H26.7363C27.3112 2.31345 27.5732 2.04406 27.5732 1.56052C27.5729 1.13122 27.3108 0.862277 26.7363 0.862277H26.4756V2.31345Z"
+                                        fill="black" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15.4478 0C14.1411 0 13.0436 1.07454 13.0436 2.47144C13.0436 3.81461 14.0889 4.94288 15.4478 4.99661C16.8066 5.05033 17.8519 3.92207 17.9042 2.52517C17.8519 1.12827 16.8066 0 15.4478 0V0Z"
+                                        fill="#FD6020" />
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof Videos -->
+                <div class="maison_commerce_social_proof">
+                    <h3 class="maison_commerce_social_title">
+                        What Tik Tok and Customers are Saying
+                    </h3>
+                    <div class="maison_commerce_video_grid">
+                        <div class="maison_commerce_video_thumbnail" @click="playVideo(1)">
+                            <div class="maison_commerce_play_button">
+                                <svg class="maison_commerce_play_icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="maison_commerce_video_thumbnail" @click="playVideo(2)">
+                            <div class="maison_commerce_play_button">
+                                <svg class="maison_commerce_play_icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="maison_commerce_video_thumbnail" @click="playVideo(3)">
+                            <div class="maison_commerce_play_button">
+                                <svg class="maison_commerce_play_icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="maison_commerce_reviews_section">
+                    <div class="maison_commerce_reviews_header">
+                        <h3 class="maison_commerce_reviews_title">
+                            Happy Stories From Our Customers
+                        </h3>
+                        <div class="maison_commerce_reviews_nav">
+                            <button class="maison_commerce_nav_button" @click="previousReviews()">
+                                <svg class="maison_commerce_nav_icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                                </svg>
+                            </button>
+                            <button class="maison_commerce_nav_button" @click="nextReviews()">
+                                <svg class="maison_commerce_nav_icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="maison_commerce_reviews_grid">
+                        <template x-for="review in visibleReviews" :key="review.id">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_stars">
+                                    <template x-for="i in 5" :key="i">
+                                        <svg class="maison_commerce_review_star" viewBox="0 0 24 24"
+                                            fill="currentColor">
+                                            <path
+                                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                    </template>
+                                </div>
+                                <p class="maison_commerce_review_text" x-text="review.text"></p>
+                                <div class="maison_commerce_review_author">
+                                    <span x-text="review.author"></span>
+                                    <div class="maison_commerce_review_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg class="maison_commerce_verified_icon" viewBox="0 0 24 24"
+                                            fill="currentColor">
+                                            <path
+                                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                        </svg>
+                                        Verified Buyer
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="maison_commerce_pagination">
+                        <template x-for="(page, index) in totalPages" :key="index">
+                            <div class="maison_commerce_page_dot" :class="{ 'active': currentReviewPage === index }"
+                                @click="goToReviewPage(index)"></div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="maison_commerce_faq_section">
+                    <template x-for="(faq, index) in faqs" :key="index">
+                        <div class="maison_commerce_faq_item" @click="toggleFaq(index)">
+                            <svg class="maison_commerce_faq_icon" viewBox="0 0 24 24" fill="currentColor"
+                                x-html="faq.icon"></svg>
+                            <div class="maison_commerce_faq_question" x-text="faq.question"></div>
+                            <svg class="maison_commerce_faq_toggle" :class="{ 'open': faq.open }" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path d="M7 10l5 5 5-5z" />
+                            </svg>
+                            <div class="maison_commerce_faq_answer" :class="{ 'open': faq.open }" x-text="faq.answer">
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function productPage() {
+            return {
+                selectedBundleIndex: 1,
+                subscriptionType: "subscribe",
+                dropdownOpen: false,
+                selectedFrequency: "6 Months (Most Popular)",
+                currentReviewPage: 0,
+                currentImageIndex: 0,
+                images: [
+                    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=432&h=444&fit=crop",
+                    "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=432&h=444&fit=crop",
+                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=432&h=444&fit=crop",
+                    "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=432&h=444&fit=crop",
+                    "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=432&h=444&fit=crop"
+                ],
+                bundles: [
+                    {
+                        bottles: "1 Bottles",
+                        supply: "3 MONTH SUPPLY",
+                        price: "$19.95",
+                        originalPrice: "$39.95",
+                        savings: "$20",
+                        savingsText: "You Save $20",
+                        freeShipping: false,
+                        popular: false,
+                        bestValue: false,
+                    },
+                    {
+                        bottles: "2 Bottles",
+                        supply: "6 MONTH SUPPLY",
+                        price: "$35.90",
+                        originalPrice: "$79.90",
+                        savings: "$44",
+                        savingsText: "You Save $44",
+                        freeShipping: true,
+                        popular: true,
+                        bestValue: false,
+                    },
+                    {
+                        bottles: "3 Bottles",
+                        supply: "9 MONTH SUPPLY",
+                        price: "$53.85",
+                        originalPrice: "$119.85",
+                        savings: "$66",
+                        savingsText: "You Save 66 USD",
+                        freeShipping: true,
+                        popular: false,
+                        bestValue: true,
+                    },
+                ],
+                reviews: [
+                    {
+                        id: 1,
+                        text: "After 3 weeks of Moringa, my energy has transformed! No more afternoon coffee and I wake up refreshed. Best health decision this year!",
+                        author: "Sarah M., 42",
+                    },
+                    {
+                        id: 2,
+                        text: "ACV capsules eliminated my bloating and reduced cravings without the vinegar taste. A true game-changer for my digestion!",
+                        author: "James T., 51",
+                    },
+                    {
+                        id: 3,
+                        text: "Skeptic turned believer! Less joint pain, better sleep, and glowing skin that friends notice. These supplements are now my daily essential!",
+                        author: "Linda K., 38",
+                    },
+                    {
+                        id: 4,
+                        text: "Amazing results after just 2 weeks! My energy levels are through the roof and I feel more focused throughout the day.",
+                        author: "Mike R., 35",
+                    },
+                    {
+                        id: 5,
+                        text: "I've tried many supplements but this one actually works. My digestion has improved and I feel healthier overall.",
+                        author: "Emma S., 29",
+                    },
+                    {
+                        id: 6,
+                        text: "Great quality product with noticeable benefits. My skin looks better and I have more sustained energy.",
+                        author: "David L., 44",
+                    },
+                ],
+                faqs: [
+                    {
+                        question: "What ingredients are in your supplements?",
+                        answer:
+                            "Our Moringa supplements contain 100% pure Moringa Oleifera leaf powder, sourced from organic farms. Each capsule contains 500mg of premium Moringa with no fillers or artificial additives.",
+                        icon: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+                        open: false,
+                    },
+                    {
+                        question: "Where are your products manufactured?",
+                        answer:
+                            "Our supplements are manufactured in FDA-registered facilities in the USA, following strict GMP (Good Manufacturing Practice) guidelines to ensure quality and safety.",
+                        icon: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>',
+                        open: false,
+                    },
+                    {
+                        question: "Do you offer a satisfaction guarantee?",
+                        answer:
+                            "Yes! We offer a 100-day money-back guarantee. If you're not completely satisfied with your purchase, contact us within 100 days for a full refund.",
+                        icon: '<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>',
+                        open: false,
+                    },
+                    {
+                        question: "How quickly will I receive my order?",
+                        answer:
+                            "Orders typically ship within 1-2 business days and arrive within 3-5 business days for standard shipping. Free shipping is available on orders over $40.",
+                        icon: '<path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/>',
+                        open: false,
+                    },
+                    {
+                        question: "Are your supplements third-party tested?",
+                        answer:
+                            "Yes, all our products undergo rigorous third-party testing for purity, potency, and safety. We test for heavy metals, pesticides, and other contaminants.",
+                        icon: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>',
+                        open: false,
+                    },
+                    {
+                        question: "Can I take these supplements with medications?",
+                        answer:
+                            "While our supplements are natural, we recommend consulting with your healthcare provider before starting any new supplement regimen, especially if you're taking medications.",
+                        icon: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>',
+                        open: false,
+                    },
+                ],
+
+                get selectedBundle() {
+                    return this.bundles[this.selectedBundleIndex];
+                },
+
+                get visibleReviews() {
+                    const start = this.currentReviewPage * 3;
+                    return this.reviews.slice(start, start + 3);
+                },
+
+                get totalPages() {
+                    return Math.ceil(this.reviews.length / 3);
+                },
+
+                selectBundle(index) {
+                    this.selectedBundleIndex = index;
+                },
+
+                changeMainImage(index) {
+                    this.currentImageIndex = index;
+                    const mainImage = document.querySelector('.maison_commerce_main_image');
+                    if (mainImage) {
+                        mainImage.style.background = `url("${this.images[index]}") center/cover`;
+                    }
+
+                    // Update thumbnail active states
+                    document.querySelectorAll('.maison_commerce_thumbnail').forEach((thumb, i) => {
+                        if (i === index) {
+                            thumb.style.border = '2px solid #5eb116';
+                        } else {
+                            thumb.style.border = 'none';
+                        }
+                    });
+                },
+
+                nextImage() {
+                    const nextIndex = (this.currentImageIndex + 1) % this.images.length;
+                    this.changeMainImage(nextIndex);
+                },
+
+                prevImage() {
+                    const prevIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+                    this.changeMainImage(prevIndex);
+                },
+
+                toggleDropdown() {
+                    this.dropdownOpen = !this.dropdownOpen;
+                    // Close dropdown when clicking outside
+                    if (this.dropdownOpen) {
+                        setTimeout(() => {
+                            const closeDropdown = (e) => {
+                                if (
+                                    !e.target.closest(".maison_commerce_dropdown") &&
+                                    !e.target.closest(".maison_commerce_dropdown_menu")
+                                ) {
+                                    this.dropdownOpen = false;
+                                    document.removeEventListener("click", closeDropdown);
+                                }
+                            };
+                            document.addEventListener("click", closeDropdown);
+                        }, 100);
+                    }
+                },
+
+                addToCart() {
+                    // Add to cart logic
+                    console.log("Adding to cart:", this.selectedBundle);
+                    alert("Product added to cart!");
+                },
+
+                playVideo(videoId) {
+                    // Video play logic
+                    console.log("Playing video:", videoId);
+                },
+
+                previousReviews() {
+                    if (this.currentReviewPage > 0) {
+                        this.currentReviewPage--;
+                    }
+                },
+
+                nextReviews() {
+                    if (this.currentReviewPage < this.totalPages - 1) {
+                        this.currentReviewPage++;
+                    }
+                },
+
+                goToReviewPage(page) {
+                    this.currentReviewPage = page;
+                },
+
+                toggleFaq(index) {
+                    this.faqs[index].open = !this.faqs[index].open;
+                },
+
+                selectFrequency(frequency) {
+                    this.selectedFrequency = frequency;
+                    this.dropdownOpen = false;
+                },
+            };
+        }
+    </script>
+</body>
+
+</html>

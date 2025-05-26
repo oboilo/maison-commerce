@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Healthcare Reviews</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        :root {
+            --maison-commerce-primary: #5EB116;
+            --maison-commerce-primary-light: #A5D37D;
+            --maison-commerce-primary-bg: #EEF7E6;
+            --maison-commerce-border: #D4EAC1;
+            --maison-commerce-text-primary: #1D211E;
+            --maison-commerce-text-secondary: rgba(18, 18, 18, 0.75);
+            --maison-commerce-text-muted: #192F06;
+            --maison-commerce-accent: #FDAC31;
+            --maison-commerce-white: #FFFFFF;
+            --maison-commerce-bg: #FCFDFA;
+            --maison-commerce-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabin', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--maison-commerce-bg);
+            color: var(--maison-commerce-text-primary);
+            line-height: 1.5;
+        }
+
+        .maison_commerce_reviews_section {
+            background-color: var(--maison-commerce-bg);
+            border-top: 1px solid var(--maison-commerce-border);
+            padding: 56px 80px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .maison_commerce_reviews_container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .maison_commerce_reviews_header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .maison_commerce_reviews_header_content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .maison_commerce_badge {
+            background-color: var(--maison-commerce-primary-bg);
+            border: 1px solid var(--maison-commerce-border);
+            border-radius: 999px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .maison_commerce_stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .maison_commerce_star {
+            width: 20px;
+            height: 20px;
+            background-image: url('./assets/star.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .maison_commerce_badge_text {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--maison-commerce-text-primary);
+        }
+
+        .maison_commerce_heading {
+            font-family: 'Familjen Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            color: var(--maison-commerce-text-primary);
+            max-width: 600px;
+        }
+
+        .maison_commerce_reviews_grid {
+            width: 100%;
+            max-width: 1280px;
+            /* overflow: hidden; */
+        }
+
+        .maison_commerce_swiper {
+            width: 100%;
+            height: auto;
+            padding-bottom: 20px;
+            overflow: visible !important;
+        }
+
+        .swiper {
+            overflow: visible !important;
+
+        }
+
+        .maison_commerce_swiper .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .maison_commerce_swiper .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+        .maison_commerce_review_card {
+            background-color: var(--maison-commerce-white);
+            border: 1px solid #D0D5DD;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--maison-commerce-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+            width: 100%;
+            height: 100%;
+            /* min-height: 280px; */
+        }
+
+        .maison_commerce_review_content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .maison_commerce_review_stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .maison_commerce_review_star {
+            width: 16px;
+            height: 16px;
+            background-image: url('./assets/star-filled.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .maison_commerce_review_text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--maison-commerce-text-secondary);
+        }
+
+        .maison_commerce_review_author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .maison_commerce_author_name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--maison-commerce-text-primary);
+        }
+
+        .maison_commerce_author_dot {
+            width: 4px;
+            height: 4px;
+            background-color: var(--maison-commerce-text-muted);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .maison_commerce_verified_badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .maison_commerce_verified_icon {
+            width: 16px;
+            height: 16px;
+            background-image: url('./assets/verified-badge-check.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .maison_commerce_verified_text {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--maison-commerce-text-primary);
+        }
+
+        .maison_commerce_controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 24px;
+        }
+
+        .maison_commerce_progress {
+            flex: 1;
+            height: 2px;
+            background-color: rgba(25, 47, 6, 0.1);
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .maison_commerce_progress_bar {
+            height: 100%;
+            background-color: var(--maison-commerce-primary);
+            border-radius: 999px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile Progress Dots */
+        .maison_commerce_progress_dots {
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .maison_commerce_progress_dot {
+            width: 16px;
+            height: 4px;
+            background-color: rgba(25, 47, 6, 0.1);
+            border-radius: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .maison_commerce_progress_dot.active {
+            background-color: var(--maison-commerce-text-muted);
+        }
+
+        /* Swiper Custom Styles */
+        .maison_commerce_swiper .swiper-pagination {
+            display: none;
+        }
+
+        .maison_commerce_swiper .swiper-button-next,
+        .maison_commerce_swiper .swiper-button-prev {
+            display: none;
+        }
+
+        .maison_commerce_nav_buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .maison_commerce_nav_button {
+            width: 56px;
+            height: 56px;
+            background-color: var(--maison-commerce-border);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_nav_button:hover {
+            background-color: var(--maison-commerce-primary-light);
+            transform: translateY(-2px);
+        }
+
+        .maison_commerce_nav_icon {
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .maison_commerce_nav_icon--left {
+            background-image: url('./assets/arrow-left.svg');
+        }
+
+        .maison_commerce_nav_icon--right {
+            background-image: url('./assets/arrow-right.svg');
+        }
+
+        .maison_commerce_gradient_overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(252, 253, 250, 0) 0%, var(--maison-commerce-bg) 100%);
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1023px) {
+            .maison_commerce_reviews_section {
+                padding: 40px 24px;
+            }
+
+            .maison_commerce_heading {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .maison_commerce_reviews_section {
+                padding: 32px 16px;
+            }
+
+            .maison_commerce_reviews_header {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .maison_commerce_heading {
+                font-size: 28px;
+            }
+
+            .maison_commerce_controls {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            /* Hide navigation buttons on mobile */
+            .maison_commerce_nav_buttons {
+                display: none;
+            }
+
+            /* Hide progress bar on mobile */
+            .maison_commerce_progress {
+                display: none;
+            }
+
+            /* Show progress dots on mobile */
+            .maison_commerce_progress_dots {
+                display: flex;
+            }
+
+            .maison_commerce_gradient_overlay {
+                width: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="maison_commerce_reviews_section">
+        <div class="maison_commerce_reviews_container">
+            <!-- Header -->
+            <div class="maison_commerce_reviews_header">
+                <div class="maison_commerce_reviews_header_content">
+                    <div class="maison_commerce_badge">
+                        <div class="maison_commerce_stars">
+                            <div class="maison_commerce_star"></div>
+                            <div class="maison_commerce_star"></div>
+                            <div class="maison_commerce_star"></div>
+                            <div class="maison_commerce_star"></div>
+                            <div class="maison_commerce_star"></div>
+                        </div>
+                        <span class="maison_commerce_badge_text">Rated <strong>4.5/5</strong> based on <strong>+1000
+                            </strong> reviews.</span>
+                    </div>
+                    <h2 class="maison_commerce_heading">What Our Customers Say</h2>
+                </div>
+            </div>
+
+            <!-- Reviews Slider -->
+            <div class="maison_commerce_reviews_grid">
+                <div class="swiper maison_commerce_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        After 2 weeks of taking Moringa, my energy levels have completely
+                                        transformed!
+                                        No more
+                                        afternoon slumps, and I wake up feeling refreshed. Best natural supplement
+                                        I've
+                                        tried!
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Sarah M., 42</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        These capsules have improved my overall health dramatically. Better
+                                        digestion,
+                                        stronger
+                                        immunity, and my skin looks years younger. So glad I discovered this
+                                        superfood!
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Michael K., 54</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        As someone struggling with low energy and joint discomfort, Fresh Healthcare
+                                        Moringa has
+                                        been a game-changer. Just 2 capsules daily and I feel like myself again.
+                                        Highly
+                                        recommend!
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Linda W., 47</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        I've tried other Moringa supplements before, but none compare to this
+                                        quality.
+                                        Pure, potent, and actually works! My immune system has never been stronger,
+                                        especially during winter months.
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Robert J., 59</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        Amazing results! My doctor was impressed with my improved blood work after
+                                        just
+                                        one month. Energy is through the roof and I feel 10 years younger. This is
+                                        now
+                                        part of my daily routine.
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Jennifer L., 38</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        Fast shipping, excellent quality, and real results. My inflammation has
+                                        decreased significantly and my joint pain is almost gone. Highly recommend
+                                        to
+                                        anyone looking for natural health solutions.
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">David K., 51</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="maison_commerce_review_card">
+                                <div class="maison_commerce_review_content">
+                                    <div class="maison_commerce_review_stars">
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                        <div class="maison_commerce_review_star"></div>
+                                    </div>
+                                    <p class="maison_commerce_review_text">
+                                        Best investment in my health! The quality is outstanding and the customer
+                                        service is exceptional. I've been taking it for 3 months and feel
+                                        incredible.
+                                        Will definitely reorder.
+                                    </p>
+                                </div>
+                                <div class="maison_commerce_review_author">
+                                    <span class="maison_commerce_author_name">Maria S., 45</span>
+                                    <div class="maison_commerce_author_dot"></div>
+                                    <div class="maison_commerce_verified_badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <g clip-path="url(#clip0_4436_587)">
+                                                <path
+                                                    d="M1.30295 9.20921C0.946695 8.79472 0.946498 8.18302 1.30263 7.76842C1.55756 7.47164 1.81292 7.1801 2.06938 6.89316C1.99184 6.52122 1.91737 6.14575 1.84572 5.76581C1.74444 5.22873 2.05012 4.69888 2.56584 4.51789C2.93499 4.38834 3.30191 4.26354 3.66747 4.14327C3.78628 3.78239 3.90953 3.41998 4.03746 3.05511C4.21829 2.53933 4.74793 2.23332 5.28505 2.33443C5.66302 2.40559 6.03681 2.47964 6.40726 2.55683C6.6895 2.30475 6.97618 2.05372 7.26793 1.80312C7.68253 1.44699 8.29423 1.44718 8.70872 1.80344C9.00195 2.05546 9.28989 2.3077 9.57323 2.56083C9.94995 2.4822 10.3301 2.40682 10.7146 2.33443C11.2517 2.23332 11.7813 2.53933 11.9622 3.05511C12.0901 3.41998 12.2133 3.78239 12.3321 4.14327C12.6977 4.26354 13.0647 4.38834 13.4338 4.51789C13.9496 4.69888 14.2553 5.22872 14.1539 5.76581C14.081 6.15228 14.0053 6.53411 13.9263 6.91229C14.1839 7.20041 14.4405 7.49329 14.6969 7.79163C15.0531 8.20612 15.0534 8.81782 14.6972 9.23242C14.4422 9.52924 14.1869 9.82082 13.9304 10.1078C14.0079 10.4797 14.0824 10.8552 14.154 11.2351C14.2553 11.7722 13.9496 12.3021 13.4339 12.483C13.0647 12.6127 12.6977 12.7375 12.332 12.8577C12.2132 13.2186 12.09 13.581 11.9621 13.9458C11.7812 14.4616 11.2516 14.7676 10.7145 14.6665C10.3366 14.5953 9.96286 14.5213 9.59246 14.4442C9.31027 14.6962 9.02363 14.9472 8.73192 15.1977C8.31732 15.5538 7.70563 15.5536 7.29114 15.1974C6.99793 14.9454 6.71001 14.6932 6.4267 14.4401C6.04991 14.5187 5.66969 14.5941 5.28514 14.6665C4.74803 14.7676 4.21838 14.4616 4.03754 13.9458C3.90962 13.581 3.78639 13.2186 3.66759 12.8577C3.30195 12.7374 2.93497 12.6127 2.56574 12.483C2.05002 12.3021 1.74434 11.7722 1.84562 11.2351C1.91852 10.8485 1.99435 10.4666 2.07336 10.0883C1.81586 9.80025 1.55929 9.50747 1.30295 9.20921Z"
+                                                    fill="#A5D37D" stroke="#192F06" stroke-width="1.25"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M5.65332 9.08661L7.35997 10.8466C8.16305 8.53967 8.83186 7.52738 10.3466 6.15332"
+                                                    stroke="#192F06" stroke-width="1.25" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_4436_587">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(0 0.5)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="maison_commerce_verified_text">Verified Buyer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="maison_commerce_controls">
+                <div class="maison_commerce_progress">
+                    <div class="maison_commerce_progress_bar"></div>
+                </div>
+                <div class="maison_commerce_progress_dots">
+                    <div class="maison_commerce_progress_dot active"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                    <div class="maison_commerce_progress_dot"></div>
+                </div>
+                <div class="maison_commerce_nav_buttons">
+                    <button class="maison_commerce_nav_button maison_commerce_prev_btn">
+                        <div class="maison_commerce_nav_icon maison_commerce_nav_icon--left"></div>
+                    </button>
+                    <button class="maison_commerce_nav_button maison_commerce_next_btn">
+                        <div class="maison_commerce_nav_icon maison_commerce_nav_icon--right"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="maison_commerce_gradient_overlay"></div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.maison_commerce_swiper', {
+                // Swiper configuration
+                slidesPerView: 1.1,
+                spaceBetween: 16,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                speed: 600,
+                effect: 'slide',
+
+                // Responsive breakpoints
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2.15,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3.15,
+                        spaceBetween: 24,
+                    }
+                },
+
+                // Navigation
+                navigation: {
+                    nextEl: '.maison_commerce_next_btn',
+                    prevEl: '.maison_commerce_prev_btn',
+                },
+
+                // Events
+                on: {
+                    init: function () {
+                        updateProgressBar(this);
+                    },
+                    slideChange: function () {
+                        updateProgressBar(this);
+                    }
+                }
+            });
+
+            // Update progress bar and dots function
+            function updateProgressBar(swiperInstance) {
+                // Update progress bar
+                const progressBar = document.querySelector('.maison_commerce_progress_bar');
+                const totalSlides = swiperInstance.slides.length;
+                const currentSlide = swiperInstance.realIndex + 1;
+                const percentage = (currentSlide / totalSlides) * 100;
+                progressBar.style.width = `${percentage}%`;
+
+                // Update progress dots
+                const progressDots = document.querySelectorAll('.maison_commerce_progress_dot');
+                progressDots.forEach((dot, index) => {
+                    if (index === swiperInstance.realIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            // Add hover effects to navigation buttons
+            const navButtons = document.querySelectorAll('.maison_commerce_nav_button');
+            navButtons.forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-2px)';
+                });
+
+                button.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
