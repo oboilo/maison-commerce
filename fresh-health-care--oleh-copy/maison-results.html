@@ -49,6 +49,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-wrap: balance;
         }
 
         body {
@@ -106,6 +107,11 @@
             line-height: 1.2;
             color: var(--color-text-primary);
             margin-bottom: var(--spacing-md);
+        }
+
+        .maison_commerce_h_highlight {
+            color: var(--color-primary);
+            text-decoration: underline;
         }
 
         .maison_commerce_description {
@@ -440,11 +446,11 @@
             }
 
             .maison_commerce_product_image {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                margin-top: var(--spacing-lg);
-                align-self: center;
+                bottom: -12px;
+                right: -48px;
+                width: 96px;
+                height: 96px;
+                object-fit: cover;
             }
         }
 
@@ -463,7 +469,8 @@
                 <!-- Results Statistics Card -->
                 <div class="maison_commerce_results_card maison_commerce_fade_up">
                     <div class="maison_commerce_card_content">
-                        <h2 class="maison_commerce_headline" id="headline1">See Results in 30 Days</h2>
+                        <h2 class="maison_commerce_headline" id="headline1">See Results <span
+                                class="maison_commerce_h_highlight">in 30 Days</span></h2>
                         <p class="maison_commerce_description">Notice improvements in weeks and full benefits in months
                             with daily use.</p>
                     </div>
@@ -700,10 +707,8 @@
 
         <!-- Call to Action Section -->
         <div class="maison_commerce_cta_section maison_commerce_fade_up">
-            <button class="maison_commerce_btn" x-data="{ hover: false }" @mouseenter="hover = true"
-                @mouseleave="hover = false">
+            <button class="maison_commerce_btn">
                 <span class="maison_commerce_btn_text">Get Yours Now & Feel the Difference!</span>
-                <span class="maison_commerce_btn_text_hover">Get Yours Now & Feel the Difference!</span>
             </button>
 
             <div class="maison_commerce_guarantees">

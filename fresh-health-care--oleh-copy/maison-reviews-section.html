@@ -27,6 +27,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-wrap: balance;
         }
 
         body {
@@ -42,6 +43,7 @@
             padding: 56px 80px;
             position: relative;
             /* overflow: hidden; */
+            overflow: clip;
         }
 
         .maison_commerce_reviews_container {
@@ -767,10 +769,10 @@
                 spaceBetween: 16,
                 loop: true,
                 autoplay: {
-                    delay: 5000,
+                    delay: 3000,
                     disableOnInteraction: false,
                 },
-                speed: 600,
+                speed: 500,
                 effect: 'slide',
 
                 // Responsive breakpoints

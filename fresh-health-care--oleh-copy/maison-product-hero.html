@@ -18,6 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-wrap: balance;
         }
 
         body {
@@ -417,9 +418,17 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            height: 100%;
+            border-top: 2px solid #eaecf0;
+            margin-top: 24px;
+        }
+
+        .maison_commerce_bundle_option.active .maison_commerce_bundle_option_footer {
+            border-color: #5eb116;
         }
 
         .maison_commerce_supply_badge {
+            margin-top: -12px;
             background: #5eb116;
             color: white;
             padding: 4px 12px;
@@ -478,7 +487,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            color: #5eb116;
+            color: #1D211E;
             font-size: 14px;
             font-weight: 600;
             width: fit-content;
@@ -701,13 +710,6 @@
             }
         }
 
-        /* width: 8px;
-        height: 8px;
-        background: #5eb116;
-        border-radius: 50%;
-        border: 4px solid rgba(94, 177, 22, 0.2);
-        } */
-
         .maison_commerce_stock_text {
             font-weight: 600;
             font-size: 14px;
@@ -771,6 +773,9 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .maison_commerce_guarantee_item {
@@ -791,9 +796,23 @@
         }
 
         .maison_commerce_guarantee_divider {
+            background: rgba(25, 47, 6, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_guarantee_divider.vertical {
             width: 1px;
             height: 16px;
-            background: rgba(25, 47, 6, 0.2);
+            flex-basis: auto;
+            align-self: auto;
+        }
+
+        .maison_commerce_guarantee_divider.horizontal {
+            width: 32px;
+            height: 1px;
+            margin: 8px 0;
+            flex-basis: 100%;
+            align-self: center;
         }
 
         .maison_commerce_payment_methods {
@@ -1073,33 +1092,6 @@
             padding-bottom: 16px;
         }
 
-        /* Button hover effect */
-        /* .maison_commerce_button_text {
-            position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .maison_commerce_add_to_cart:hover .maison_commerce_button_text {
-            transform: translateY(-2px);
-        }
-
-        .maison_commerce_add_to_cart::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .maison_commerce_add_to_cart:hover::after {
-            top: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 1;
-        } */
-
         /* Responsive Design */
         @media (max-width: 1439px) {
             .maison_commerce_container {
@@ -1113,6 +1105,10 @@
                 padding: 32px 40px;
                 max-width: 90vw;
                 overflow: clip;
+            }
+
+            .maison_commerce_product_info {
+                max-width: 80vw;
             }
 
             .maison_commerce_product_grid {
@@ -1215,6 +1211,8 @@
 
             .maison_commerce_product_info {
                 order: 2;
+                width: 100%;
+                max-width: auto;
             }
 
             .maison_commerce_main_image {
@@ -1235,7 +1233,9 @@
                 height: 50vh;
             }
 
-
+            .maison_commerce_feature_description {
+                font-size: 14px;
+            }
 
             .maison_commerce_features_column {
                 display: grid;
@@ -1327,7 +1327,7 @@
             .maison_commerce_bundle_options {
                 flex-direction: row;
                 gap: 8px;
-                overflow-x: auto;
+                /* overflow-x: auto; */
                 scrollbar-width: none;
                 -ms-overflow-style: none;
                 display: grid;
@@ -1375,6 +1375,18 @@
             margin-top: 4px;
         }
 
+        .maison_commerce_free_shipping_divider {
+            width: 100%;
+            height: 1px;
+            border: none;
+            border-top: 1px dashed #2a2a2a20;
+        }
+
+        .maison_commerce_bundle_option:nth-child(2) .maison_commerce_free_shipping_divider {
+            opacity: 0;
+            visibility: hidden;
+        }
+
         .maison_commerce_subscription_section {
             margin-bottom: 16px;
         }
@@ -1405,15 +1417,19 @@
         }
 
         .maison_commerce_guarantees {
-            flex-direction: column;
+
             gap: 8px;
             padding: 8px 12px;
             text-align: center;
             width: 100%;
         }
 
-        .maison_commerce_guarantee_divider {
-            display: none;
+        .maison_commerce_guarantee_divider.horizontal {
+            width: 32px;
+            height: 1px;
+            margin: 4px 0;
+            flex-basis: 100%;
+            align-self: center;
         }
 
         .maison_commerce_guarantee_text {
@@ -2015,7 +2031,6 @@
                                 <div class="maison_commerce_bundle_image"></div>
                                 <div class="maison_commerce_bundle_bottles" x-text="bundle.bottles"></div>
                                 <div class="maison_commerce_bundle_option_footer" style="">
-
                                     <div class="maison_commerce_supply_badge" x-text="bundle.supply"></div>
                                     <div class="maison_commerce_bundle_pricing">
                                         <div class="maison_commerce_bundle_pricing_row">
@@ -2025,6 +2040,7 @@
                                         </div>
                                         <div class="maison_commerce_bundle_savings" x-text="bundle.savingsText"></div>
                                     </div>
+                                    <div class="maison_commerce_free_shipping_divider"></div>
                                     <div class="maison_commerce_free_shipping" x-show="bundle.freeShipping">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                             viewBox="0 0 17 17" fill="none">
@@ -2071,7 +2087,7 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        Free shipping
+                                        <span style="color: #5eb116;">Free</span> shipping
                                     </div>
                                 </div>
 
@@ -2193,7 +2209,7 @@
                             </div>
                         </button>
 
-                        <div class="maison_commerce_guarantees">
+                        <div class="maison_commerce_guarantees" id="guaranteesContainer">
                             <div class="maison_commerce_guarantee_item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
                                     fill="none">
@@ -2224,7 +2240,7 @@
                                 </svg>
                                 <span class="maison_commerce_guarantee_text">100-Day Money-Back Guarantee</span>
                             </div>
-                            <div class="maison_commerce_guarantee_divider"></div>
+                            <div class="maison_commerce_guarantee_divider vertical" id="guaranteeDivider"></div>
                             <div class="maison_commerce_guarantee_item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
                                     fill="none">
@@ -2721,6 +2737,47 @@
                 },
             };
         }
+    </script>
+
+    <script>
+        // Dynamic divider orientation based on wrap direction
+        function updateDividerOrientation() {
+            const container = document.getElementById('guaranteesContainer');
+            const divider = document.getElementById('guaranteeDivider');
+            const items = container.querySelectorAll('.maison_commerce_guarantee_item');
+
+            if (!container || !divider || items.length < 2) return;
+
+            // Get the position of the first and second guarantee items
+            const firstItemRect = items[0].getBoundingClientRect();
+            const secondItemRect = items[1].getBoundingClientRect();
+
+            // Check if items are on the same line (horizontal) or different lines (vertical wrap)
+            const isWrapped = Math.abs(firstItemRect.top - secondItemRect.top) > 10; // 10px tolerance
+
+            if (isWrapped) {
+                // Items are wrapped to different lines - use horizontal divider
+                divider.classList.remove('vertical');
+                divider.classList.add('horizontal');
+            } else {
+                // Items are on the same line - use vertical divider
+                divider.classList.remove('horizontal');
+                divider.classList.add('vertical');
+            }
+        }
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', updateDividerOrientation);
+
+        // Run on window resize
+        window.addEventListener('resize', function () {
+            // Debounce the resize event
+            clearTimeout(window.dividerResizeTimeout);
+            window.dividerResizeTimeout = setTimeout(updateDividerOrientation, 100);
+        });
+
+        // Run when fonts are loaded (in case text affects layout)
+        document.fonts.ready.then(updateDividerOrientation);
     </script>
 </body>
 

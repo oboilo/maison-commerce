@@ -31,6 +31,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-wrap: balance;
         }
 
         .maison_commerce_comparison_section {
@@ -101,9 +102,15 @@
             font-size: 40px;
             line-height: 1.2;
             color: var(--maison-commerce-text-primary);
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            /* gap: 0.25em; */
+            justify-content: start;
         }
 
         .maison_commerce_heading_span {
+            display: inline;
             color: var(--maison-commerce-primary, #5EB116);
             text-decoration-line: underline;
             /* text-underline-position: from-font; */
@@ -422,8 +429,12 @@
             border-bottom: 1px solid var(--maison-commerce-border);
         }
 
+
+
+
         /* Responsive Design */
         @media (max-width: 1023px) {
+
             .maison_commerce_comparison_section {
                 padding: 40px 24px;
             }
@@ -449,6 +460,13 @@
 
             .maison_commerce_heading {
                 font-size: 32px;
+                justify-content: center;
+            }
+
+            .maison_commerce_heading_span {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
             }
 
             /* Tablet table adjustments */
