@@ -400,7 +400,7 @@
   .maison_commerce_product_info {
     width: 100%;
     min-width: 0;
-    gap: 18px;
+    gap: 20px;
   }
 
   .maison_commerce_main_image_row {
@@ -438,7 +438,11 @@
   }
 
   .maison_commerce_bundle_section {
-    padding: 16px 20px;
+    padding: 20px 24px;
+  }
+
+  .maison_commerce_bundle_title {
+    margin-bottom: 20px;
   }
 
   .maison_commerce_bundle_options {
@@ -455,15 +459,19 @@
   }
 
   .maison_commerce_product_title {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .maison_commerce_subscription_section {
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
 
   .maison_commerce_subscription_option {
-    padding: 12px;
+    padding: 10px 12px;
+  }
+
+  .maison_commerce_cta_section {
+    gap: 4px;
   }
 }
 
@@ -489,7 +497,7 @@
   .maison_commerce_product_info {
     width: 100%;
     min-width: 0;
-    gap: 20px;
+    gap: 22px;
   }
 
   .maison_commerce_main_image_row {
@@ -526,7 +534,11 @@
   }
 
   .maison_commerce_bundle_section {
-    padding: 18px 22px;
+    padding: 22px 26px;
+  }
+
+  .maison_commerce_bundle_title {
+    margin-bottom: 22px;
   }
 
   .maison_commerce_bundle_options {
@@ -543,7 +555,7 @@
   }
 
   .maison_commerce_product_title {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
 
@@ -569,7 +581,7 @@
   .maison_commerce_product_info {
     width: 100%;
     min-width: 0;
-    gap: 22px;
+    gap: 24px;
   }
 
   .maison_commerce_main_image_row {
@@ -606,7 +618,11 @@
   }
 
   .maison_commerce_bundle_section {
-    padding: 20px 24px;
+    padding: 24px 32px;
+  }
+
+  .maison_commerce_bundle_title {
+    margin-bottom: 24px;
   }
 
   .maison_commerce_bundle_options {
