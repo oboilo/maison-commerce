@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curlic Results Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .maison_commerce__results-section {
+            background: #FFFFFF;
+            padding: 56px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .maison_commerce__content-wrapper {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .maison_commerce__image-container {
+            width: 600px;
+            height: 600px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .maison_commerce__hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .maison_commerce__text-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .maison_commerce__header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        .maison_commerce__title {
+            font-family: 'Gordita', system-ui, -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 1.2em;
+            color: #1D211E;
+            margin: 0;
+        }
+
+        .maison_commerce__underline {
+            text-decoration: underline;
+            text-decoration-color: #A6372B;
+            color:#A6372B;
+            text-decoration-thickness: 4px;
+            text-underline-offset: 8px;
+        }
+
+        .maison_commerce__tag {
+            background: #F6EAE9;
+            border-radius: 999px;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.5em;
+            color: #5D1F18;
+            margin-bottom: 8px;
+        }
+
+        .maison_commerce__subtitle {
+            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: rgba(18, 18, 18, 0.75);
+        }
+
+        .maison_commerce__divider {
+            width: 461px;
+            height: 2px;
+            background: #A6372B;
+            margin-top: 48px;
+        }
+
+        .maison_commerce__stats-container {
+            background: #FCF7ED;
+            border: 1px solid #F6EBD2;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .maison_commerce__stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .maison_commerce__stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .maison_commerce__progress-circle {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .maison_commerce__progress-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            transform: rotate(-90deg);
+        }
+
+        .maison_commerce__circle-bg {
+            fill: none;
+            stroke: rgba(44, 15, 12, 0.1);
+            stroke-width: 4;
+            cx: 40;
+            cy: 40;
+            r: 32;
+        }
+
+        .maison_commerce__circle-progress {
+            fill: none;
+            stroke: #A6372B;
+            stroke-width: 4;
+            stroke-linecap: round;
+            cx: 40;
+            cy: 40;
+            r: 32;
+            stroke-dasharray: 201.06; /* 2 * π * 32 */
+            stroke-dashoffset: 201.06;
+            transition: stroke-dashoffset 2s ease-in-out;
+        }
+
+        .maison_commerce__percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.4em;
+            color: #A6372B;
+            text-align: center;
+        }
+
+        .maison_commerce__stat-text {
+            text-align: center;
+            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.5em;
+            color: rgba(18, 18, 18, 0.75);
+        }
+
+        .maison_commerce__disclaimer {
+            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5em;
+            color: rgba(18, 18, 18, 0.75);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .maison_commerce__cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .maison_commerce__cta-button {
+            background: linear-gradient(180deg, #B86057 0%, #A6372B 100%);
+            border: 1px solid;
+            border-image: linear-gradient(180deg, #EED9D7 0%, rgba(238, 217, 215, 0) 100%) 1;
+            border-bottom: none;
+            border-radius: 12px;
+            padding: 16px 32px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .maison_commerce__cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(166, 55, 43, 0.3);
+        }
+
+        .maison_commerce__cta-text {
+            font-family: 'Gordita', system-ui, -apple-system, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #FDFBFB;
+        }
+
+        .maison_commerce__guarantee {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 16px;
+        }
+
+        .maison_commerce__guarantee-icon {
+            width: 20px;
+            height: 20px;
+            background: #DFB356;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maison_commerce__guarantee-text {
+            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.5em;
+            color: #1D211E;
+        }
+
+        /* Animation for progress circles */
+        .maison_commerce__stat-item.animate .maison_commerce__circle-progress {
+            transition: stroke-dashoffset 2s ease-in-out;
+        }
+
+        .maison_commerce__stat-item:nth-child(1).animate .maison_commerce__circle-progress {
+            stroke-dashoffset: calc(201.06 - (201.06 * 0.97));
+        }
+
+        .maison_commerce__stat-item:nth-child(2).animate .maison_commerce__circle-progress {
+            stroke-dashoffset: calc(201.06 - (201.06 * 0.94));
+        }
+
+        .maison_commerce__stat-item:nth-child(3).animate .maison_commerce__circle-progress {
+            stroke-dashoffset: calc(201.06 - (201.06 * 0.99));
+        }
+
+        .maison_commerce__stat-item:nth-child(4).animate .maison_commerce__circle-progress {
+            stroke-dashoffset: calc(201.06 - (201.06 * 0.88));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1439px) {
+            .maison_commerce__results-section {
+                padding: 48px 40px;
+            }
+            
+            .maison_commerce__content-wrapper {
+                gap: 60px;
+            }
+            
+            .maison_commerce__image-container,
+            .maison_commerce__text-content {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .maison_commerce__content-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .maison_commerce__image-container,
+            .maison_commerce__text-content {
+                width: 100%;
+                max-width: 600px;
+            }
+            
+            .maison_commerce__image-container {
+                height: 400px;
+            }
+            
+            .maison_commerce__title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .maison_commerce__results-section {
+                padding: 20px;
+                gap: 24px;
+                max-width: 375px;
+            }
+            
+            .maison_commerce__content-wrapper {
+                gap: 24px;
+            }
+            
+            .maison_commerce__image-container {
+                height: 335px;
+                border-radius: 24px;
+            }
+            
+            .maison_commerce__header {
+                align-items: center;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .maison_commerce__title {
+                font-size: 24px;
+                line-height: 1.4em;
+                text-align: center;
+            }
+            
+            .maison_commerce__subtitle {
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .maison_commerce__text-content {
+                gap: 20px;
+            }
+            
+            .maison_commerce__stats-container {
+                padding: 16px;
+                border-radius: 16px;
+                gap: 12px;
+            }
+            
+            .maison_commerce__stats-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .maison_commerce__stat-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                text-align: left;
+            }
+            
+            .maison_commerce__progress-circle {
+                width: 72px;
+                height: 72px;
+                flex-shrink: 0;
+            }
+            
+            .maison_commerce__progress-svg {
+                width: 72px;
+                height: 72px;
+            }
+            
+            .maison_commerce__circle-bg,
+            .maison_commerce__circle-progress {
+                cx: 36;
+                cy: 36;
+                r: 28;
+            }
+            
+            .maison_commerce__circle-progress {
+                stroke-dasharray: 175.93; /* 2 * π * 28 */
+                stroke-dashoffset: 175.93;
+            }
+            
+            .maison_commerce__percentage {
+                font-size: 16px;
+            }
+            
+            .maison_commerce__stat-text {
+                font-weight: 500;
+                text-align: left;
+                flex: 1;
+            }
+            
+            .maison_commerce__disclaimer {
+                font-size: 12px;
+                margin-top: 0;
+            }
+            
+            .maison_commerce__cta-button {
+                padding: 12px 24px;
+            }
+            
+            .maison_commerce__guarantee-text {
+                font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+                font-weight: 600;
+                font-size: 10px;
+            }
+            
+            .maison_commerce__guarantee-icon {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .maison_commerce__divider {
+                width: 294px;
+                height: 3px;
+                margin: 65px auto 0;
+                position: relative;
+            }
+            
+            /* Update mobile circle calculations */
+            .maison_commerce__stat-item:nth-child(1).animate .maison_commerce__circle-progress {
+                stroke-dashoffset: calc(175.93 - (175.93 * 0.97));
+            }
+
+            .maison_commerce__stat-item:nth-child(2).animate .maison_commerce__circle-progress {
+                stroke-dashoffset: calc(175.93 - (175.93 * 0.94));
+            }
+
+            .maison_commerce__stat-item:nth-child(3).animate .maison_commerce__circle-progress {
+                stroke-dashoffset: calc(175.93 - (175.93 * 0.99));
+            }
+
+            .maison_commerce__stat-item:nth-child(4).animate .maison_commerce__circle-progress {
+                stroke-dashoffset: calc(175.93 - (175.93 * 0.88));
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="maison_commerce__results-section">
+        <div class="maison_commerce__content-wrapper">
+            <div class="maison_commerce__image-container">
+                <img src="https://via.placeholder.com/600x600/f0f0f0/666?text=Curlic+Product" alt="Curlic Hair Treatment Product" class="maison_commerce__hero-image">
+            </div>
+            
+            <div class="maison_commerce__text-content">
+                <div class="maison_commerce__header">
+                    
+                    <h2 class="maison_commerce__title">
+                        Clinically Proven Results<br>
+                        <span class="maison_commerce__underline">After Just 30 Days of Using</span>
+                    </h2>
+                    <p class="maison_commerce__subtitle">
+                        Curlic delivers visible regrowth in just minutes a day that continues improving over time.
+                        <br><br>
+                        Our 3-in-1 technology gives you the perfect balance of minimal time and lasting hair restoration.
+                    </p>
+                </div>
+                
+                <div class="maison_commerce__stats-container">
+                    <div class="maison_commerce__stats-grid">
+                        <div class="maison_commerce__stat-item" data-percentage="97">
+                            <div class="maison_commerce__progress-circle">
+                                <svg class="maison_commerce__progress-svg">
+                                    <circle class="maison_commerce__circle-bg" cx="40" cy="40" r="32"></circle>
+                                    <circle class="maison_commerce__circle-progress" cx="40" cy="40" r="32"></circle>
+                                </svg>
+                                <div class="maison_commerce__percentage">97%</div>
+                            </div>
+                            <div class="maison_commerce__stat-text">
+                                Report visible
+                                improvement in
+                                hair density
+                            </div>
+                        </div>
+                        
+                        <div class="maison_commerce__stat-item" data-percentage="94">
+                            <div class="maison_commerce__progress-circle">
+                                <svg class="maison_commerce__progress-svg">
+                                    <circle class="maison_commerce__circle-bg" cx="40" cy="40" r="32"></circle>
+                                    <circle class="maison_commerce__circle-progress" cx="40" cy="40" r="32"></circle>
+                                </svg>
+                                <div class="maison_commerce__percentage">94%</div>
+                            </div>
+                            <div class="maison_commerce__stat-text">
+                                Say treatment
+                                took just 10
+                                minutes daily
+                            </div>
+                        </div>
+                        
+                        <div class="maison_commerce__stat-item" data-percentage="99">
+                            <div class="maison_commerce__progress-circle">
+                                <svg class="maison_commerce__progress-svg">
+                                    <circle class="maison_commerce__circle-bg" cx="40" cy="40" r="32"></circle>
+                                    <circle class="maison_commerce__circle-progress" cx="40" cy="40" r="32"></circle>
+                                </svg>
+                                <div class="maison_commerce__percentage">99%</div>
+                            </div>
+                            <div class="maison_commerce__stat-text">
+                                Would
+                                recommend to
+                                a friend
+                            </div>
+                        </div>
+                        
+                        <div class="maison_commerce__stat-item" data-percentage="88">
+                            <div class="maison_commerce__progress-circle">
+                                <svg class="maison_commerce__progress-svg">
+                                    <circle class="maison_commerce__circle-bg" cx="40" cy="40" r="32"></circle>
+                                    <circle class="maison_commerce__circle-progress" cx="40" cy="40" r="32"></circle>
+                                </svg>
+                                <div class="maison_commerce__percentage">88%</div>
+                            </div>
+                            <div class="maison_commerce__stat-text">
+                                No longer need
+                                salon treatments
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="maison_commerce__disclaimer">
+                        *Based on survey responses from 523 verified customers after 60 days of product use.
+                    </p>
+                </div>
+                
+                <div class="maison_commerce__cta-container">
+                    <a href="#" class="maison_commerce__cta-button">
+                        <span class="maison_commerce__cta-text">Try CURLIC Risk Free Yourself</span>
+                    </a>
+                    
+                    <div class="maison_commerce__guarantee">
+                        <div class="maison_commerce__guarantee-icon">
+                            <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                <path d="M8.5 14L16 6.5L14.5 5L8.5 11L5.5 8L4 9.5L8.5 14Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <span class="maison_commerce__guarantee-text">90-Day Money Back Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for animating progress circles when they come into view
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItem = entry.target;
+                    const percentage = parseInt(statItem.dataset.percentage);
+                    const circle = statItem.querySelector('.maison_commerce__circle-progress');
+                    
+                    // Calculate radius based on screen size
+                    const isMobile = window.innerWidth <= 767;
+                    const radius = isMobile ? 28 : 32;
+                    const circumference = 2 * Math.PI * radius;
+                    const offset = circumference - (percentage / 100) * circumference;
+                    
+                    // Apply the calculated offset directly
+                    circle.style.strokeDashoffset = offset;
+                    
+                    // Add animate class to trigger animation
+                    statItem.classList.add('animate');
+                    
+                    // Animate the percentage number
+                    animateNumber(statItem.querySelector('.maison_commerce__percentage'), percentage);
+                    
+                    // Stop observing this element
+                    observer.unobserve(statItem);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all stat items
+        document.querySelectorAll('.maison_commerce__stat-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Function to animate numbers counting up
+        function animateNumber(element, target) {
+            let current = 0;
+            const increment = target / 60; // 60 frames for smooth animation
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + '%';
+            }, 33); // ~30fps
+        }
+    </script>
+</body>
+</html>

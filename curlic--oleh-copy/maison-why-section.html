@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Choose CURLIC? | No.1 Rated Hair Growth Device</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .maison_commerce_font_heading {
+            font-family: 'Gordita', 'Source Sans 3', sans-serif;
+            font-weight: 700;
+        }
+        
+        .maison_commerce_font_body {
+            font-family: 'Source Sans 3', sans-serif;
+        }
+        
+        .maison_commerce_gradient_bg {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FCF7ED 100%);
+        }
+        
+        .maison_commerce_section {
+            border-bottom: 1px solid #F6EBD2;
+            border-radius: 0 0 96px 96px;
+        }
+        
+        .maison_commerce_container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .maison_commerce_main_content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .maison_commerce_left_content {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .maison_commerce_right_content {
+            flex: 1;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .maison_commerce_testimonial_header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .maison_commerce_avatar_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .maison_commerce_avatar_group {
+            display: flex;
+            align-items: center;
+            margin-left: -6px;
+        }
+        
+        .maison_commerce_avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #FCF7ED;
+            overflow: hidden;
+            margin-left: -6px;
+        }
+        
+        .maison_commerce_avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .maison_commerce_testimonial_text {
+            font-size: 14px;
+            color: #1D211E;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .maison_commerce_heading_container {
+            margin-bottom: 24px;
+        }
+        
+        .maison_commerce_main_heading {
+            font-size: 40px;
+            color: #1D211E;
+            line-height: 1.2;
+        }
+        
+        .maison_commerce_heading_block {
+            display: block;
+        }
+        
+        .maison_commerce_description_container {
+            margin-bottom: 32px;
+        }
+        
+        .maison_commerce_description_text {
+            font-size: 16px;
+            color: rgba(18, 18, 18, 0.75);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .maison_commerce_cta_container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .maison_commerce_btn_primary {
+            background: linear-gradient(180deg, #B86057 0%, #A6372B 100%);
+            border: 1px solid transparent;
+            border-image: linear-gradient(180deg, #EED9D7 0%, rgba(238, 217, 215, 0) 100%) 1;
+            border-width: 1px 1px 0px;
+            border-radius: 12px;
+            padding: 16px 32px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #FDFBFB;
+        }
+        
+        .maison_commerce_btn_primary:hover .maison_commerce_btn_text {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .maison_commerce_btn_primary:hover .maison_commerce_btn_text_hover {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .maison_commerce_btn_text {
+            position: relative;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .maison_commerce_btn_text_hover {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(0);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .maison_commerce_trust_badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 16px;
+        }
+        
+        .maison_commerce_star_icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .maison_commerce_trust_text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1D211E;
+        }
+        
+        .maison_commerce_table_responsive {
+            overflow-x: auto;
+        }
+        
+        .maison_commerce_comparison_table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .maison_commerce_table_header {
+            padding: 0;
+            width: 240px;
+        }
+        
+        .maison_commerce_table_cell_curlic {
+            background-color: #F4E5C5;
+            border-radius: 12px 12px 0 0;
+            padding: 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_table_cell_others {
+            background-color: white;
+            border-left: 1px solid #D0D5DD;
+            border-radius: 0 12px 0 0;
+            padding: 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_device_image_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .maison_commerce_device_image {
+            width: 107px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .maison_commerce_others_heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1D211E;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .maison_commerce_feature_cell {
+            background-color: white;
+            border-left: 1px solid #D0D5DD;
+            padding: 16px 24px;
+            width: 240px;
+        }
+        
+        .maison_commerce_feature_cell_first {
+            background-color: white;
+            border-left: 1px solid #D0D5DD;
+            border-top: 1px solid #D0D5DD;
+            padding: 24px;
+            width: 240px;
+        }
+        
+        .maison_commerce_feature_cell_last {
+            background-color: white;
+            border-left: 1px solid #D0D5DD;
+            border-bottom: 1px solid #D0D5DD;
+            border-radius: 0 0 0 12px;
+            padding: 24px;
+            width: 240px;
+        }
+        
+        .maison_commerce_curlic_cell {
+            background-color: #F4E5C5;
+            padding: 16px 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_curlic_cell_last {
+            background-color: #F4E5C5;
+            border-radius: 0 0 12px 12px;
+            padding: 16px 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_others_cell {
+            background-color: white;
+            border-right: 1px solid #D0D5DD;
+            padding: 16px 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_others_cell_first {
+            background-color: white;
+            border-right: 1px solid #D0D5DD;
+            border-top: 1px solid #D0D5DD;
+            border-radius: 0 12px 0 0;
+            padding: 24px 16px;
+            width: 180px;
+        }
+        
+        .maison_commerce_others_cell_last {
+            background-color: white;
+            border-right: 1px solid #D0D5DD;
+            border-bottom: 1px solid #D0D5DD;
+            border-radius: 0 0 12px 0;
+            padding: 16px 24px;
+            width: 180px;
+        }
+        
+        .maison_commerce_feature_text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1D211E;
+            line-height: 1.5;
+        }
+        
+        .maison_commerce_icon_container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .maison_commerce_check_icon {
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .maison_commerce_x_icon {
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Responsive breakpoints */
+        @media (max-width: 767px) {
+            .maison_commerce_section {
+                padding: 2rem 1rem;
+            }
+            
+            .maison_commerce_main_content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .maison_commerce_avatar_container {
+                justify-content: center;
+            }
+            
+            .maison_commerce_testimonial_text {
+                text-align: center;
+            }
+            
+            .maison_commerce_main_heading {
+                font-size: 32px;
+                text-align: center;
+            }
+            
+            .maison_commerce_table_responsive {
+                overflow-x: auto;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .maison_commerce_section {
+                padding: 3rem 2rem;
+            }
+            
+            .maison_commerce_main_content {
+                gap: 3rem;
+            }
+            
+            .maison_commerce_avatar_container {
+                justify-content: flex-start;
+            }
+            
+            .maison_commerce_testimonial_text {
+                text-align: left;
+            }
+            
+            .maison_commerce_main_heading {
+                font-size: 36px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .maison_commerce_section {
+                padding: 3.5rem 5rem;
+            }
+            
+            .maison_commerce_main_content {
+                gap: 5rem;
+            }
+            
+            .maison_commerce_avatar_container {
+                justify-content: flex-start;
+            }
+            
+            .maison_commerce_testimonial_text {
+                text-align: left;
+            }
+            
+            .maison_commerce_main_heading {
+                font-size: 48px;
+            }
+        }
+        
+        /* Animation classes */
+        .maison_commerce_fade_in {
+            opacity: 0;
+            transform: translateY(32px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="maison_commerce_gradient_bg maison_commerce_section" x-data="{ animationReady: false }" x-init="animationReady = true">
+        <div class="maison_commerce_container maison_commerce_section">
+            <div class="maison_commerce_main_content">
+                <!-- Left Content -->
+                <div class="maison_commerce_left_content">
+                    <!-- Testimonial Header -->
+                    <div class="maison_commerce_testimonial_header">
+                        <div class="maison_commerce_avatar_container">
+                            <!-- Avatar Group -->
+                            <div class="maison_commerce_avatar_group">
+                                <div class="maison_commerce_avatar">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Customer testimonial">
+                                </div>
+                                <div class="maison_commerce_avatar">
+                                    <img src="https://images.unsplash.com/photo-1594736797933-d0813ba0455d?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Customer testimonial">
+                                </div>
+                                <div class="maison_commerce_avatar">
+                                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Customer testimonial">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="maison_commerce_font_body maison_commerce_testimonial_text">
+                            Join 10,000+ Women<br>Who've Transformed Their Hair Journey
+                        </p>
+                    </div>
+                    
+                    <!-- Main Heading with Animation -->
+                    <div class="maison_commerce_heading_container">
+                        <h2 class="maison_commerce_font_heading maison_commerce_main_heading maison_commerce_fade_in" 
+                            x-show="animationReady" 
+                            x-ref="heading">
+                            Why Choose CURLIC?<br>
+                            <span class="maison_commerce_heading_block">No.1 Rated Hair Growth Device</span>
+                        </h2>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="maison_commerce_description_container">
+                        <p class="maison_commerce_font_body maison_commerce_description_text">
+                            Not all hair growth solutions are created equal, and not all products deliver real results.
+                        </p>
+                        <p class="maison_commerce_font_body maison_commerce_description_text">
+                            We designed the Follicle Activator 3.0 specifically for Black women's hair needs.
+                        </p>
+                    </div>
+                    
+                    <!-- Decorative Line -->
+                    <div class="maison_commerce_decorative_line">
+                        <hr class="maison_commerce_line">
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="maison_commerce_cta_container">
+                        <button class="maison_commerce_btn_primary maison_commerce_font_heading">
+                            <span class="maison_commerce_btn_text">
+                                Shop No.1 Rated Hair Growth Device
+                            </span>
+                            <span class="maison_commerce_btn_text_hover maison_commerce_font_heading">
+                                Shop No.1 Rated Hair Growth Device
+                            </span>
+                        </button>
+                        
+                        <!-- Trust Badge -->
+                        <div class="maison_commerce_trust_badge">
+                            <div class="maison_commerce_star_icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8778 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z" fill="#DFB356"/>
+                                </svg>
+                            </div>
+                            <span class="maison_commerce_font_body maison_commerce_trust_text">
+                                Trusted by 10,903+ Women in USA
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Comparison Table -->
+                <div class="maison_commerce_right_content">
+                    <div class="maison_commerce_table_responsive">
+                        <table class="maison_commerce_comparison_table">
+                            <!-- Header Row -->
+                            <thead>
+                                <tr>
+                                    <th class="maison_commerce_table_header"></th>
+                                    <th class="maison_commerce_table_cell_curlic">
+                                        <div class="maison_commerce_device_image_container">
+                                            <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=107&h=32&fit=crop" 
+                                                 alt="CURLIC device" class="maison_commerce_device_image">
+                                        </div>
+                                    </th>
+                                    <th class="maison_commerce_table_cell_others">
+                                        <h3 class="maison_commerce_font_body maison_commerce_others_heading">Others</h3>
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <!-- Feature Rows -->
+                            <tbody>
+                                <!-- 3-in-1 Technology -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell_first">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">3-in-1 Technology</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell_first">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Designed for Black Hair -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">Designed for Black Hair</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Red Light + EMS Therapy -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">Red Light + EMS Therapy</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Precision Oil Applicator -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">Precision Oil Applicator</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Dermatologist Approved -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">Dermatologist Approved</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- 90-Day Money-Back Guarantee -->
+                                <tr>
+                                    <td class="maison_commerce_feature_cell_last">
+                                        <span class="maison_commerce_font_body maison_commerce_feature_text">90-Day Money-Back Guarantee</span>
+                                    </td>
+                                    <td class="maison_commerce_curlic_cell_last">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_check_icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 6L9 17L4 12" stroke="#A6372B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="maison_commerce_others_cell_last">
+                                        <div class="maison_commerce_icon_container">
+                                            <div class="maison_commerce_x_icon">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M12 4L4 12M4 4L12 12" stroke="#2C0F0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // GSAP Headline Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Split text animation for heading
+            gsap.registerPlugin(TextPlugin);
+            
+            const heading = document.querySelector('[x-ref="heading"]');
+            if (heading) {
+                const text = heading.textContent;
+                const words = text.split(' ');
+                heading.innerHTML = words.map(word => `<span class="inline-block">${word}</span>`).join(' ');
+                
+                gsap.from(heading.querySelectorAll('span'), {
+                    duration: 0.8,
+                    y: 50,
+                    opacity: 0,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    delay: 0.3
+                });
+            }
+        });
+    </script>
+</body>
+</html>

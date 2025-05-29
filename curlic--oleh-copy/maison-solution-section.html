@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Commerce - Solution Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --maison_commerce-primary-bg: #FFFFFF;
+            --maison_commerce-text-primary: #1D211E;
+            --maison_commerce-text-secondary: rgba(18, 18, 18, 0.75);
+            --maison_commerce-accent-bg: #F6EAE9;
+            --maison_commerce-accent-text: #5D1F18;
+            --maison_commerce-feature-bg: #FCF7ED;
+            --maison_commerce-icon-color: #DFB356;
+            --maison_commerce-button-gradient-start: #B86057;
+            --maison_commerce-button-gradient-end: #A6372B;
+            --maison_commerce-button-text: #FDFBFB;
+            --maison_commerce-border-color: rgba(60, 48, 23, 0.2);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.5;
+            color: var(--maison_commerce-text-primary);
+        }
+
+        /* Container Styles */
+        .maison_commerce__solution-container {
+            background-color: var(--maison_commerce-primary-bg);
+            padding: 0 80px 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .maison_commerce__solution-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            width: 100%;
+        }
+
+        .maison_commerce__solution-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            width: 600px;
+        }
+
+        .maison_commerce__solution-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Image Styles */
+        .maison_commerce__solution-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .maison_commerce__solution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Text Content Styles */
+        .maison_commerce__solution-text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            width: 600px;
+        }
+
+        .maison_commerce__solution-badge {
+            background-color: var(--maison_commerce-accent-bg);
+            color: var(--maison_commerce-accent-text);
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            height: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maison_commerce__solution-heading {
+            font-family: 'Gordita', sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 1.2;
+            text-align: center;
+            color: var(--maison_commerce-text-primary);
+        }
+
+        .maison_commerce__solution-description {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            color: var(--maison_commerce-text-secondary);
+            width: 100%;
+        }
+
+        /* Features Grid */
+        .maison_commerce__features-grid {
+            display: flex;
+            justify-content: stretch;
+            align-items: stretch;
+            gap: 16px;
+            width: 1100px;
+        }
+
+        .maison_commerce__feature-item {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .maison_commerce__feature-icon {
+            background-color: var(--maison_commerce-feature-bg);
+            border-radius: 999px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+        }
+
+        .maison_commerce__feature-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--maison_commerce-icon-color);
+        }
+
+        .maison_commerce__feature-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .maison_commerce__feature-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: left;
+            color: var(--maison_commerce-text-primary);
+            width: 100%;
+        }
+
+        .maison_commerce__feature-description {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: left;
+            color: var(--maison_commerce-text-secondary);
+            width: 100%;
+        }
+
+        /* CTA Section */
+        .maison_commerce__cta-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .maison_commerce__cta-button {
+            background: linear-gradient(180deg, var(--maison_commerce-button-gradient-start) 0%, var(--maison_commerce-button-gradient-end) 100%);
+            border: 1px solid transparent;
+            border-image: linear-gradient(180deg, #EED9D7 0%, rgba(238, 217, 215, 0) 100%) 1;
+            border-radius: 12px;
+            padding: 16px 32px;
+            width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: var(--maison_commerce-button-text);
+            font-family: 'Gordita', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce__cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(166, 55, 43, 0.3);
+        }
+
+        .maison_commerce__guarantee-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        .maison_commerce__guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .maison_commerce__guarantee-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--maison_commerce-icon-color);
+        }
+
+        .maison_commerce__guarantee-text {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--maison_commerce-text-primary);
+        }
+
+        .maison_commerce__guarantee-divider {
+            width: 1px;
+            height: 20px;
+            background-color: var(--maison_commerce-border-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1439px) {
+            .maison_commerce__features-grid {
+                width: 100%;
+                max-width: 1100px;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .maison_commerce__solution-container {
+                padding: 0 40px 40px;
+            }
+            
+            .maison_commerce__solution-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .maison_commerce__features-grid {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .maison_commerce__feature-item {
+                flex-direction: row;
+                justify-content: flex-start;
+                text-align: left;
+            }
+            
+            .maison_commerce__feature-content {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .maison_commerce__solution-container {
+                padding: 0 20px 32px;
+            }
+            
+            .maison_commerce__solution-main {
+                width: 100%;
+            }
+            
+            .maison_commerce__solution-text-content {
+                width: 100%;
+            }
+            
+            .maison_commerce__solution-image {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                aspect-ratio: 1;
+            }
+            
+            .maison_commerce__solution-heading {
+                font-size: 32px;
+            }
+            
+            .maison_commerce__cta-button {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .maison_commerce__guarantee-section {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .maison_commerce__guarantee-divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="maison_commerce__solution-container">
+        <div class="maison_commerce__solution-content">
+            <div class="maison_commerce__solution-main">
+                <div class="maison_commerce__solution-hero">
+                    <div class="maison_commerce__solution-image">
+                        <img src="solution-hero-image.png" alt="The Follicle Activator 3.0 device">
+                    </div>
+                    
+                    <div class="maison_commerce__solution-text-content">
+                        <div class="maison_commerce__solution-badge">
+                            Our Solution To The Problem
+                        </div>
+                        
+                        <h2 class="maison_commerce__solution-heading">
+                            That's why we made<br>
+                            The Follicle Activator 3.0
+                        </h2>
+                        
+                        <p class="maison_commerce__solution-description">
+                            Our red light therapy, EMS microcurrents, and precise oil delivery work together to create a powerful 3-in-1 system specifically designed for Black women's unique hair needs.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="maison_commerce__features-grid">
+                    <div class="maison_commerce__feature-item">
+                        <div class="maison_commerce__feature-icon">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 2C16.5523 2 17 2.44772 17 3V5C17 5.55228 16.5523 6 16 6C15.4477 6 15 5.55228 15 5V3C15 2.44772 15.4477 2 16 2Z" fill="currentColor"/>
+                                <path d="M6.34315 6.34315C6.73367 5.95262 7.36684 5.95262 7.75736 6.34315L9.17157 7.75736C9.5621 8.14788 9.5621 8.78105 9.17157 9.17157C8.78105 9.5621 8.14788 9.5621 7.75736 9.17157L6.34315 7.75736C5.95262 7.36684 5.95262 6.73367 6.34315 6.34315Z" fill="currentColor"/>
+                                <path d="M2 16C2 15.4477 2.44772 15 3 15H5C5.55228 15 6 15.4477 6 16C6 16.5523 5.55228 17 5 17H3C2.44772 17 2 16.5523 2 16Z" fill="currentColor"/>
+                                <path d="M6.34315 25.6569C5.95262 25.2663 5.95262 24.6332 6.34315 24.2426L7.75736 22.8284C8.14788 22.4379 8.78105 22.4379 9.17157 22.8284C9.5621 23.219 9.5621 23.8521 9.17157 24.2426L7.75736 25.6569C7.36684 26.0474 6.73367 26.0474 6.34315 25.6569Z" fill="currentColor"/>
+                                <path d="M16 26C15.4477 26 15 26.4477 15 27V29C15 29.5523 15.4477 30 16 30C16.5523 30 17 29.5523 17 29V27C17 26.4477 16.5523 26 16 26Z" fill="currentColor"/>
+                                <path d="M25.6569 25.6569C25.2663 26.0474 24.6332 26.0474 24.2426 25.6569L22.8284 24.2426C22.4379 23.8521 22.4379 23.219 22.8284 22.8284C23.219 22.4379 23.8521 22.4379 24.2426 22.8284L25.6569 24.2426C26.0474 24.6332 26.0474 25.2663 25.6569 25.6569Z" fill="currentColor"/>
+                                <path d="M30 16C30 16.5523 29.5523 17 29 17H27C26.4477 17 26 16.5523 26 16C26 15.4477 26.4477 15 27 15H29C29.5523 15 30 15.4477 30 16Z" fill="currentColor"/>
+                                <path d="M25.6569 6.34315C26.0474 6.73367 26.0474 7.36684 25.6569 7.75736L24.2426 9.17157C23.8521 9.5621 23.219 9.5621 22.8284 9.17157C22.4379 8.78105 22.4379 8.14788 22.8284 7.75736L24.2426 6.34315C24.6332 5.95262 25.2663 5.95262 25.6569 6.34315Z" fill="currentColor"/>
+                                <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8ZM10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16C22 19.3137 19.3137 22 16 22C12.6863 22 10 19.3137 10 16Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="maison_commerce__feature-content">
+                            <h3 class="maison_commerce__feature-title">Red Light Technology For Dormant Follicles</h3>
+                            <p class="maison_commerce__feature-description">Gentle red light goes deep into the scalp, reactivating 'sleeping' follicles and boosting cellular activity for natural hair growth from the root.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="maison_commerce__feature-item">
+                        <div class="maison_commerce__feature-icon">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 16C4 9.37258 9.37258 4 16 4C22.6274 4 28 9.37258 28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16ZM16 6C10.4772 6 6 10.4772 6 16C6 21.5228 10.4772 26 16 26C21.5228 26 26 21.5228 26 16C26 10.4772 21.5228 6 16 6Z" fill="currentColor"/>
+                                <path d="M8 16L12 12L16 16L20 12L24 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="maison_commerce__feature-content">
+                            <h3 class="maison_commerce__feature-title">EMS Microcurrents For Improved Circulation</h3>
+                            <p class="maison_commerce__feature-description">Tiny electrical pulses stimulate blood flow to your scalp, delivering vital nutrients to hair follicles while reducing inflammation and tension.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="maison_commerce__feature-item">
+                        <div class="maison_commerce__feature-icon">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 2C16.5523 2 17 2.44772 17 3V5C17 5.55228 16.5523 6 16 6C15.4477 6 15 5.55228 15 5V3C15 2.44772 15.4477 2 16 2Z" fill="currentColor"/>
+                                <path d="M16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8ZM10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16C22 19.3137 19.3137 22 16 22C12.6863 22 10 19.3137 10 16Z" fill="currentColor"/>
+                                <path d="M13 16L15 18L19 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="maison_commerce__feature-content">
+                            <h3 class="maison_commerce__feature-title">Targeted Oil Delivery For Maximum Nourishment</h3>
+                            <p class="maison_commerce__feature-description">The built-in applicator ensures Chebe oil reaches exactly where it's needed, eliminating waste and providing deep nourishment to your scalp.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="maison_commerce__cta-container">
+                    <a href="#" class="maison_commerce__cta-button">
+                        Yes, I Want Re-grow My Hair!
+                    </a>
+                    
+                    <div class="maison_commerce__guarantee-section">
+                        <div class="maison_commerce__guarantee-item">
+                            <svg class="maison_commerce__guarantee-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 2L12.5 7H18L14 10.5L15.5 16L10 13L4.5 16L6 10.5L2 7H7.5L10 2Z" fill="currentColor"/>
+                            </svg>
+                            <span class="maison_commerce__guarantee-text">90-Day Money Back Guarantee</span>
+                        </div>
+                        
+                        <div class="maison_commerce__guarantee-divider"></div>
+                        
+                        <div class="maison_commerce__guarantee-item">
+                            <svg class="maison_commerce__guarantee-icon" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="10.5" cy="10.5" r="10" fill="currentColor"/>
+                                <path d="M6.5 10.5L9.5 13.5L14.5 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="maison_commerce__guarantee-text">100% Safe & Painless</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

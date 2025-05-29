@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myths vs Science Section</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        .maison_commerce_myths_section {
+            background: #FFFFFF;
+            padding: 72px 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .maison_commerce_container {
+            display: flex;
+            align-items: stretch;
+            gap: 80px;
+            width: 100%;
+        }
+
+        .maison_commerce_content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            flex: 1;
+        }
+
+        .maison_commerce_section_title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .maison_commerce_title_content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .maison_commerce_badge {
+            background: #F6EAE9;
+            color: #5D1F18;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.5em;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .maison_commerce_main_heading {
+            font-family: 'Gordita', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 1.2em;
+            color: #1D211E;
+            margin: 0;
+        }
+
+        .maison_commerce_intro_text {
+            font-size: 18px;
+            line-height: 1.5em;
+            color: rgba(18, 18, 18, 0.75);
+            margin: 0;
+        }
+
+        .maison_commerce_tabs_menu {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .maison_commerce_tab_item {
+            border-bottom: 1px solid #B4A79B;
+            padding: 16px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_tab_item:not(.active) {
+            opacity: 0.5;
+        }
+
+        .maison_commerce_tab_item.active {
+            opacity: 1;
+        }
+
+        .maison_commerce_tab_heading {
+            font-family: 'Gordita', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.4em;
+            color: #000000;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .maison_commerce_tab_content {
+            font-size: 16px;
+            line-height: 1.5em;
+            color: rgba(18, 18, 18, 0.75);
+            margin: 0;
+            width: 616px;
+            max-width: 100%;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .maison_commerce_tab_content.hidden {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .maison_commerce_tab_content.visible {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        .maison_commerce_image {
+            flex: 1;
+            height: 640px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            min-width: 300px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1023px) {
+            .maison_commerce_myths_section {
+                padding: 48px 32px;
+                gap: 48px;
+            }
+
+            .maison_commerce_container {
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .maison_commerce_main_heading {
+                font-size: 32px;
+            }
+
+            .maison_commerce_tab_heading {
+                font-size: 20px;
+                width: 100%;
+            }
+
+            .maison_commerce_tab_content {
+                width: 100%;
+            }
+
+            .maison_commerce_image {
+                height: 400px;
+                min-width: auto;
+                order: -1; /* Move image to top on tablet */
+            }
+        }
+
+        @media (max-width: 767px) {
+            .maison_commerce_myths_section {
+                padding: 40px 16px;
+                gap: 32px;
+            }
+
+            .maison_commerce_container {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            /* Mobile-specific title styling */
+            .maison_commerce_section_title {
+                gap: 12px;
+                text-align: center;
+            }
+
+            .maison_commerce_title_content {
+                gap: 20px;
+                align-items: center;
+            }
+
+            .maison_commerce_main_heading {
+                font-size: 24px;
+                text-align: center;
+                line-height: 1.4em;
+            }
+
+            .maison_commerce_intro_text {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .maison_commerce_tab_heading {
+                font-size: 18px;
+                line-height: 1.4em;
+                text-align: left;
+            }
+
+            .maison_commerce_tab_content {
+                font-size: 16px;
+                text-align: left;
+            }
+
+            .maison_commerce_image {
+                height: 348px;
+                order: -1; /* Move image to top on mobile */
+                margin-bottom: 8px;
+            }
+
+            /* Ensure proper mobile layout order */
+            .maison_commerce_content {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="maison_commerce_myths_section" x-data="mythsSection()">
+        <div class="maison_commerce_container">
+            <div class="maison_commerce_content">
+                <!-- Section Title -->
+                <div class="maison_commerce_section_title">
+                    <div class="maison_commerce_title_content">
+                        <div class="maison_commerce_badge">
+                            Scientifically Designed
+                        </div>
+                        <h2 class="maison_commerce_main_heading">
+                            Myths vs Science about Hair Growth for Black Women
+                        </h2>
+                        <p class="maison_commerce_intro_text">
+                            Separating fact from fiction when it comes to hair growth solutions for Black women. Embrace the science behind our innovative approach.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tabs Menu -->
+                <div class="maison_commerce_tabs_menu">
+                    <template x-for="(tab, index) in tabs" :key="index">
+                        <div 
+                            class="maison_commerce_tab_item"
+                            :class="{ 'active': activeTab === index }"
+                            @click="setActiveTab(index)"
+                        >
+                            <h3 class="maison_commerce_tab_heading" x-text="tab.title"></h3>
+                            <div 
+                                class="maison_commerce_tab_content"
+                                :class="activeTab === index ? 'visible' : 'hidden'"
+                                x-text="tab.content"
+                                x-show="activeTab === index"
+                                x-transition:enter="transition ease-in-out duration-500"
+                                x-transition:enter-start="opacity-0 max-h-0"
+                                x-transition:enter-end="opacity-100 max-h-48"
+                                x-transition:leave="transition ease-in-out duration-500"
+                                x-transition:leave-start="opacity-100 max-h-48"
+                                x-transition:leave-end="opacity-0 max-h-0"
+                            ></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="maison_commerce_image"></div>
+        </div>
+    </section>
+
+    <script>
+        function mythsSection() {
+            return {
+                activeTab: 0,
+                tabs: [
+                    {
+                        title: "Myth: Hair Loss is Inevitable",
+                        content: "Science: Hair loss is preventable with proper nourishment and follicle stimulation. Our advanced system reactivates dormant follicles."
+                    },
+                    {
+                        title: "Myth: Traction Alopecia is Permanent",
+                        content: "Science: With proper treatment and care, traction alopecia can be reversed. Our targeted approach helps restore damaged follicles and promotes healthy regrowth."
+                    },
+                    {
+                        title: "Myth: Menopause Hair Loss Can't Be Treated",
+                        content: "Science: Hormonal hair loss during menopause can be effectively managed with the right combination of nutrients and follicle stimulation techniques."
+                    }
+                ],
+                
+                setActiveTab(index) {
+                    this.activeTab = index;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

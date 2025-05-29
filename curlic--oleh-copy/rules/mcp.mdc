@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+This Cursor rules file provides a comprehensive structure for converting Figma designs to HTML/CSS while maintaining consistency with the `.maison_commerce` prefix and ensuring responsive design. The file includes:
+
+1. Breakpoint definitions
+2. Grid system
+3. Spacing system
+4. Typography scale
+5. Component patterns
+6. Utility classes
+7. CSS variables
+8. Best practices
+9. Implementation instructions
+
+You can use this as a reference when working with Cursor's Figma tool to ensure consistent, responsive, and well-structured code output. The system is built to be scalable and maintainable while following modern web development practices.
+
+
+## Responsive Breakpoints
+Use the following breakpoints for responsive design:
+
+| Breakpoint Name | Width (px) | Usage |
+|:----------------|:-----------|:------|
+| mobile | < 768 | Mobile devices |
+| tablet | 768 - 1023 | Tablet devices |
+| desktop | 1024 - 1439 | Desktop screens |
+| large | ≥ 1440 | Large screens |
+
+Whenever using or wanting to use JavaScript, try to use AlpineJS as much as possible. This can be used for dropdowns, interactive elements, etc. 

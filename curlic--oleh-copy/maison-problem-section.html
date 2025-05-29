@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curlic - Hair Problems Solved</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;700&display=swap');
+        
+        :root {
+            --color-dark: #1D211E;
+            --color-dark-75: rgba(18, 18, 18, 0.75);
+            --color-burgundy: #5D1F18;
+            --color-cream: #F6EAE9;
+            --color-gold: #DFB356;
+            --color-light-gold: #FCF7ED;
+            --color-white: #FFFFFF;
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 20px;
+            --space-xl: 24px;
+            --space-2xl: 40px;
+            --space-3xl: 56px;
+            --space-4xl: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--color-dark);
+        }
+        
+        .maison_commerce-container-problem {
+            background-color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2xl);
+            padding: var(--space-3xl) var(--space-4xl);
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .maison_commerce-content-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-4xl);
+            width: 100%;
+        }
+        
+        .maison_commerce-content-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xl);
+            width: 600px;
+        }
+        
+        .maison_commerce-header-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            width: 100%;
+        }
+        
+        .maison_commerce-badge {
+            background-color: var(--color-cream);
+            border-radius: 999px;
+            padding: var(--space-xs) var(--space-sm);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+        }
+        
+        .maison_commerce-badge-text {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.5em;
+            color: var(--color-burgundy);
+        }
+        
+        .maison_commerce-heading-main {
+            font-family: 'Gordita', sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 1.2em;
+            color: var(--color-dark);
+        }
+        
+        .maison_commerce-text-intro {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: var(--color-dark-75);
+        }
+        
+        .maison_commerce-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            width: 100%;
+        }
+        
+        .maison_commerce-feature-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: var(--space-md);
+            width: 100%;
+        }
+        
+        .maison_commerce-icon-circle {
+            background-color: var(--color-light-gold);
+            border-radius: 999px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            min-height: 56px;
+            max-width: 56px;
+            max-height: 56px;  
+        }
+        
+        .maison_commerce-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .maison_commerce-icon svg {
+            fill: var(--color-gold);
+        }
+        
+        .maison_commerce-content-feature {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            flex: 1;
+        }
+        
+        .maison_commerce-feature-title {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: var(--color-dark);
+        }
+        
+        .maison_commerce-feature-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5em;
+            color: var(--color-dark-75);
+        }
+        
+        .maison_commerce-image-container {
+            width: 600px;
+            height: 600px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .maison_commerce-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .maison_commerce-content-wrapper {
+                flex-direction: column;
+                gap: var(--space-2xl);
+            }
+            
+            .maison_commerce-container-problem {
+                padding: var(--space-2xl) 30px;
+            }
+            
+            .maison_commerce-content-left {
+                width: 100%;
+                max-width: 600px;
+            }
+            
+            .maison_commerce-image-container {
+                width: 100%;
+                max-width: 600px;
+                height: auto;
+                aspect-ratio: 1/1;
+            }
+            
+            .maison_commerce-heading-main {
+                font-size: 32px;
+            }
+        }
+        
+        /* Mobile Styles (Based on Figma Design) */
+        @media (max-width: 767px) {
+            .maison_commerce-container-problem {
+                padding: var(--space-lg);
+                gap: var(--space-lg);
+            }
+            
+            .maison_commerce-content-wrapper {
+                gap: var(--space-lg);
+            }
+            
+            .maison_commerce-header-section {
+                gap: var(--space-sm);
+                align-items: center;
+                text-align: center;
+            }
+            
+            .maison_commerce-badge {
+                padding: var(--space-xs) var(--space-sm);
+            }
+            
+            .maison_commerce-badge-text {
+                font-size: 12px;
+            }
+            
+            .maison_commerce-heading-main {
+                font-size: 24px;
+                line-height: 1.4em;
+                text-align: center;
+            }
+            
+            .maison_commerce-text-intro {
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .maison_commerce-column {
+                gap: var(--space-md);
+                margin-top: 0;
+            }
+            
+            .maison_commerce-feature-row {
+                flex-direction: row;
+            }
+            
+            .maison_commerce-icon-circle {
+                padding: var(--space-sm);
+                width: 56px;
+                height: 56px;
+                min-width: 56px;
+                min-height: 56px;
+                max-width: 56px;
+                max-height: 56px;
+            }
+            
+            .maison_commerce-content-feature {
+                gap: var(--space-xs);
+            }
+            
+            .maison_commerce-feature-title {
+                font-size: 14px;
+                color: #1A1A1A;
+            }
+            
+            .maison_commerce-feature-text {
+                font-size: 12px;
+            }
+            
+            .maison_commerce-image-container {
+                width: 100%;
+                max-width: 335px;
+                height: 335px;
+                border-radius: 16px;
+                order: -1; /* Move image above content on mobile */
+            }
+            
+            /* Reorder the mobile layout to match Figma design */
+            .maison_commerce-content-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .maison_commerce-content-left {
+                order: 0;
+                width: 100%;
+            }
+            
+            .maison_commerce-button {
+                padding: var(--space-sm) var(--space-lg);
+                font-size: 14px;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .maison_commerce-container-problem {
+                padding: var(--space-3xl) 40px;
+            }
+            
+            .maison_commerce-content-wrapper {
+                gap: 60px;
+            }
+            
+            .maison_commerce-content-left {
+                width: 50%;
+            }
+            
+            .maison_commerce-image-container {
+                width: 50%;
+                height: auto;
+                aspect-ratio: 1/1;
+            }
+        }
+        
+        /* Large Desktop Styles */
+        @media (min-width: 1440px) {
+            .maison_commerce-container-problem {
+                padding: var(--space-3xl) var(--space-4xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="maison_commerce-container-problem">
+        <div class="maison_commerce-content-wrapper">
+            <div class="maison_commerce-content-left">
+                <div class="maison_commerce-header-section">
+                    <div class="maison_commerce-badge">
+                        <span class="maison_commerce-badge-text">Hair Problems Solved</span>
+                    </div>
+                    <h2 class="maison_commerce-heading-main">Most Hair Care Works Against Black Hair...</h2>
+                    <p class="maison_commerce-text-intro">Quality hair starts with proper blood circulation. Yet most hair products on the market fall short, leaving you frustrated and self-conscious.</p>
+                </div>
+                
+                <div class="maison_commerce-column">
+                    <div class="maison_commerce-feature-row">
+                        <div class="maison_commerce-icon-circle">
+                            <div class="maison_commerce-icon">
+                                <!-- SVG Placeholder for Comb Icon -->
+                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_61_4625)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.4382 1.3154L29.3893 6.26654C31.6055 8.4827 32.7177 11.6115 31.4953 14.4974C30.3241 17.2621 28.1902 20.9608 24.3255 24.8255C20.4608 28.6902 16.7621 30.8241 13.9974 31.9953C11.1115 33.2177 7.9827 32.1053 5.76654 29.8893L0.815405 24.9382C-0.2718 23.8509 -0.271802 22.0882 0.8154 21.001C1.9026 19.9138 3.6653 19.9138 4.75252 21.001L7.41024 23.6586C8.43525 24.6838 10.0971 24.6838 11.1222 23.6586L11.4205 23.3603L6.82457 18.7644C6.15509 18.0949 6.15509 17.0095 6.82457 16.34C7.49403 15.6705 8.57945 15.6705 9.24894 16.34L13.8449 20.936L15.9302 18.8506L11.3351 14.2554C10.6656 13.586 10.6656 12.5005 11.3351 11.8311C12.0045 11.1616 13.09 11.1616 13.7595 11.8311L18.3546 16.4262L20.44 14.3409L15.8444 9.74539C15.175 9.07591 15.175 7.99049 15.8444 7.32103C16.5139 6.65154 17.5993 6.65154 18.2688 7.32103L22.8642 11.9165L23.1586 11.6222C24.1838 10.5971 24.1838 8.93525 23.1586 7.91024L20.501 5.2525C19.4138 4.1653 19.4138 2.40261 20.501 1.3154C21.5882 0.228199 23.3509 0.228199 24.4382 1.3154Z" fill="#DFB356"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_61_4625">
+                                    <rect width="32" height="32" fill="white" transform="translate(0 0.5)"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="maison_commerce-content-feature">
+                            <h3 class="maison_commerce-feature-title">Thinning Edges & Bald Spots</h3>
+                            <p class="maison_commerce-feature-text">Hormonal changes, stress, and tight styles cause dormant follicles and restricted blood flow, leading to shedding, thinning edges, and bald spots.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="maison_commerce-feature-row">
+                        <div class="maison_commerce-icon-circle">
+                            <div class="maison_commerce-icon">
+                                <!-- SVG Placeholder for Radioactive Icon -->
+                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_61_4633)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.83232 2.60904C8.76825 1.54537 7.05933 1.29117 5.74695 2.19096C2.18612 4.63233 0.343958 7.81885 0.00750932 12.1206C-0.116645 13.7079 0.959965 15.0595 2.41348 15.4479C4.87303 16.1051 7.48935 16.6176 9.9914 16.79C10.3223 16.8129 10.6469 16.6908 10.8807 16.4555C11.1145 16.2201 11.2345 15.8949 11.2096 15.5641C11.1947 15.3656 11.187 15.1591 11.187 14.9444C11.187 13.5887 11.4921 12.574 11.9863 11.8508C12.4714 11.1409 13.1966 10.6253 14.2121 10.3532C14.5678 10.2578 14.8557 9.99697 14.9856 9.65245C15.1155 9.30792 15.0714 8.92189 14.8673 8.61549C13.4531 6.49343 11.6669 4.44296 9.83232 2.60904ZM26.2523 2.19124C24.9399 1.29145 23.2309 1.54565 22.1669 2.60931C20.3323 4.44317 18.5462 6.49357 17.1321 8.61555C16.9279 8.92196 16.8838 9.30797 17.0137 9.65249C17.1436 9.99702 17.4315 10.2579 17.7872 10.3532C18.8026 10.6254 19.5278 11.1409 20.0129 11.8509C20.507 12.5741 20.8121 13.5887 20.8121 14.9444C20.8121 15.1591 20.8044 15.3658 20.7894 15.5643C20.7645 15.8951 20.8846 16.2204 21.1184 16.4557C21.3522 16.691 21.6767 16.8132 22.0077 16.7903C24.5097 16.6179 27.1262 16.1054 29.5856 15.4481C31.0393 15.0598 32.1159 13.7082 31.9918 12.1209C31.6553 7.81912 29.813 4.63261 26.2523 2.19124ZM12.7769 18.8629C12.5025 18.6583 12.1508 18.5874 11.8186 18.6698C11.4863 18.7523 11.2085 18.9793 11.0616 19.2884C10.029 21.4606 9.21191 23.8655 8.58084 26.2134C8.18992 27.668 8.82432 29.2772 10.2623 29.9631C14.1584 31.8219 17.8407 31.8219 21.7368 29.9631C23.1746 29.2772 23.8091 27.668 23.4183 26.2134C22.7871 23.8655 21.97 21.4606 20.9375 19.2885C20.7906 18.9793 20.5128 18.7523 20.1805 18.6699C19.8482 18.5875 19.4965 18.6583 19.2221 18.8629C18.4896 19.4092 17.4357 19.7499 15.9995 19.7499C14.5633 19.7499 13.5094 19.4092 12.7769 18.8629Z" fill="#DFB356"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_61_4633">
+                                    <rect width="32" height="32" fill="white" transform="translate(0 0.5)"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="maison_commerce-content-feature">
+                            <h3 class="maison_commerce-feature-title">Chemical Buildup & Hormonal Changes</h3>
+                            <p class="maison_commerce-feature-text">Most products contain harmful sulfates while ignoring how menopause and postpartum changes accelerate hair loss and thinning.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="maison_commerce-feature-row">
+                        <div class="maison_commerce-icon-circle">
+                            <div class="maison_commerce-icon">
+                                <!-- SVG Placeholder for Dollar Coin Icon -->
+                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_61_4641)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.19899 4.69899C6.99961 1.89836 11.0411 0.5 16 0.5C20.9589 0.5 25.0005 1.89836 27.8009 4.69899C30.6016 7.49961 32 11.5411 32 16.5C32 21.4589 30.6016 25.5005 27.8009 28.3009C25.0005 31.1016 20.9589 32.5 16 32.5C11.0411 32.5 6.99961 31.1016 4.19899 28.3009C1.39836 25.5005 0 21.4589 0 16.5C0 11.5411 1.39836 7.49961 4.19899 4.69899ZM17.7631 8.2528C17.7631 7.46382 17.1235 6.82423 16.3346 6.82423C15.5456 6.82423 14.906 7.46382 14.906 8.2528V9.76578C12.6157 10.327 11.2278 12.04 11.2278 14.0399C11.2278 14.7663 11.3867 15.4356 11.736 16.0189C12.0839 16.6 12.5647 17.0019 13.0616 17.2837C13.9337 17.7783 15.02 17.9784 15.8221 18.1261L15.9474 18.1492C16.9029 18.3264 17.5193 18.461 17.9265 18.7C18.0935 18.7979 18.1727 18.8867 18.2189 18.9662C18.2649 19.0454 18.3307 19.2055 18.3307 19.528C18.3307 19.5346 18.3305 19.5628 18.2982 19.6219C18.2631 19.6861 18.1912 19.7826 18.0572 19.8958C17.7827 20.1277 17.3309 20.3577 16.7457 20.4864C15.5669 20.7456 14.1928 20.5284 13.2035 19.6256C12.6207 19.0937 11.7171 19.135 11.1853 19.7178C10.6535 20.3006 10.6948 21.2042 11.2775 21.736C12.3612 22.725 13.6466 23.2292 14.906 23.3878V24.7469C14.906 25.5359 15.5456 26.1754 16.3346 26.1754C17.1235 26.1754 17.7631 25.5359 17.7631 24.7469V23.1753C18.5579 22.9498 19.3047 22.5822 19.9012 22.0782C20.5945 21.4925 21.1878 20.6219 21.1878 19.528C21.1878 18.7946 21.0317 18.12 20.6892 17.5307C20.347 16.9418 19.8713 16.5284 19.3724 16.2357C18.4794 15.7117 17.3675 15.5062 16.5535 15.3557L16.4683 15.34C15.504 15.1612 14.8842 15.0327 14.4709 14.7984C14.3019 14.7026 14.2278 14.6188 14.1873 14.5512C14.148 14.4856 14.085 14.3432 14.085 14.0399C14.085 13.4984 14.4864 12.5909 16.1759 12.4458C16.9579 12.3787 17.5935 12.6107 18.052 12.8753C18.2815 13.0077 18.4577 13.1436 18.5716 13.2415C18.628 13.29 18.6675 13.3277 18.689 13.3489L18.7063 13.3665C19.2345 13.9429 20.1298 13.9879 20.7132 13.4645C21.3005 12.9376 21.3495 12.0344 20.8227 11.4471L19.7903 12.3733C20.8227 11.4471 20.8231 11.4476 20.8227 11.4471L20.821 11.4452L20.8192 11.4432L20.8151 11.4387L20.8052 11.428L20.7788 11.3997C20.7582 11.3781 20.7316 11.3507 20.6992 11.3186C20.6344 11.2544 20.5455 11.1706 20.4336 11.0744C20.2109 10.8831 19.8905 10.6375 19.4801 10.4006C19.024 10.1374 18.4459 9.87936 17.7631 9.72414V8.2528Z" fill="#DFB356"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_61_4641">
+                                    <rect width="32" height="32" fill="white" transform="translate(0 0.5)"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="maison_commerce-content-feature">
+                            <h3 class="maison_commerce-feature-title">Expensive Treatments & Empty Promises</h3>
+                            <p class="maison_commerce-feature-text">Tired of spending on salon treatments that don't last? Traditional methods just mask symptoms without addressing the root cause.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="maison_commerce-image-container">
+                <img src="https://placehold.co/600x600/e2e2e2/1D211E?text=Hair+Care+Image" alt="Hair Care Image">
+            </div>
+        </div>
+    </section>
+</body>
+</html>

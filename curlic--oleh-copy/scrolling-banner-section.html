@@ -1,0 +1,254 @@
+<style>
+/* CSS Variables */
+:root {
+    --maison-commerce-gold: #DFB356;
+    --maison-commerce-dark: #1D211E;
+    --maison-commerce-brown: #3C3017;
+    --maison-commerce-white: #FFFFFF;
+}
+
+/* Main section styles */
+.maison_commerce_scrolling_banner {
+    background-color: var(--maison-commerce-gold);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    overflow: hidden;
+    font-family: 'Gordita', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Left section with "AS SEEN IN" text */
+.maison_commerce_banner_label {
+    flex-shrink: 0;
+    padding: 24px 80px;
+    background-color: var(--maison-commerce-gold);
+    z-index: 2;
+    position: relative;
+}
+
+.maison_commerce_banner_text {
+    font-family: 'Gordita', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--maison-commerce-dark);
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Scrolling container */
+.maison_commerce_banner_scroll {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding: 24px 0;
+}
+
+.maison_commerce_banner_track {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    animation: scroll-infinite 30s linear infinite;
+    width: max-content;
+}
+
+/* Logo items */
+.maison_commerce_logo_item {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-shrink: 0;
+}
+
+.maison_commerce_logo_container {
+    background-color: var(--maison-commerce-white);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.maison_commerce_logo_container::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--maison-commerce-brown);
+    border-radius: 50%;
+    opacity: 0.2;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.maison_commerce_logo_item .maison_commerce_logo_container:last-child::after {
+    display: none;
+}
+
+.maison_commerce_logo_svg {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+}
+
+/* Scrolling animation */
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 1023px) {
+    .maison_commerce_banner_label {
+        padding: 20px 40px;
+    }
+    
+    .maison_commerce_banner_text {
+        font-size: 20px;
+    }
+    
+    .maison_commerce_logo_container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .maison_commerce_banner_track {
+        gap: 32px;
+    }
+    
+    .maison_commerce_logo_item {
+        gap: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .maison_commerce_scrolling_banner {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .maison_commerce_banner_label {
+        width: 100%;
+        text-align: center;
+        padding: 16px 20px;
+    }
+    
+    .maison_commerce_banner_text {
+        font-size: 18px;
+    }
+    
+    .maison_commerce_logo_container {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .maison_commerce_banner_track {
+        gap: 24px;
+    }
+    
+    .maison_commerce_logo_item {
+        gap: 24px;
+    }
+}
+
+/* Pause animation on hover */
+.maison_commerce_banner_scroll:hover .maison_commerce_banner_track {
+    animation-play-state: paused;
+}
+</style>
+
+<section class="maison_commerce_scrolling_banner">
+    <!-- Left section with "AS SEEN IN" text -->
+    <div class="maison_commerce_banner_label">
+        <h3 class="maison_commerce_banner_text">AS SEEN IN:</h3>
+    </div>
+    
+    <!-- Scrolling logos section -->
+    <div class="maison_commerce_banner_scroll">
+        <div class="maison_commerce_banner_track">
+            <!-- First set of logos -->
+            <div class="maison_commerce_logo_item">
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 105 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H6.55064L11.5 9.64437L16.5949 0H23L14.557 16.5123V30.3944H8.1519V15.9278L0 0ZM19.7975 26.7412H20.8165C21.3078 26.7509 21.8179 26.9245 21.8354 27.4718C21.8179 28.183 21.1865 28.2439 20.6709 28.2025H19.7975V28.4947H20.8165L21.981 30.2482H22.2722L21.1076 28.4947C21.705 28.4521 22.146 28.1483 22.1266 27.4718C22.146 26.8295 21.7657 26.4648 20.962 26.4489H19.5063V30.2482H19.7975V26.7412Z" fill="#3C3017"/>
+                        <path d="M0 -0.000244140625H104.99999237060547V31.999881744384766H0V-0.000244140625Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 177 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.01379 0C3.55232 0 0 4.23696 0 15.9951C0 26.1088 1.99281 31.9886 8.01379 31.9886C14.5984 31.9886 15.3777 25.5044 15.3777 20.1452L10.6129 19.928C10.5247 24.381 10.0929 27.2322 8.2299 27.2322C6.49746 27.2322 5.89201 26.1094 5.89201 15.9957C5.89201 5.53388 7.05907 4.75484 8.2299 4.75484C9.61553 4.75484 10.2648 6.65737 10.2648 11.7595L15.2892 11.5861C15.2892 5.96672 14.5098 0 8.01379 0ZM24.0272 0.000596793C19.0477 0.000596793 15.7983 3.84839 15.7983 15.9957C15.7983 28.1413 19.0477 31.9891 24.0272 31.9891C29.0074 31.9891 32.2565 28.141 32.2565 15.9957C32.2565 14.3152 32.1921 12.7992 32.0717 11.4247C34.0104 17.8798 41.8637 19.4382 41.8637 24.2508C41.8637 25.5044 41.2143 27.2321 39.351 27.2321C36.9252 27.2321 36.9251 24.2079 36.9251 22.4784V22.4778H31.9008C31.9008 26.7157 33.115 31.9885 39.1355 31.9885C42.4451 31.9885 44.7377 30.383 45.9302 27.9564V31.3838H50.0892V8.81927H50.175L53.9436 31.3838H57.0616L60.8742 8.81927H60.9611V31.3838H65.9849V16.5855C66.0902 28.2615 69.3116 31.9891 74.2098 31.9891C78.697 31.9891 81.7776 28.8623 82.344 19.3616V31.3838H87.9744V19.0642H90.2275C94.3469 19.0642 96.5707 16.8049 97.3512 13.1872C97.3065 14.1227 97.2843 15.0591 97.2847 15.9957C97.2847 28.1412 100.533 31.9891 105.513 31.9891C110.495 31.9891 113.744 28.141 113.744 15.9957C113.744 3.84839 110.495 0.000537148 105.513 0.000537148C101.542 0.000537148 98.6739 2.45282 97.674 9.60391C97.6035 3.10528 94.2748 0.606865 87.9744 0.606865H82.344V12.6292C81.7776 3.127 78.697 0.000537148 74.2098 0.000537148C69.3116 0.000537148 66.0902 3.7282 65.9849 15.4058V0.606805H58.6644L56.0225 16.3835H55.9367L53.4234 0.606925H45.9302V7.41892C45.4066 2.95967 43.3624 0.000537148 38.9194 0.000537148C34.2053 0.000537148 31.697 3.68237 31.644 8.23872C30.4818 2.13617 27.7352 0.000596793 24.0272 0.000596793ZM113.864 0.606925V31.3839H126.686V26.6285H119.496V0.606925H113.864ZM127.588 0.606925V31.3839H133.218V0.606925H127.588ZM134.165 0.606925V5.36171H139.017V31.3839H144.648V5.36171H149.436L145.774 31.3839H150.495L151.274 24.5537H155.825L156.645 31.3839H166.518V12.7521H166.605L172.626 31.3839H177V0.606925H172.496V16.8588H172.41L167.256 0.606925H161.754V28.9118L158.247 0.606925H150.105L149.498 4.92104V0.606925H134.165ZM24.0272 4.75478C25.3274 4.75478 26.1061 6.09515 26.1061 12.752V19.237C26.1061 25.8936 25.3275 27.2321 24.0272 27.2321C22.7269 27.2321 21.9477 25.8936 21.9477 19.237V12.752C21.9477 6.09515 22.7269 4.75478 24.0272 4.75478ZM38.7874 4.75478C41.0401 4.75478 41.0401 7.65161 41.0401 9.38119H45.9303V19.1443C43.3904 13.7773 36.6661 11.8085 36.6661 7.56543C36.6661 5.87941 37.446 4.75478 38.7874 4.75478ZM74.2098 4.75478C75.5082 4.75478 76.2882 6.09515 76.2882 12.752V19.237C76.2882 25.8936 75.5082 27.2321 74.2098 27.2321C72.9104 27.2321 72.1304 25.8936 72.1304 19.237V12.752C72.1304 6.09515 72.9104 4.75478 74.2098 4.75478ZM105.513 4.75478C106.815 4.75478 107.593 6.09515 107.593 12.752V19.237C107.593 25.8936 106.815 27.2321 105.513 27.2321C104.215 27.2321 103.435 25.8936 103.435 19.237V12.752C103.435 6.09515 104.215 4.75478 105.513 4.75478ZM88.02 5.36171H88.4505C90.3133 5.36171 92.0464 5.49079 92.0464 9.94366C92.0464 13.6606 90.79 14.5695 88.4945 14.5695H88.02V5.36171ZM153.612 5.36171H153.7L155.345 20.059H151.84L153.612 5.36171Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 156 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H156.00074768066406V32.00446701049805H0V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H13.060833930969238V32H0V0Z" fill="#3C3017"/>
+                        <path d="M28.9637451171875 0H42.040546417236328V32H28.9637451171875V0Z" fill="#3C3017"/>
+                        <path d="M57.9434814453125 0H71.05228424072266V32H57.9434814453125V0Z" fill="#3C3017"/>
+                        <path d="M86.9232177734375 0H100.00001525878906V32H86.9232177734375V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 121 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H121V31.99985122680664H0V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Duplicate set for seamless scrolling -->
+            <div class="maison_commerce_logo_item">
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 105 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H6.55064L11.5 9.64437L16.5949 0H23L14.557 16.5123V30.3944H8.1519V15.9278L0 0ZM19.7975 26.7412H20.8165C21.3078 26.7509 21.8179 26.9245 21.8354 27.4718C21.8179 28.183 21.1865 28.2439 20.6709 28.2025H19.7975V28.4947H20.8165L21.981 30.2482H22.2722L21.1076 28.4947C21.705 28.4521 22.146 28.1483 22.1266 27.4718C22.146 26.8295 21.7657 26.4648 20.962 26.4489H19.5063V30.2482H19.7975V26.7412Z" fill="#3C3017"/>
+                        <path d="M0 -0.000244140625H104.99999237060547V31.999881744384766H0V-0.000244140625Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 177 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.01379 0C3.55232 0 0 4.23696 0 15.9951C0 26.1088 1.99281 31.9886 8.01379 31.9886C14.5984 31.9886 15.3777 25.5044 15.3777 20.1452L10.6129 19.928C10.5247 24.381 10.0929 27.2322 8.2299 27.2322C6.49746 27.2322 5.89201 26.1094 5.89201 15.9957C5.89201 5.53388 7.05907 4.75484 8.2299 4.75484C9.61553 4.75484 10.2648 6.65737 10.2648 11.7595L15.2892 11.5861C15.2892 5.96672 14.5098 0 8.01379 0ZM24.0272 0.000596793C19.0477 0.000596793 15.7983 3.84839 15.7983 15.9957C15.7983 28.1413 19.0477 31.9891 24.0272 31.9891C29.0074 31.9891 32.2565 28.141 32.2565 15.9957C32.2565 14.3152 32.1921 12.7992 32.0717 11.4247C34.0104 17.8798 41.8637 19.4382 41.8637 24.2508C41.8637 25.5044 41.2143 27.2321 39.351 27.2321C36.9252 27.2321 36.9251 24.2079 36.9251 22.4784V22.4778H31.9008C31.9008 26.7157 33.115 31.9885 39.1355 31.9885C42.4451 31.9885 44.7377 30.383 45.9302 27.9564V31.3838H50.0892V8.81927H50.175L53.9436 31.3838H57.0616L60.8742 8.81927H60.9611V31.3838H65.9849V16.5855C66.0902 28.2615 69.3116 31.9891 74.2098 31.9891C78.697 31.9891 81.7776 28.8623 82.344 19.3616V31.3838H87.9744V19.0642H90.2275C94.3469 19.0642 96.5707 16.8049 97.3512 13.1872C97.3065 14.1227 97.2843 15.0591 97.2847 15.9957C97.2847 28.1412 100.533 31.9891 105.513 31.9891C110.495 31.9891 113.744 28.141 113.744 15.9957C113.744 3.84839 110.495 0.000537148 105.513 0.000537148C101.542 0.000537148 98.6739 2.45282 97.674 9.60391C97.6035 3.10528 94.2748 0.606865 87.9744 0.606865H82.344V12.6292C81.7776 3.127 78.697 0.000537148 74.2098 0.000537148C69.3116 0.000537148 66.0902 3.7282 65.9849 15.4058V0.606805H58.6644L56.0225 16.3835H55.9367L53.4234 0.606925H45.9302V7.41892C45.4066 2.95967 43.3624 0.000537148 38.9194 0.000537148C34.2053 0.000537148 31.697 3.68237 31.644 8.23872C30.4818 2.13617 27.7352 0.000596793 24.0272 0.000596793ZM113.864 0.606925V31.3839H126.686V26.6285H119.496V0.606925H113.864ZM127.588 0.606925V31.3839H133.218V0.606925H127.588ZM134.165 0.606925V5.36171H139.017V31.3839H144.648V5.36171H149.436L145.774 31.3839H150.495L151.274 24.5537H155.825L156.645 31.3839H166.518V12.7521H166.605L172.626 31.3839H177V0.606925H172.496V16.8588H172.41L167.256 0.606925H161.754V28.9118L158.247 0.606925H150.105L149.498 4.92104V0.606925H134.165ZM24.0272 4.75478C25.3274 4.75478 26.1061 6.09515 26.1061 12.752V19.237C26.1061 25.8936 25.3275 27.2321 24.0272 27.2321C22.7269 27.2321 21.9477 25.8936 21.9477 19.237V12.752C21.9477 6.09515 22.7269 4.75478 24.0272 4.75478ZM38.7874 4.75478C41.0401 4.75478 41.0401 7.65161 41.0401 9.38119H45.9303V19.1443C43.3904 13.7773 36.6661 11.8085 36.6661 7.56543C36.6661 5.87941 37.446 4.75478 38.7874 4.75478ZM74.2098 4.75478C75.5082 4.75478 76.2882 6.09515 76.2882 12.752V19.237C76.2882 25.8936 75.5082 27.2321 74.2098 27.2321C72.9104 27.2321 72.1304 25.8936 72.1304 19.237V12.752C72.1304 6.09515 72.9104 4.75478 74.2098 4.75478ZM105.513 4.75478C106.815 4.75478 107.593 6.09515 107.593 12.752V19.237C107.593 25.8936 106.815 27.2321 105.513 27.2321C104.215 27.2321 103.435 25.8936 103.435 19.237V12.752C103.435 6.09515 104.215 4.75478 105.513 4.75478ZM88.02 5.36171H88.4505C90.3133 5.36171 92.0464 5.49079 92.0464 9.94366C92.0464 13.6606 90.79 14.5695 88.4945 14.5695H88.02V5.36171ZM153.612 5.36171H153.7L155.345 20.059H151.84L153.612 5.36171Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 156 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H156.00074768066406V32.00446701049805H0V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H13.060833930969238V32H0V0Z" fill="#3C3017"/>
+                        <path d="M28.9637451171875 0H42.040546417236328V32H28.9637451171875V0Z" fill="#3C3017"/>
+                        <path d="M57.9434814453125 0H71.05228424072266V32H57.9434814453125V0Z" fill="#3C3017"/>
+                        <path d="M86.9232177734375 0H100.00001525878906V32H86.9232177734375V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+                
+                <div class="maison_commerce_logo_container">
+                    <svg class="maison_commerce_logo_svg" viewBox="0 0 121 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H121V31.99985122680664H0V0Z" fill="#3C3017"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
