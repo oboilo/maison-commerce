@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myths vs Science Section</title>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --tab-rotation-duration: 5s;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -31,9 +37,10 @@
         }
 
         .maison_commerce_container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: stretch;
-            gap: 80px;
+            gap: 40px;
             width: 100%;
         }
 
@@ -79,6 +86,12 @@
             margin: 0;
         }
 
+        .maison_commerce_main_heading_highlight {
+            color: var(--Color-Brand-1-1800, #A6372B);
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+        }
+
         .maison_commerce_intro_text {
             font-size: 18px;
             line-height: 1.5em;
@@ -97,6 +110,7 @@
             padding: 16px 0;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .maison_commerce_tab_item:not(.active) {
@@ -105,6 +119,30 @@
 
         .maison_commerce_tab_item.active {
             opacity: 1;
+        }
+
+        .maison_commerce_tab_progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: #A6372B;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .maison_commerce_tab_item.active .maison_commerce_tab_progress {
+            animation: progressBar var(--tab-rotation-duration) linear;
+        }
+
+        @keyframes progressBar {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         .maison_commerce_tab_heading {
@@ -122,7 +160,7 @@
             line-height: 1.5em;
             color: rgba(18, 18, 18, 0.75);
             margin: 0;
-            width: 616px;
+            width: 100%;
             max-width: 100%;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -140,14 +178,67 @@
             margin-top: 8px;
         }
 
-        .maison_commerce_image {
+        .maison_commerce_image_container {
             flex: 1;
             height: 640px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
             border-radius: 24px;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
             min-width: 300px;
+        }
+
+        .maison_commerce_image_container_responsive {
+            display: none;
+            margin: 32px 0;
+            width: 100%;
+            height: 400px;
+            min-height: 400px;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .maison_commerce_image_container_desktop {
+            display: block;
+        }
+
+        .maison_commerce_image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            object-position: center;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 22px;
+        }
+
+        .maison_commerce_image.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Remove temporary debug background */
+        /* .maison_commerce_image_container_responsive {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        } */
+
+        /* Fallback for broken images */
+        .maison_commerce_image_fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            background: #f5f5f5;
+            border-radius: 24px;
         }
 
         /* Responsive Design */
@@ -158,7 +249,7 @@
             }
 
             .maison_commerce_container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 48px;
             }
 
@@ -175,10 +266,19 @@
                 width: 100%;
             }
 
-            .maison_commerce_image {
+            .maison_commerce_image_container_desktop {
+                display: none;
+            }
+
+            .maison_commerce_image_container_responsive {
+                display: block !important;
+                width: 100%;
                 height: 400px;
-                min-width: auto;
-                order: -1; /* Move image to top on tablet */
+                min-height: 400px;
+                margin: 24px 0;
+                position: relative;
+                border-radius: 24px;
+                overflow: hidden;
             }
         }
 
@@ -189,11 +289,10 @@
             }
 
             .maison_commerce_container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 24px;
             }
 
-            /* Mobile-specific title styling */
             .maison_commerce_section_title {
                 gap: 12px;
                 text-align: center;
@@ -226,19 +325,28 @@
                 text-align: left;
             }
 
-            .maison_commerce_image {
-                height: 348px;
-                order: -1; /* Move image to top on mobile */
-                margin-bottom: 8px;
+            .maison_commerce_image_container_desktop {
+                display: none;
             }
 
-            /* Ensure proper mobile layout order */
+            .maison_commerce_image_container_responsive {
+                display: block !important;
+                width: 100%;
+                height: 348px;
+                min-height: 348px;
+                margin: 16px 0;
+                position: relative;
+                border-radius: 24px;
+                overflow: hidden;
+            }
+
             .maison_commerce_content {
                 order: 1;
             }
         }
     </style>
 </head>
+
 <body>
     <section class="maison_commerce_myths_section" x-data="mythsSection()">
         <div class="maison_commerce_container">
@@ -250,42 +358,57 @@
                             Scientifically Designed
                         </div>
                         <h2 class="maison_commerce_main_heading">
-                            Myths vs Science about Hair Growth for Black Women
+                            Myths vs Science about <span class="maison_commerce_main_heading_highlight">Hair Growth for
+                                Black Women</span>
                         </h2>
                         <p class="maison_commerce_intro_text">
-                            Separating fact from fiction when it comes to hair growth solutions for Black women. Embrace the science behind our innovative approach.
+                            Separating fact from fiction when it comes to hair growth solutions for Black women. Embrace
+                            the science behind our innovative approach.
                         </p>
                     </div>
+                </div>
+
+                <!-- Images Container - Between title and tabs for responsive -->
+                <div class="maison_commerce_image_container maison_commerce_image_container_responsive">
+                    <template x-for="(tab, index) in tabs" :key="index">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            :style="{ opacity: activeTab === index ? 1 : 0 }">
+                            <img class="maison_commerce_image" :src="tab.image" :alt="tab.title" loading="lazy"
+                                @error="$event.target.style.display = 'none'" />
+                        </div>
+                    </template>
                 </div>
 
                 <!-- Tabs Menu -->
                 <div class="maison_commerce_tabs_menu">
                     <template x-for="(tab, index) in tabs" :key="index">
-                        <div 
-                            class="maison_commerce_tab_item"
-                            :class="{ 'active': activeTab === index }"
-                            @click="setActiveTab(index)"
-                        >
+                        <div class="maison_commerce_tab_item" :class="{ 'active': activeTab === index }"
+                            @click="setActiveTab(index)">
                             <h3 class="maison_commerce_tab_heading" x-text="tab.title"></h3>
-                            <div 
-                                class="maison_commerce_tab_content"
-                                :class="activeTab === index ? 'visible' : 'hidden'"
-                                x-text="tab.content"
-                                x-show="activeTab === index"
-                                x-transition:enter="transition ease-in-out duration-500"
+                            <div class="maison_commerce_tab_content" :class="activeTab === index ? 'visible' : 'hidden'"
+                                x-text="tab.content" x-show="activeTab === index"
+                                x-transition:enter="transition ease-in-out duration-300"
                                 x-transition:enter-start="opacity-0 max-h-0"
                                 x-transition:enter-end="opacity-100 max-h-48"
-                                x-transition:leave="transition ease-in-out duration-500"
+                                x-transition:leave="transition ease-in-out duration-300"
                                 x-transition:leave-start="opacity-100 max-h-48"
-                                x-transition:leave-end="opacity-0 max-h-0"
-                            ></div>
+                                x-transition:leave-end="opacity-0 max-h-0"></div>
+                            <div class="maison_commerce_tab_progress" x-show="activeTab === index"></div>
                         </div>
                     </template>
                 </div>
             </div>
 
-            <!-- Image -->
-            <div class="maison_commerce_image"></div>
+            <!-- Images Container - Outside for desktop -->
+            <div class="maison_commerce_image_container maison_commerce_image_container_desktop">
+                <template x-for="(tab, index) in tabs" :key="index">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        :style="{ opacity: activeTab === index ? 1 : 0 }">
+                        <img class="maison_commerce_image" :src="tab.image" :alt="tab.title" loading="lazy"
+                            @error="$event.target.style.display = 'none'" />
+                    </div>
+                </template>
+            </div>
         </div>
     </section>
 
@@ -293,26 +416,59 @@
         function mythsSection() {
             return {
                 activeTab: 0,
+                autoRotationInterval: null,
+                // 🎯 TIMING CONFIGURATION - Change this value to control auto-rotation speed
+                rotationDuration: 5000, // milliseconds (5000 = 5 seconds)
+
                 tabs: [
                     {
                         title: "Myth: Hair Loss is Inevitable",
-                        content: "Science: Hair loss is preventable with proper nourishment and follicle stimulation. Our advanced system reactivates dormant follicles."
+                        content: "Science: Hair loss is preventable with proper nourishment and follicle stimulation. Our advanced system reactivates dormant follicles.",
+                        image: "https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                     },
                     {
                         title: "Myth: Traction Alopecia is Permanent",
-                        content: "Science: With proper treatment and care, traction alopecia can be reversed. Our targeted approach helps restore damaged follicles and promotes healthy regrowth."
+                        content: "Science: With proper treatment and care, traction alopecia can be reversed. Our targeted approach helps restore damaged follicles and promotes healthy regrowth.",
+                        image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                     },
                     {
                         title: "Myth: Menopause Hair Loss Can't Be Treated",
-                        content: "Science: Hormonal hair loss during menopause can be effectively managed with the right combination of nutrients and follicle stimulation techniques."
+                        content: "Science: Hormonal hair loss during menopause can be effectively managed with the right combination of nutrients and follicle stimulation techniques.",
+                        image: "./images/solution-hero-image.png"
                     }
                 ],
-                
+
+                init() {
+                    // Set CSS custom property for animation duration
+                    document.documentElement.style.setProperty('--tab-rotation-duration', `${this.rotationDuration}ms`);
+                    this.startAutoRotation();
+                },
+
                 setActiveTab(index) {
                     this.activeTab = index;
+                    this.restartAutoRotation();
+                },
+
+                startAutoRotation() {
+                    this.autoRotationInterval = setInterval(() => {
+                        this.activeTab = (this.activeTab + 1) % this.tabs.length;
+                    }, this.rotationDuration);
+                },
+
+                stopAutoRotation() {
+                    if (this.autoRotationInterval) {
+                        clearInterval(this.autoRotationInterval);
+                        this.autoRotationInterval = null;
+                    }
+                },
+
+                restartAutoRotation() {
+                    this.stopAutoRotation();
+                    this.startAutoRotation();
                 }
             }
         }
     </script>
 </body>
+
 </html>
