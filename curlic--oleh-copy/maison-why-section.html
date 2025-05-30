@@ -427,6 +427,26 @@
             margin: 0;
         }
 
+        .maison_commerce_cta_container.maison-is-desktop {
+            display: flex;
+        }
+
+        .maison_commerce_cta_container.maison-is-mobile {
+            display: none;
+        }
+
+        @media (max-width: 1023px) {
+            .maison_commerce_cta_container.maison-is-desktop {
+                display: none;
+            }
+
+            .maison_commerce_cta_container.maison-is-mobile {
+                display: flex;
+            }
+        }
+
+
+
         /* Responsive breakpoints */
         @media (max-width: 767px) {
             .maison_commerce_section {
@@ -583,7 +603,7 @@
 
 
                     <!-- CTA Button -->
-                    <div class="maison_commerce_cta_container">
+                    <div class="maison_commerce_cta_container maison-is-desktop">
                         <button class="maison_commerce_btn_primary maison_commerce_font_heading">
                             <span class="maison_commerce_btn_text">
                                 Shop No.1 Rated Hair Growth Device
@@ -921,6 +941,40 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="maison_commerce_cta_container maison-is-mobile">
+                    <button class="maison_commerce_btn_primary maison_commerce_font_heading">
+                        <span class="maison_commerce_btn_text">
+                            Shop No.1 Rated Hair Growth Device
+                        </span>
+                        <span class="maison_commerce_btn_text_hover maison_commerce_font_heading">
+                            Shop No.1 Rated Hair Growth Device
+                        </span>
+                    </button>
+
+                    <!-- Trust Badge -->
+                    <div class="maison_commerce_trust_badge">
+                        <div class="maison_commerce_star_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20"
+                                fill="none">
+                                <g clip-path="url(#clip0_61_4837)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.5694 4.1302C15.5896 3.96532 13.5145 3.79252 11.3927 3.7526V0.357422C12.7825 0.3826 13.8816 0.466239 15.1469 0.577853C15.8179 0.637049 16.4001 1.10195 16.8341 1.54686C17.2964 2.02079 17.7291 2.619 18.0939 3.1857C18.3261 3.54672 18.5369 3.90456 18.7163 4.22469C18.3379 4.19419 17.9554 4.16234 17.5694 4.1302ZM18.9636 6.03572C19.2499 6.05817 19.5107 6.22496 19.6624 6.47693C19.8884 7.99749 20.1429 10.1937 20.1429 11.7824C20.1429 13.4599 19.8591 15.8148 19.6249 17.3364C19.4697 18.3445 18.6489 19.1384 17.6193 19.2191C17.2031 19.2518 16.781 19.2869 16.3534 19.3225L16.3497 19.3228C14.4817 19.4784 12.5123 19.6425 10.5 19.6425C8.48766 19.6425 6.51865 19.4785 4.65063 19.3229C4.22175 19.2871 3.79819 19.2518 3.38065 19.2191C2.35108 19.1384 1.5303 18.3445 1.37506 17.3364C1.14077 15.8148 0.857147 13.4599 0.857147 11.7824C0.857147 10.1935 1.11159 7.99703 1.33756 6.47646C1.48938 6.22476 1.75005 6.05816 2.03616 6.03572C2.55798 5.9948 3.0815 5.95126 3.60706 5.90754C5.85939 5.7202 8.14898 5.52974 10.4999 5.52974C12.8508 5.52974 15.1403 5.72019 17.3927 5.90753C17.9183 5.95124 18.4417 5.9948 18.9636 6.03572ZM3.43025 4.1302C5.41019 3.96532 7.48515 3.79252 9.60698 3.7526V0.357422C8.20172 0.382882 7.09372 0.468103 5.81088 0.581562C5.1367 0.641186 4.5556 1.10631 4.1232 1.55303C3.66349 2.02796 3.23589 2.627 2.87683 3.19399C2.64988 3.55236 2.4443 3.90754 2.26918 4.22583C2.65225 4.19499 3.0394 4.16274 3.43025 4.1302ZM9.85835 13.349C10.02 12.8639 9.81546 12.3449 9.39463 12.0921H11.4948C12.3683 12.0921 13.0763 12.8002 13.0763 13.6736C13.0763 14.5471 12.3683 15.2551 11.4948 15.2551H9.17352C8.58178 15.2551 8.10209 15.7348 8.10209 16.3265C8.10209 16.9182 8.58178 17.3979 9.17352 17.3979H11.4948C13.5517 17.3979 15.2191 15.7305 15.2191 13.6736C15.2191 11.6167 13.5517 9.94925 11.4948 9.94925H9.3941C9.81529 9.69655 10.0201 9.1773 9.85835 8.69199C9.67123 8.13063 9.06446 7.82725 8.50309 8.01436C7.19645 8.44992 6.28536 9.3556 5.84395 10.6573C5.80306 10.7708 5.78076 10.8931 5.78076 11.0207C5.78076 11.1499 5.80366 11.2739 5.84562 11.3886C6.28765 12.6877 7.19809 13.5917 8.50309 14.0267C9.06446 14.2138 9.67123 13.9104 9.85835 13.349Z"
+                                        fill="#DFB356" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_61_4837">
+                                        <rect width="20" height="20" fill="white" transform="translate(0.5)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="maison_commerce_font_body maison_commerce_trust_text">
+                            Trusted by 10,903+ Women in USA
+                        </span>
                     </div>
                 </div>
             </div>
