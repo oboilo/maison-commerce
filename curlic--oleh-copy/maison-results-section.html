@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curlic Results Section</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* text-wrap: balance; */
         }
 
         .maison_commerce__results-section {
@@ -69,7 +73,7 @@
         .maison_commerce__underline {
             text-decoration: underline;
             text-decoration-color: #A6372B;
-            color:#A6372B;
+            color: #A6372B;
             text-decoration-thickness: 4px;
             text-underline-offset: 8px;
         }
@@ -160,7 +164,8 @@
             cx: 40;
             cy: 40;
             r: 32;
-            stroke-dasharray: 201.06; /* 2 * π * 32 */
+            stroke-dasharray: 201.06;
+            /* 2 * π * 32 */
             stroke-dashoffset: 201.06;
             transition: stroke-dashoffset 2s ease-in-out;
         }
@@ -244,7 +249,7 @@
         .maison_commerce__guarantee-icon {
             width: 20px;
             height: 20px;
-            background: #DFB356;
+            /* background: #DFB356; */
             border-radius: 3px;
             display: flex;
             align-items: center;
@@ -285,11 +290,11 @@
             .maison_commerce__results-section {
                 padding: 48px 40px;
             }
-            
+
             .maison_commerce__content-wrapper {
                 gap: 60px;
             }
-            
+
             .maison_commerce__image-container,
             .maison_commerce__text-content {
                 width: 500px;
@@ -301,17 +306,17 @@
                 flex-direction: column;
                 gap: 40px;
             }
-            
+
             .maison_commerce__image-container,
             .maison_commerce__text-content {
                 width: 100%;
                 max-width: 600px;
             }
-            
+
             .maison_commerce__image-container {
                 height: 400px;
             }
-            
+
             .maison_commerce__title {
                 font-size: 32px;
             }
@@ -323,115 +328,116 @@
                 gap: 24px;
                 max-width: 375px;
             }
-            
+
             .maison_commerce__content-wrapper {
                 gap: 24px;
             }
-            
+
             .maison_commerce__image-container {
                 height: 335px;
                 border-radius: 24px;
             }
-            
+
             .maison_commerce__header {
                 align-items: center;
                 text-align: center;
                 gap: 8px;
             }
-            
+
             .maison_commerce__title {
                 font-size: 24px;
                 line-height: 1.4em;
                 text-align: center;
             }
-            
+
             .maison_commerce__subtitle {
                 font-size: 14px;
                 text-align: center;
             }
-            
+
             .maison_commerce__text-content {
                 gap: 20px;
             }
-            
+
             .maison_commerce__stats-container {
                 padding: 16px;
                 border-radius: 16px;
                 gap: 12px;
             }
-            
+
             .maison_commerce__stats-grid {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
-            
+
             .maison_commerce__stat-item {
                 flex-direction: row;
                 align-items: center;
                 gap: 16px;
                 text-align: left;
             }
-            
+
             .maison_commerce__progress-circle {
                 width: 72px;
                 height: 72px;
                 flex-shrink: 0;
             }
-            
+
             .maison_commerce__progress-svg {
                 width: 72px;
                 height: 72px;
             }
-            
+
             .maison_commerce__circle-bg,
             .maison_commerce__circle-progress {
                 cx: 36;
                 cy: 36;
                 r: 28;
             }
-            
+
             .maison_commerce__circle-progress {
-                stroke-dasharray: 175.93; /* 2 * π * 28 */
+                stroke-dasharray: 175.93;
+                /* 2 * π * 28 */
                 stroke-dashoffset: 175.93;
             }
-            
+
             .maison_commerce__percentage {
                 font-size: 16px;
             }
-            
+
             .maison_commerce__stat-text {
                 font-weight: 500;
                 text-align: left;
                 flex: 1;
             }
-            
+
             .maison_commerce__disclaimer {
                 font-size: 12px;
                 margin-top: 0;
             }
-            
+
             .maison_commerce__cta-button {
                 padding: 12px 24px;
             }
-            
+
             .maison_commerce__guarantee-text {
                 font-family: 'Raleway', system-ui, -apple-system, sans-serif;
                 font-weight: 600;
                 font-size: 10px;
             }
-            
+
             .maison_commerce__guarantee-icon {
                 width: 16px;
                 height: 16px;
             }
-            
+
             .maison_commerce__divider {
                 width: 294px;
                 height: 3px;
                 margin: 65px auto 0;
                 position: relative;
             }
-            
+
             /* Update mobile circle calculations */
             .maison_commerce__stat-item:nth-child(1).animate .maison_commerce__circle-progress {
                 stroke-dashoffset: calc(175.93 - (175.93 * 0.97));
@@ -451,27 +457,30 @@
         }
     </style>
 </head>
+
 <body>
     <section class="maison_commerce__results-section">
         <div class="maison_commerce__content-wrapper">
             <div class="maison_commerce__image-container">
-                <img src="https://via.placeholder.com/600x600/f0f0f0/666?text=Curlic+Product" alt="Curlic Hair Treatment Product" class="maison_commerce__hero-image">
+                <img src="./images/result/img-result.png" alt="Curlic Hair Treatment Product"
+                    class="maison_commerce__hero-image">
             </div>
-            
+
             <div class="maison_commerce__text-content">
                 <div class="maison_commerce__header">
-                    
+
                     <h2 class="maison_commerce__title">
-                        Clinically Proven Results<br>
-                        <span class="maison_commerce__underline">After Just 30 Days of Using</span>
+                        <span class="maison_commerce__underline">Clinically Proven Results</span><br>
+                        After Just 30 Days of Using
                     </h2>
                     <p class="maison_commerce__subtitle">
                         Curlic delivers visible regrowth in just minutes a day that continues improving over time.
                         <br><br>
-                        Our 3-in-1 technology gives you the perfect balance of minimal time and lasting hair restoration.
+                        Our 3-in-1 technology gives you the perfect balance of minimal time and lasting hair
+                        restoration.
                     </p>
                 </div>
-                
+
                 <div class="maison_commerce__stats-container">
                     <div class="maison_commerce__stats-grid">
                         <div class="maison_commerce__stat-item" data-percentage="97">
@@ -483,12 +492,10 @@
                                 <div class="maison_commerce__percentage">97%</div>
                             </div>
                             <div class="maison_commerce__stat-text">
-                                Report visible
-                                improvement in
-                                hair density
+                                Report visible improvement in hair density
                             </div>
                         </div>
-                        
+
                         <div class="maison_commerce__stat-item" data-percentage="94">
                             <div class="maison_commerce__progress-circle">
                                 <svg class="maison_commerce__progress-svg">
@@ -503,7 +510,7 @@
                                 minutes daily
                             </div>
                         </div>
-                        
+
                         <div class="maison_commerce__stat-item" data-percentage="99">
                             <div class="maison_commerce__progress-circle">
                                 <svg class="maison_commerce__progress-svg">
@@ -518,7 +525,7 @@
                                 a friend
                             </div>
                         </div>
-                        
+
                         <div class="maison_commerce__stat-item" data-percentage="88">
                             <div class="maison_commerce__progress-circle">
                                 <svg class="maison_commerce__progress-svg">
@@ -533,21 +540,30 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <p class="maison_commerce__disclaimer">
-                        *Based on survey responses from 523 verified customers after 60 days of product use.
-                    </p>
                 </div>
-                
+                <p class="maison_commerce__disclaimer">
+                    *Based on survey responses from 523 verified customers after 60 days of product use.
+                </p>
+
                 <div class="maison_commerce__cta-container">
                     <a href="#" class="maison_commerce__cta-button">
                         <span class="maison_commerce__cta-text">Try CURLIC Risk Free Yourself</span>
                     </a>
-                    
+
                     <div class="maison_commerce__guarantee">
                         <div class="maison_commerce__guarantee-icon">
-                            <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                                <path d="M8.5 14L16 6.5L14.5 5L8.5 11L5.5 8L4 9.5L8.5 14Z" fill="white"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21"
+                                fill="none">
+                                <g clip-path="url(#clip0_61_4793)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.0694 4.6302C15.0895 4.46532 13.0145 4.29252 10.8927 4.2526V0.857422C12.2825 0.8826 13.3816 0.966239 14.6468 1.07785C15.3178 1.13705 15.9001 1.60195 16.3341 2.04686C16.7964 2.52079 17.2291 3.119 17.5938 3.6857C17.8261 4.04672 18.0368 4.40456 18.2163 4.72469C17.8378 4.69419 17.4554 4.66234 17.0694 4.6302ZM18.4635 6.53572C18.7498 6.55817 19.0107 6.72496 19.1624 6.97693C19.3884 8.49749 19.6428 10.6937 19.6428 12.2824C19.6428 13.9599 19.3591 16.3148 19.1248 17.8364C18.9697 18.8445 18.1488 19.6384 17.1193 19.7191C16.7031 19.7518 16.281 19.7869 15.8534 19.8225L15.8497 19.8228C13.9817 19.9784 12.0123 20.1425 9.99994 20.1425C7.98763 20.1425 6.01862 19.9785 4.1506 19.8229C3.72172 19.7871 3.29816 19.7518 2.88062 19.7191C1.85105 19.6384 1.03027 18.8445 0.875025 17.8364C0.64074 16.3148 0.357117 13.9599 0.357117 12.2824C0.357117 10.6935 0.611562 8.49703 0.837528 6.97646C0.989348 6.72476 1.25002 6.55816 1.53613 6.53572C2.05795 6.4948 2.58147 6.45126 3.10703 6.40754C5.35936 6.2202 7.64894 6.02974 9.99984 6.02974C12.3507 6.02974 14.6403 6.22019 16.8927 6.40753C17.4183 6.45124 17.9417 6.4948 18.4635 6.53572ZM2.93022 4.6302C4.91016 4.46532 6.98512 4.29252 9.10695 4.2526V0.857422C7.70169 0.882882 6.59369 0.968103 5.31085 1.08156C4.63667 1.14119 4.05557 1.60631 3.62317 2.05303C3.16346 2.52796 2.73586 3.127 2.3768 3.69399C2.14985 4.05236 1.94427 4.40754 1.76915 4.72583C2.15222 4.69499 2.53937 4.66274 2.93022 4.6302ZM9.35832 13.849C9.52002 13.3639 9.31543 12.8449 8.8946 12.5921H10.9948C11.8682 12.5921 12.5763 13.3002 12.5763 14.1736C12.5763 15.0471 11.8682 15.7551 10.9948 15.7551H8.67349C8.08175 15.7551 7.60206 16.2348 7.60206 16.8265C7.60206 17.4182 8.08175 17.8979 8.67349 17.8979H10.9948C13.0517 17.8979 14.7191 16.2305 14.7191 14.1736C14.7191 12.1167 13.0517 10.4492 10.9948 10.4492H8.89407C9.31526 10.1965 9.52009 9.6773 9.35832 9.19199C9.1712 8.63063 8.56443 8.32725 8.00306 8.51436C6.69642 8.94992 5.78533 9.8556 5.34392 11.1573C5.30303 11.2708 5.28073 11.3931 5.28073 11.5207C5.28073 11.6499 5.30363 11.7739 5.34559 11.8886C5.78762 13.1877 6.69806 14.0917 8.00306 14.5267C8.56443 14.7138 9.1712 14.4104 9.35832 13.849Z"
+                                        fill="#DFB356" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_61_4793">
+                                        <rect width="20" height="20" fill="white" transform="translate(0 0.5)" />
+                                    </clipPath>
+                                </defs>
                             </svg>
                         </div>
                         <span class="maison_commerce__guarantee-text">90-Day Money Back Guarantee</span>
@@ -570,22 +586,22 @@
                     const statItem = entry.target;
                     const percentage = parseInt(statItem.dataset.percentage);
                     const circle = statItem.querySelector('.maison_commerce__circle-progress');
-                    
+
                     // Calculate radius based on screen size
                     const isMobile = window.innerWidth <= 767;
                     const radius = isMobile ? 28 : 32;
                     const circumference = 2 * Math.PI * radius;
                     const offset = circumference - (percentage / 100) * circumference;
-                    
+
                     // Apply the calculated offset directly
                     circle.style.strokeDashoffset = offset;
-                    
+
                     // Add animate class to trigger animation
                     statItem.classList.add('animate');
-                    
+
                     // Animate the percentage number
                     animateNumber(statItem.querySelector('.maison_commerce__percentage'), percentage);
-                    
+
                     // Stop observing this element
                     observer.unobserve(statItem);
                 }
@@ -612,4 +628,5 @@
         }
     </script>
 </body>
+
 </html>
